@@ -6,4 +6,5 @@
 Nakon toga 
 
 # 2. LibLink.md za cmake lib linkanje
+povezivanje biblioteka
 
