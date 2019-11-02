@@ -67,7 +67,7 @@ TARGET_LINK_LIBRARIES(Testing /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a)
 
 # Moguci errori
 
-## “ORA-12154: TNS: could not resolve the connect identifier specified” 
+## Ako javi “ORA-12154: TNS: could not resolve the connect identifier specified”  kod testiranja koda u 4. md fajlu
   - Razlog : Oracle Net Listener tj. Oracle XE nije upaljen ili nije stavljeno "XE" kao db name : `con.Connect ("XE",    // database name`
   - Rijesenje : Upalit Oracle i/ili promijeniti db name u "XE"
  
