@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
         // but can also be Sybase, Informix, DB2 
         // SQLServer, InterBase, SQLBase and ODBC 
         con.Connect ("XE",    // database name
-                     "tin",  // user name
-                     "4382",  // password
+                     "test",  // user name
+                     "123",  // password
                      SA_Oracle_Client); //Oracle Client 
         printf("We are connected!\n");
 
