@@ -1,0 +1,4 @@
+/home/tin/Documents/Baze2Projekt/QtSqlExample/books/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/tin/Documents/Baze2Projekt/QtSqlExample/books/cmake-build-debug/CMakeFiles/books.dir
+/home/tin/Documents/Baze2Projekt/QtSqlExample/books/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/tin/Documents/Baze2Projekt/QtSqlExample/books/cmake-build-debug/CMakeFiles/books_autogen.dir

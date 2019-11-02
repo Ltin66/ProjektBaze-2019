@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Testing.dir/main.cpp.o  -o Testing /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a /home/tin/CppDbLibs/SQLAPI/lib/libsqlapiu.a -ldl 

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tin/CLionProjects/Testing/main.cpp
+stdio.h
+-
+SQLAPI.h
+-
+
+/home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
+windows.h
+-
+wchar.h
+-
+wctype.h
+-
+sys/time.h
+-
+types.h
+-
+sys/types.h
+-
+sys/timeb.h
+-
+time.h
+-
+stdarg.h
+-
+stdint.h
+-
+limits.h
+-
+string
+-
+
