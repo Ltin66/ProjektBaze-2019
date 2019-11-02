@@ -1,8 +1,8 @@
 # ProjektBaze-2019
 
-oracle-xe-11g
-oracle-instantclient-basic
-sqlapi++
+Setup.md za instalaciju
 
+Nakon toga 
 
+LibLink.md za cmake lib linkanje
 
