@@ -1,9 +1,9 @@
 
 
 
-#1. Setup.md za instalaciju
+# 1. Setup.md za instalaciju
 
 Nakon toga 
 
-#2. LibLink.md za cmake lib linkanje
+# 2. LibLink.md za cmake lib linkanje
 
