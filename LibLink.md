@@ -15,3 +15,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Testing main.cpp)
 ```
+
+
+
+# Moguci errori
+
+- “ORA-12154: TNS: could not resolve the connect identifier specified” 
+  - Rijesenje : Oracle Net Listener tj. Oracle XE nije upaljen ili nije stavljeno "XE" kao db name : `con.Connect ("XE",    // database name`
+  
