@@ -35,7 +35,12 @@ add_executable(Testing main.cpp)
   
      npr. `LINK_DIRECTORIES(/home/tin/CppDbLibs/SQLAPI/lib)`
  
-  
+ 3. DODAJEMO `TARGET_LINK_LIBRARIES(Testing /put/do/lib/foldera/libsqlapi.a)`
+    
+    - ovdje dodajemo libsqlapi.a biblioteku, ne libsqlapi**u**.a
+    
+    npr.  `TARGET_LINK_LIBRARIES(Testing /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a)`
+
   
 **Nakon svih koraka CMakeLists.txt bi trebao izgledati ovako :**
 
@@ -53,7 +58,6 @@ LINK_DIRECTORIES(/home/tin/CppDbLibs/SQLAPI/lib)
 
 TARGET_LINK_LIBRARIES(Testing /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a)
 
-target_link_libraries(Testing ${CMAKE_DL_LIBS})
 ```
 
 
