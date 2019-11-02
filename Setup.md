@@ -37,7 +37,7 @@
 
 1. Skinut/Instalirat/Raspakirat SQLAPI++
   - https://www.sqlapi.com/
-
+  - Treba zapamtiti gdje se nalazi jer ce nam trebati path u LibLink.md
 
 
 tjt.
