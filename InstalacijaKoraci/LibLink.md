@@ -60,6 +60,10 @@ TARGET_LINK_LIBRARIES(Testing /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a)
 
 ```
 
+# Testiranje
+- U main.cpp dodajte `#include<SQLAPI.h>` i pokrenite 
+- Ako javi grešku, jbg...
+
 
 # Moguci errori
 
