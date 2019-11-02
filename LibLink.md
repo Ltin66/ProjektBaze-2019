@@ -21,5 +21,6 @@ add_executable(Testing main.cpp)
 # Moguci errori
 
 - “ORA-12154: TNS: could not resolve the connect identifier specified” 
-  - Rijesenje : Oracle Net Listener tj. Oracle XE nije upaljen ili nije stavljeno "XE" kao db name : `con.Connect ("XE",    // database name`
+  - Razlog : Oracle Net Listener tj. Oracle XE nije upaljen ili nije stavljeno "XE" kao db name : `con.Connect ("XE",    // database name`
+  - Rijesenje : Upalit Oracle i/ili promijeniti db name u "XE"
   
