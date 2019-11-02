@@ -1,4 +1,13 @@
-- U main.cpp stavite sljdece:
+
+
+- Ako radi kako treba trebalo bi ispisati : 
+```
+We are connected!
+We are disconnected!
+```
+
+# U main.cpp kopirajte :
+
 
 ```
 
