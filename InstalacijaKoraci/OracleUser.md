@@ -14,3 +14,6 @@ grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED V
 ```
 
 - Provjerite dali radi sa `connect veterinar/1234`
+
+
+# TO je glavni user kao SYS admin za bazu veterinar, za ostale korisnike cemo po putu vidit
