@@ -1,6 +1,6 @@
 
 
-# 1. Komentari
+#  Komentari
 
 - Bitno je komentirati kod jer radimo u timu
 - Kad je neki dio koda gotov onda se komentira ako treba
