@@ -9,9 +9,11 @@
   - na desnom kraju je "Download..." , kliknuti na to, pa na toj stranici > Sourceforge
   - Kad skine MinGW-w64 treba ga pokrenut i instalirat sa postavkama :
   
+  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/ProgramiranjeKoraci/dd.png)
   
   - Nakon instalacije u istom prozoru u Clionu treba promijeniti Environment na instalirani MinGW : 
   
+  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/ProgramiranjeKoraci/dd.png)
   
   
 ## 2. SQLAPI++ instalacija
@@ -23,7 +25,8 @@
   
   - Piše u LibLink.md šta je šta, samo treba zamijeniti put do foldera, i ime projekta, ako je neko drugo
    
-  - U TestiranjeProjekta.md piše kod za testiranje
+  - U TestiranjeCppLib piše kod za testiranje, najbolje probat prvo TestiranjeProjekta_login.md, jedino tako se može vidit dali je dobro napravljeno
+  
 ```
   
 cmake_minimum_required(VERSION 3.15)
