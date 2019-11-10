@@ -15,7 +15,7 @@ dodavanje usera u oracle db
 
 povezivanje biblioteka
 
-## Za win idite pod Win64 > LibInstalacija.md
+## Za win idite pod Win64-lib > LibInstalacija.md
 
 # 4. TestiranjeProjekta
 
