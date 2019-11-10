@@ -15,7 +15,7 @@ dodavanje usera u oracle db
 
 povezivanje biblioteka
 
-## Za win idite na Win64-lib 
+## Za win idite na Win64-lib umjesto LibLink
 
 # 4. TestiranjeProjekta
 
