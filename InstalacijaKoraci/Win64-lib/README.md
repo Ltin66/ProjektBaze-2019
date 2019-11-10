@@ -23,7 +23,7 @@
   
   ### U projektu "Testing" kopirat u CMakeLists.txt :
   
-  - Piše u LibLink.md šta je šta, samo treba zamijeniti put do foldera, i ime projekta, ako je neko drugo
+  - Piše u LibLink.md šta je šta, samo treba zamijeniti put do foldera, i ime projekta ako je neko drugo
    
   - U TestiranjeCppLib piše kod za testiranje, najbolje probat prvo TestiranjeProjekta_login.md, jedino tako se može vidit dali je dobro napravljeno
   
