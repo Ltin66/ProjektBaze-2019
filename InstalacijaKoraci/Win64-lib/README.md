@@ -13,8 +13,10 @@
   
   - Nakon instalacije u istom prozoru u Clionu treba promijeniti Environment na instalirani MinGW : 
   
+  
   ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/InstalacijaKoraci/Win64-lib/MinGW_clion.PNG)
   
+  - ako ga nije našao ponovo pokrenite clion
   
 ## 2. SQLAPI++ instalacija
 
