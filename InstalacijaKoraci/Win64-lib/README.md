@@ -9,11 +9,11 @@
   - na desnom kraju je "Download..." , kliknuti na to, pa na toj stranici > Sourceforge
   - Kad skine MinGW-w64 treba ga pokrenut i instalirat sa postavkama :
   
-  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/ProgramiranjeKoraci/dd.png)
+  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/InstalacijaKoraci/Win64-lib/MinGW_postavke.PNG)
   
   - Nakon instalacije u istom prozoru u Clionu treba promijeniti Environment na instalirani MinGW : 
   
-  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/ProgramiranjeKoraci/dd.png)
+  ![slika](https://raw.githubusercontent.com/Ltin66/ProjektBaze-2019/master/InstalacijaKoraci/Win64-lib/MinGW_clion.PNG)
   
   
 ## 2. SQLAPI++ instalacija
