@@ -5,7 +5,7 @@ Username : veterinar
 Password : 1234
 
 - U cmd ili terminal uđite u sqlplus, >> sqlplus i enter
-- U sqlplus logirajte se kao SYS i upišite sljdece :
+- U sqlplus logirajte se kao SYS a passwd je "passwd as sysdba" (passwd je passwd koji ste stavili pri instalaciji) i upišite sljdece :
 
 ```
 create user veterinar identified by 1234;
