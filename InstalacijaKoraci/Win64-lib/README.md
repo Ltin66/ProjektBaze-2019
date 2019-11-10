@@ -47,6 +47,7 @@ target_link_libraries(Testing ${CMAKE_DL_LIBS})
 
 ```
 
+- Skoro je isto kao u LibLink samo šta treba dodat -lversion i LINK_DIRECTORIES i TARGET_LINK_LIBRARIES ide pod MinGW-5.1.0-tdm64 folderom, može se izamjenit a l .....
  
 
 
