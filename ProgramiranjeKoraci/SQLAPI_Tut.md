@@ -23,6 +23,6 @@
 
 ## Upiti
 
-## 1. Stvaranje objekta za upite
+## 1. Stvaranje objekta za upite #TODO
 
 - SACommand
