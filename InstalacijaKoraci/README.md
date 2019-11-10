@@ -5,6 +5,8 @@
 
 instalacija programa
 
+## Oracle basic client nije potreban (možda)
+
 # 2. OracleUser
 
 dodavanje usera u oracle db
@@ -12,6 +14,8 @@ dodavanje usera u oracle db
 # 3. LibLink
 
 povezivanje biblioteka
+
+## Za win idite pod Win64 > LibInstalacija.md kako kod windowsa
 
 # 4. TestiranjeProjekta
 
