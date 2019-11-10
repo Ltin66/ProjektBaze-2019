@@ -4,7 +4,7 @@ Username : veterinar
 
 Password : 1234
 
-
+- U cmd ili terminal uđite u sqlplus, >> sqlplus i enter
 - U sqlplus logirajte se kao SYS i upišite sljdece :
 
 ```
