@@ -6,6 +6,6 @@
 
 -- Insert 1 - dodaj pregled (funkcija)
 
--- Insert 2 - dodaj doktore na pregled (funkcija)
+-- Insert 2 - dodaj doktore na pregled (funkcija)(transakcija, dali može polje sa imenima?)
 
 -- Update 1 - ??
