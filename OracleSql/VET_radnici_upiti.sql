@@ -22,7 +22,7 @@ SELECT ZAP.ZAPOSLENIK_ID, ZAP.IME,ZAP.PREZIME, RST.NAZIV
 
 --View 1 - view koji prikazuje zakazane dolaske u sljedecih 7 dana "raspored",  moraju se osvježit nakon svake izmjene
 
---View 2 - radnici, radno mjesto, i dali su na nekom odmoru u obliku datuma do kad su
+--View 2 - radnici, radno mjesto, i dali su na nekom odmoru u obliku datuma do kad su  "zaposlenici"
 
 
 --Insert 1 - unesi novog radnika (preko funkcije), automatski inkrementira id, stavlja datum itd.. sa transakcijom
