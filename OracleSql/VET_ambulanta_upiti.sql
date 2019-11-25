@@ -1,8 +1,8 @@
---Select 1
+--Select 1 - prikaži info o ambulantaID
 
--- Select 2
+-- Select 2 - 
 
--- View 1
+-- View 1 - 
 
 -- Insert 1 
 
