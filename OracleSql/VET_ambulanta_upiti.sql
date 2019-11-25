@@ -2,8 +2,10 @@
 
 -- Select 2 - 
 
--- View 1 - 
+-- View 1 - sljedecih n zakazanih pregleda
 
--- Insert 1 
+-- Insert 1 - dodaj pregled
 
--- Update 1 
+-- Insert 2 - dodaj doktore na pregled
+
+-- Update 1 - 
