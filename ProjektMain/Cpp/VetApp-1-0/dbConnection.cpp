@@ -5,14 +5,14 @@
 
 using namespace std;
 
-string dbConnect(korisnik ko,SAConnection &con){
-    cout<<ko.db_name;
+string dbConnect(korisnik kor,SAConnection &con){
+    //cout<<ko.db_string;
 
     try
     {
-        con.Connect ("XE",
-                     "tin",
-                     "4382",
+        con.Connect (kor.SA_db_string,
+                     kor.SA_username,
+                     kor.SA_passwd,
                      SA_Oracle_Client);
         printf("We are connected!\n");
         //con.Disconnect();
@@ -39,7 +39,7 @@ string dbDisconnect(SAConnection &con){
     try
     {
         con.Disconnect();
-        printf("We are disconnected!\n");
+        //printf("We are disconnected!\n");
     }
 
     catch(SAException & x)

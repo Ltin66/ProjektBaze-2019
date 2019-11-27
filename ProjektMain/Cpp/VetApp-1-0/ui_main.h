@@ -2,15 +2,20 @@
 // Created by tin on 11/27/19.
 //
 
-#ifndef VETAPP_1_0_UIINTRO_H
-#define VETAPP_1_0_UIINTRO_H
+#ifndef VETAPP_1_0_UI_MAIN_H
+#define VETAPP_1_0_UI_MAIN_H
+
 
 #include <string>
+#include "dbConnection.h"
 
+void ui_clear(int n);
 
-int ui_login(korisnik &kor){};
+void ui_input();
 
-std::string ui_intro_banner [5] = {
+int ui_prijava(korisnik &kor);
+
+const std::string ui_intro_banner [5] = {
         (R"( __     __   _            _                    ____                 )"),
         (R"( \ \   / /__| |_ ___ _ __(_)_ __   __ _ _ __  | __ )  __ _ ______ _ )"),
         (R"(  \ \ / / _ \ __/ _ \ '__| | '_ \ / _` | '__| |  _ \ / _` |_  / _` |)"),
@@ -20,7 +25,9 @@ std::string ui_intro_banner [5] = {
 
 
 
-#endif //VETAPP_1_0_UIINTRO_H
+#endif //VETAPP_1_0_UI_MAIN_H
+
+
 
 
 /*
@@ -33,3 +40,4 @@ std::string ui_intro_banner [5] = {
 
 
  */
+

@@ -7,7 +7,7 @@
 #include <cstdio>
 #include <string>
 
-#include "uiIntro.h"
+#include "ui_main.h"
 
 #include "dbUpiti.h"
 #include "dbTablice.h"
@@ -17,8 +17,13 @@ using namespace std;
 
 
 
+
+
+
 int main(int argc, char* argv[])
 {
+
+
     korisnik  kor;
     SAConnection con;
 
@@ -30,12 +35,19 @@ int main(int argc, char* argv[])
     int odabir = 0;
     cout<<"Glavni Izbornik :"<<endl;
     cout<<"1 - Prijava"<<endl;
-    cout<<"2 - Izlaz"<<endl;
+    cout<<"0 - Izlaz"<<endl;
+    ui_input();
     cin>>odabir;
 
 
-    if(odabir == 1) cout<<"prijava";
-    else if(odabir == 2) return 0;
+    if(odabir == 0) return 0;
+    else if(odabir == 1){
+        ui_prijava(kor);
+        dbConnect(kor,con);
+
+        ui_clear(15);
+        cout<<"Dobrodošli "<<kor.username;
+    }
 
 
     //dbConnect(kor,con);

@@ -105,7 +105,10 @@
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp">
 			<Option target="VetApp_1_0"/>
 		</Unit>
-		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/uiIntro.h">
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h">
 			<Option target="VetApp_1_0"/>
 		</Unit>
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/CMakeLists.txt">

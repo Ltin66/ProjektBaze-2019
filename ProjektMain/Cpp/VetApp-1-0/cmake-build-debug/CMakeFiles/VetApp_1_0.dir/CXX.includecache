@@ -42,6 +42,10 @@ iostream
 cstdio
 -
 
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h
+
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h
+
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp
 SQLAPI.h
 -
@@ -49,12 +53,18 @@ cstdio
 -
 string
 -
+ui_main.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h
+dbUpiti.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h
+dbTablice.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h
 dbConnection.h
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
-uiIntro.h
-/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/uiIntro.h
 
-/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/uiIntro.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h
 string
 -
+dbConnection.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
 

@@ -231,6 +231,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+ui_main.o: ui_main.cpp.o
+
+.PHONY : ui_main.o
+
+# target to build an object file
+ui_main.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o
+.PHONY : ui_main.cpp.o
+
+ui_main.i: ui_main.cpp.i
+
+.PHONY : ui_main.i
+
+# target to preprocess a source file
+ui_main.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_main.cpp.i
+.PHONY : ui_main.cpp.i
+
+ui_main.s: ui_main.cpp.s
+
+.PHONY : ui_main.s
+
+# target to generate assembly for a file
+ui_main.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_main.cpp.s
+.PHONY : ui_main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... ui_main.o"
+	@echo "... ui_main.i"
+	@echo "... ui_main.s"
 .PHONY : help
 
 
