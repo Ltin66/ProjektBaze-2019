@@ -6,7 +6,35 @@
 
 #IncludeRegexTransform: 
 
+/home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
+windows.h
+-
+wchar.h
+-
+wctype.h
+-
+sys/time.h
+-
+types.h
+-
+sys/types.h
+-
+sys/timeb.h
+-
+time.h
+-
+stdarg.h
+-
+stdint.h
+-
+limits.h
+-
+string
+-
+
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp
-iostream
+SQLAPI.h
+-
+cstdio
 -
 

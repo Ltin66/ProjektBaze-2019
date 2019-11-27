@@ -123,6 +123,33 @@ VetApp_1_0/fast:
 	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/build
 .PHONY : VetApp_1_0/fast
 
+dbConnection.o: dbConnection.cpp.o
+
+.PHONY : dbConnection.o
+
+# target to build an object file
+dbConnection.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o
+.PHONY : dbConnection.cpp.o
+
+dbConnection.i: dbConnection.cpp.i
+
+.PHONY : dbConnection.i
+
+# target to preprocess a source file
+dbConnection.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.i
+.PHONY : dbConnection.cpp.i
+
+dbConnection.s: dbConnection.cpp.s
+
+.PHONY : dbConnection.s
+
+# target to generate assembly for a file
+dbConnection.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.s
+.PHONY : dbConnection.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... VetApp_1_0"
 	@echo "... edit_cache"
+	@echo "... dbConnection.o"
+	@echo "... dbConnection.i"
+	@echo "... dbConnection.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/VetApp_1_0.dir/main.cpp.o  -o VetApp_1_0 
+/usr/bin/c++  -g   CMakeFiles/VetApp_1_0.dir/main.cpp.o CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o  -o VetApp_1_0 /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a -ldl 

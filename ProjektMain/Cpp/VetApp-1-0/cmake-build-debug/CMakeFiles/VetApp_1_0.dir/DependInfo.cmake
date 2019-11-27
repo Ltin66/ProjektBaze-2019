@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o"
   "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/tin/CppDbLibs/SQLAPI/include"
   )
 
 # Targets to which this target links.
