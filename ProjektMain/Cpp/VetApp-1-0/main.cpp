@@ -2,10 +2,15 @@
 // C++ pgroram for connecting to database (and error handling)
 #include<SQLAPI.h>         // main SQLAPI++ header
 #include<cstdio>
+#include <string>
+#include "dbConnection.h"
+
+using namespace std;
+
 
 int main(int argc, char* argv[])
 {
-
+    korisnik  a;
     // create connection object to connect to database
     SAConnection con;
     try

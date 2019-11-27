@@ -3,7 +3,9 @@ project(VetApp_1_0)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VetApp_1_0 main.cpp dbConnection.cpp)
+add_executable(VetApp_1_0 main.cpp dbConnection.cpp dbConnection.h)
+
+#linux postavke, za win treba zamijenit lib path
 
 INCLUDE_DIRECTORIES(/home/tin/CppDbLibs/SQLAPI/include)
 LINK_DIRECTORIES(/home/tin/CppDbLibs/SQLAPI/lib)

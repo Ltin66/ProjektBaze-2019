@@ -32,9 +32,17 @@ limits.h
 string
 -
 
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
+string
+-
+
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp
 SQLAPI.h
 -
 cstdio
 -
+string
+-
+dbConnection.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
 
