@@ -90,7 +90,22 @@
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h">
 			<Option target="VetApp_1_0"/>
 		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/uiIntro.h">
 			<Option target="VetApp_1_0"/>
 		</Unit>
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/CMakeLists.txt">

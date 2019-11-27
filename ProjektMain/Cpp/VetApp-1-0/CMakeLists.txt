@@ -3,7 +3,7 @@ project(VetApp_1_0)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VetApp_1_0 main.cpp dbConnection.cpp dbConnection.h)
+add_executable(VetApp_1_0 main.cpp dbConnection.cpp dbConnection.h uiIntro.h dbTablice.h dbUpiti.h dbTablice.cpp dbUpiti.cpp)
 
 #linux postavke, za win treba zamijenit lib path
 

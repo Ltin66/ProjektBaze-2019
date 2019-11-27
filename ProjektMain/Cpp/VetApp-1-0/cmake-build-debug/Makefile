@@ -150,6 +150,60 @@ dbConnection.cpp.s:
 	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.s
 .PHONY : dbConnection.cpp.s
 
+dbTablice.o: dbTablice.cpp.o
+
+.PHONY : dbTablice.o
+
+# target to build an object file
+dbTablice.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o
+.PHONY : dbTablice.cpp.o
+
+dbTablice.i: dbTablice.cpp.i
+
+.PHONY : dbTablice.i
+
+# target to preprocess a source file
+dbTablice.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.i
+.PHONY : dbTablice.cpp.i
+
+dbTablice.s: dbTablice.cpp.s
+
+.PHONY : dbTablice.s
+
+# target to generate assembly for a file
+dbTablice.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.s
+.PHONY : dbTablice.cpp.s
+
+dbUpiti.o: dbUpiti.cpp.o
+
+.PHONY : dbUpiti.o
+
+# target to build an object file
+dbUpiti.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o
+.PHONY : dbUpiti.cpp.o
+
+dbUpiti.i: dbUpiti.cpp.i
+
+.PHONY : dbUpiti.i
+
+# target to preprocess a source file
+dbUpiti.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.i
+.PHONY : dbUpiti.cpp.i
+
+dbUpiti.s: dbUpiti.cpp.s
+
+.PHONY : dbUpiti.s
+
+# target to generate assembly for a file
+dbUpiti.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.s
+.PHONY : dbUpiti.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +243,12 @@ help:
 	@echo "... dbConnection.o"
 	@echo "... dbConnection.i"
 	@echo "... dbConnection.s"
+	@echo "... dbTablice.o"
+	@echo "... dbTablice.i"
+	@echo "... dbTablice.s"
+	@echo "... dbUpiti.o"
+	@echo "... dbUpiti.i"
+	@echo "... dbUpiti.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

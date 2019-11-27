@@ -1,53 +1,46 @@
+/*
+ * LTU
+ *
+ */
 
-// C++ pgroram for connecting to database (and error handling)
-#include<SQLAPI.h>         // main SQLAPI++ header
-#include<cstdio>
+#include <SQLAPI.h>
+#include <cstdio>
 #include <string>
+
+#include "uiIntro.h"
+
+#include "dbUpiti.h"
+#include "dbTablice.h"
 #include "dbConnection.h"
 
 using namespace std;
 
 
+
 int main(int argc, char* argv[])
 {
-    korisnik  a;
-    // create connection object to connect to database
+    korisnik  kor;
     SAConnection con;
-    try
-    {
-        // connect to database
-        // in this example, it is Oracle,
-        // but can also be Sybase, Informix, DB2
-        // SQLServer, InterBase, SQLBase and ODBC
-        con.Connect ("XE",    // database name
-                     "tin",  // user name
-                     "4382",  // password
-                     SA_Oracle_Client); //Oracle Client
-        printf("We are connected!\n");
 
-        // Disconnect is optional
-        // autodisconnect will occur in destructor if needed
-        con.Disconnect();
-        printf("We are disconnected!\n");
-    }
 
-    catch(SAException & x)
-    {
-        // SAConnection::Rollback()
-        // can also throw an exception
-        // (if a network error for example),
-        // we will be ready
-        try
-        {
-            // on error rollback changes
-            con.Rollback ();
-        }
-        catch(SAException &)
-        {
-        }
-        // print error message
-        printf("%s\n", (const char*)x.ErrText());
-    }
+    for(int i =0; i<5;i++) cout<<ui_intro_banner[i]<<endl; //intro vet baza
+    for(int i =0; i<2;i++) cout<<endl;
+
+
+    int odabir = 0;
+    cout<<"Glavni Izbornik :"<<endl;
+    cout<<"1 - Prijava"<<endl;
+    cout<<"2 - Izlaz"<<endl;
+    cin>>odabir;
+
+
+    if(odabir == 1) cout<<"prijava";
+    else if(odabir == 2) return 0;
+
+
+    //dbConnect(kor,con);
+    //dbDisconnect(con);
 
     return 0;
 }
+
