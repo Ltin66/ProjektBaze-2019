@@ -3,7 +3,7 @@ select * from ZAPOSLENIK;
 SELECT * from ZAPOSLENIK join RADNI_STATUS RS on ZAPOSLENIK.ZAPOSLENIK_ID = RS.ZAPOSLENIK_ID;
 
 
-Select, insert, update i delete za radnike
+--Select, insert, update i delete za radnike
 
 
 --Upit vraća imena radnika i njihovo radno mjesto

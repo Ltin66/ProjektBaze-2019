@@ -1,5 +1,10 @@
 -- ako veterinar vec postoji, ovo ce ga izbrisat
-DROP USER veterinar CASCADE /
+
+-- sve se radi kao SYS osim ku ne pise drugacije
+
+DROP USER veterinar_sys CASCADE /
+DROP TABLESPACE veterinar  /
+DROP ROLE vet_sys/
 -----------------------------------------
 
 
@@ -14,28 +19,123 @@ CREATE TABLESPACE veterinar LOGGING
   EXTENT MANAGEMENT LOCAL
 /
 
--- veterinar_sys user, to je admin baze
-----------------------------------------------------------------------
+-- Još Uvijek KAO SYS
 
-create user veterinar_sys identified by 1234  DEFAULT TABLESPACE veterinar;
 
-grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE  to veterinar_sys;
+--ROLES
+--Kreiranje uloga
+------------------------------------------------------------------
+create role vet_sys/
 
+grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE,
+      CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER,
+      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE to vet_sys;
+
+create user veterinar_sys identified by 1234  DEFAULT TABLESPACE veterinar/
+grant vet_sys to veterinar_sys/
 ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
+------------------------------------------------------------------
+
+-- PRVO SE MORAJU KREIRATI TABLICE I SL. PRIJE DODAVANJA OSTaLIH ULOGA, tablice se dodaju kao veterinar_sys
+
+-- SAD KAO veterinar_sys DODAVANJE ULOGA I KORISNIKA, samo da izgleda kao da ih je on napravio
+
+
+--jos ce se to promijenit ali samo za testiranje je tako
+
+create role racunovoda/
+
+ALTER USER racunovoda  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
+grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+grant select on ZAPOSLENIK to racunovoda/
+grant select on RADNI_STATUS to racunovoda/
+grant select on RADNI_STATUS_TIP to racunovoda/
+grant select on ZAPOSLENICI_DOLAZAK to racunovoda/
+grant select on ZAPOSLENICI_ODSUTNOST to racunovoda/
+grant select on ODSUTNOST_TIP to racunovoda/
+
+------------------------------------------------------------------
+
+create role doktor/
+
+grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+
+------------------------------------------------------------------
+
+create role voditelj_odjela/
+
+grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+
+
+
+
+--USERI
+
+-- mirkomirkec# :
+
+-- 1 - voditelj
+-- 2 - doktor
+-- 3 - racunovoda
+
+-- useri koji su racunovode
+----------------------------------------------------------------------
+create user mirkomirkec3 identified by 1234  DEFAULT TABLESPACE veterinar/
+grant racunovoda to mirkomirkec3/
+
+----------------------------------------------------------------------
+
+-- koji su doktori
+----------------------------------------------------------------------
+create user mirkomirkec2 identified by 1234  DEFAULT TABLESPACE veterinar/
+grant doktor to mirkomirkec3/
+
+
+----------------------------------------------------------------------
+
+
+-- useri koji su voditelj_odjela
+----------------------------------------------------------------------
+create user mirkomirkec1 identified by 1234  DEFAULT TABLESPACE veterinar/
+grant voditelj_odjela to mirkomirkec3/
+
+
 ----------------------------------------------------------------------
 
 
 
--- racunovoda user
-----------------------------------------------------------------------
-----------------------------------------------------------------------
-
--- doktor user
-----------------------------------------------------------------------
-----------------------------------------------------------------------
 
 
--- voditelj_odjela user
-----------------------------------------------------------------------
+
+--ROLE UPITI to je za program da ne zaboravim
+
+
+--kao sys vraca role od svakog
+SELECT *
+  FROM USER_ROLE_PRIVS ;
+
+
+-- trebao bi vratiti role
+select * from USER_ROLE_PRIVS where USERNAME= USER;
+
+
+-- neznam
+select * from USER_TAB_PRIVS where Grantee = USER;
+
+
+-- upit koji vraca privilegije trenutnog usera
+select * from USER_SYS_PRIVS where USERNAME = USER;
+
+
+
+--OVO NE TREBA !!!!!!!!!!!!!!!!!!!
+
+-- veterinar_sys je (izmišljeni) admin u veterinarskoj stanici a vet_tester je za nas, nebitno koji koristite, isti su
 ----------------------------------------------------------------------
 
+-- veterinar  tester ce uvijek biti dostupan kao user sa admin privilegijama, ako oni role naredbe nešto zeznu ("backwards compatability") ili tak neš
+create user veterinar_tester identified by 1234  DEFAULT TABLESPACE veterinar;
+
+grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE  to veterinar_tester;
+
+ALTER USER veterinar_tester  QUOTA UNLIMITED ON veterinar;
+----------------------------------------------------------------------

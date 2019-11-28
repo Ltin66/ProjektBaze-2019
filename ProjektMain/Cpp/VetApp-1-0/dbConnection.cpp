@@ -34,6 +34,7 @@ string dbConnect(korisnik kor,SAConnection &con){
     return "dwa";
 }
 
+
 string dbDisconnect(SAConnection &con){
 
     try
@@ -53,4 +54,12 @@ string dbDisconnect(SAConnection &con){
         }
         printf("%s\n", (const char*)x.ErrText());
     }
+}
+
+
+int dbUserType(SAConnection &con){
+    
+
+
+    return 501;
 }
