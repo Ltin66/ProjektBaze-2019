@@ -8,6 +8,7 @@ CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o: ../dbConnection.h
 CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o: ../dbTablice.cpp
 CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o: ../dbTablice.h
 
+CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o: /home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
 CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o: ../dbUpiti.cpp
 CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o: ../dbUpiti.h
 

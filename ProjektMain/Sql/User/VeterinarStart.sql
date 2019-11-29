@@ -5,6 +5,7 @@
 DROP USER veterinar_sys CASCADE /
 DROP TABLESPACE veterinar  /
 DROP ROLE vet_sys/
+DROP ROLE racunovoda/
 -----------------------------------------
 
 
@@ -29,7 +30,7 @@ create role vet_sys/
 
 grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE,
       CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER,
-      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE to vet_sys;
+      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE,GRANT ANY ROLE,GRANT ANY PRIVILEGE,ALTER USER,CREATE USER to vet_sys;
 
 create user veterinar_sys identified by 1234  DEFAULT TABLESPACE veterinar/
 grant vet_sys to veterinar_sys/
@@ -45,7 +46,6 @@ ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
 
 create role racunovoda/
 
-ALTER USER racunovoda  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
 grant select on ZAPOSLENIK to racunovoda/
 grant select on RADNI_STATUS to racunovoda/
@@ -81,13 +81,15 @@ grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
 ----------------------------------------------------------------------
 create user mirkomirkec3 identified by 1234  DEFAULT TABLESPACE veterinar/
 grant racunovoda to mirkomirkec3/
+ALTER USER mirkomirkec3  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 
 ----------------------------------------------------------------------
 
 -- koji su doktori
 ----------------------------------------------------------------------
 create user mirkomirkec2 identified by 1234  DEFAULT TABLESPACE veterinar/
-grant doktor to mirkomirkec3/
+grant doktor to mirkomirkec2/
+ALTER USER mirkomirkec2  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 
 
 ----------------------------------------------------------------------
@@ -96,7 +98,8 @@ grant doktor to mirkomirkec3/
 -- useri koji su voditelj_odjela
 ----------------------------------------------------------------------
 create user mirkomirkec1 identified by 1234  DEFAULT TABLESPACE veterinar/
-grant voditelj_odjela to mirkomirkec3/
+grant voditelj_odjela to mirkomirkec1/
+ALTER USER mirkomirkec1  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 
 
 ----------------------------------------------------------------------
@@ -114,7 +117,7 @@ SELECT *
   FROM USER_ROLE_PRIVS ;
 
 
--- trebao bi vratiti role
+-- trebao bi vratiti role, TAJ !!!!
 select * from USER_ROLE_PRIVS where USERNAME= USER;
 
 
@@ -122,7 +125,7 @@ select * from USER_ROLE_PRIVS where USERNAME= USER;
 select * from USER_TAB_PRIVS where Grantee = USER;
 
 
--- upit koji vraca privilegije trenutnog usera
+-- upit koji vraca privilegije trenutnog usera, neradi na useru, nebitno,nmvz
 select * from USER_SYS_PRIVS where USERNAME = USER;
 
 

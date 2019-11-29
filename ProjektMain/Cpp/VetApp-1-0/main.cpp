@@ -47,6 +47,16 @@ int main(int argc, char* argv[])
 
         ui_clear(15);
         cout<<"Dobrodošli "<<kor.username;
+
+        //TODO mijenjanje funkcija ovisno o role type
+
+        string tmp;
+        cout<<endl<<"Unesite ime tablice : ";
+        ui_input();
+        cin>>tmp;
+
+        SelectAllFromTable(tmp,con);
+
     }
 
 

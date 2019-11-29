@@ -45,6 +45,10 @@ cstdio
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h
 
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h
+string
+-
+SQLAPI.h
+-
 
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp
 SQLAPI.h
