@@ -9,7 +9,9 @@
 #include <string>
 #include "dbConnection.h"
 
-void ui_clear(int n);
+void ui_clear(int n = 20);
+
+void ui_separator(int n = 20);
 
 void ui_input();
 

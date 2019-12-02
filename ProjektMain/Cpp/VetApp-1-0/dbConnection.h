@@ -22,7 +22,7 @@ struct korisnik{
     SAString    SA_passwd;
 };
 
-int dbUserType (SAConnection &con);
+//int dbUserType (SAConnection &con);
 
 std::string dbConnect(korisnik kor,SAConnection &con);
 

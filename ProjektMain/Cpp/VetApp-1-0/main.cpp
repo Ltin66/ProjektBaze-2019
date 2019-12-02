@@ -13,6 +13,12 @@
 #include "dbTablice.h"
 #include "dbConnection.h"
 
+#include <list>
+#include <vector>
+#include <algorithm>
+
+#define dbTableType std::vector < std::list <std::string> >
+
 using namespace std;
 
 
@@ -23,7 +29,26 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
+/*
+    vector< list < string > > TableArray;
 
+    for (int i  = 0; i  < 10 ; ++i ) {
+        TableArray.push_back( list<string> {"ds"} );
+    }
+
+    list<string> l = TableArray[0];
+
+    for(int i=0;i<10;i++ ) TableArray[0].push_back(" dwa ");
+
+    for(auto & it : TableArray[0]){
+        cout<<it;
+    }
+
+    // Iterate and print values of the list
+    for (string j : l) {
+        std::cout << j << '\n';
+    }
+*/
     korisnik  kor;
     SAConnection con;
 
@@ -55,7 +80,12 @@ int main(int argc, char* argv[])
         ui_input();
         cin>>tmp;
 
+        //cout<<dbUserType(con);
         SelectAllFromTable(tmp,con);
+
+        //dbTableType tab = CommandToList("select * form zaposlenik",con);
+
+
 
     }
 

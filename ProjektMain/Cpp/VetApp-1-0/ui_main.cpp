@@ -3,11 +3,22 @@
 //
 
 #include "dbConnection.h"
+#include <vector>
+#include <list>
+
+#define TypeTable std::vector < std::list <std::string> >
+
 
 using namespace std;
 
-void ui_clear(int n){
+void ui_clear(int n = 20){
     for(int i=0;i<n;i++) cout<<endl;
+}
+
+void ui_separator(int n = 20){
+    cout<<endl;
+    for(int i=0;i<n;i++) cout<<"-";
+    cout<<endl;
 }
 
 void ui_input(){
@@ -54,3 +65,8 @@ while(flg){
 
     return 0;
 }
+
+int ui_showTable(TypeTable &table){
+
+}
+

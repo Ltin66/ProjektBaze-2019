@@ -6,6 +6,8 @@ DROP USER veterinar_sys CASCADE /
 DROP TABLESPACE veterinar  /
 DROP ROLE vet_sys/
 DROP ROLE racunovoda/
+
+DROP USER mirkomirkec3 CASCADE /
 -----------------------------------------
 
 

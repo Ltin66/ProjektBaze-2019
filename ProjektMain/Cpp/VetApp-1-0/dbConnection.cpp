@@ -56,10 +56,3 @@ string dbDisconnect(SAConnection &con){
     }
 }
 
-
-int dbUserType(SAConnection &con){
-
-
-
-    return 501;
-}
