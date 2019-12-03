@@ -5,17 +5,19 @@
 #include "dbConnection.h"
 #include <vector>
 #include <list>
-
-#define TypeTable std::vector < std::list <std::string> >
+#include "dbTablice.h"
 
 
 using namespace std;
 
-void ui_clear(int n = 20){
+
+
+
+void ui_clear(int n = 40){
     for(int i=0;i<n;i++) cout<<endl;
 }
 
-void ui_separator(int n = 20){
+void ui_separator(int n = 40){
     cout<<endl;
     for(int i=0;i<n;i++) cout<<"-";
     cout<<endl;
@@ -66,7 +68,19 @@ while(flg){
     return 0;
 }
 
-int ui_showTable(TypeTable &table){
+int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10){
+    if(!Table.CollName.empty()) for(int i = 0;i<Table.Length;i++) cout<<
 
+    if(!Table.Data.empty()){
+        for(int i = 0;i < Table.Length;i++) {
+
+        }
+    }
 }
 
+void ui_error(string err_msg = "ERROR", int err_num = -1){
+    ui_separator();
+    if(err_num != -1) cout<<endl<<err_msg<<" : "<<err_num;
+    else cout<<"\n"<<err_msg<<"\n";
+    ui_separator();
+}

@@ -9,9 +9,11 @@
 #include <string>
 #include "dbConnection.h"
 
-void ui_clear(int n = 20);
+void ui_error(std::string err_msg = "ERROR", int err_num = -1);
 
-void ui_separator(int n = 20);
+void ui_clear(int n = 40);
+
+void ui_separator(int n = 40);
 
 void ui_input();
 

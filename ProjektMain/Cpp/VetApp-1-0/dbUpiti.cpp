@@ -9,11 +9,14 @@
 #include <cstdio>
 #include <list>
 #include <vector>
+#include "dbTablice.h"
+
 
 using namespace std;
 
 string dbUserType(SAConnection &con){
-    string command = "select * from USER_ROLE_PRIVS where USERNAME = USER;";
+
+    string command = "select * from USER_ROLE_PRIVS where USERNAME = USER";
     SAString SAScomm = command.c_str();
 
     //cout<<endl<<command<<endl;
@@ -22,7 +25,8 @@ string dbUserType(SAConnection &con){
     com.setConnection(&con);
     com.setCommandText(SAScomm);
 
-    com.Execute();
+    try {com.Execute();}
+    catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
     //com.FetchNext();
 
@@ -37,8 +41,7 @@ string dbUserType(SAConnection &con){
 }
 
 int SelectAllFromTable(string table,SAConnection &con){
-    //string command = "Select * from veterinar_sys." + table;
-    string command = "select * from USER_ROLE_PRIVS where USERNAME = USER;";
+    string command = "Select * from veterinar_sys." + table;
 
     SAString SAScomm = command.c_str();
 
@@ -48,7 +51,8 @@ int SelectAllFromTable(string table,SAConnection &con){
     com.setConnection(&con);
     com.setCommandText(SAScomm);
 
-    com.Execute();
+    try {com.Execute();}
+    catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
     while(com.FetchNext()){
         SAString test = com[2];
@@ -62,9 +66,8 @@ int SelectAllFromTable(string table,SAConnection &con){
 
 
 
-vector < list <string> >  CommandToList(string CommandString,SAConnection &con){
+void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
 
-    vector< list < string > > TableArray;
 
     SAString SAScomm = CommandString.c_str();
     SACommand com;
@@ -74,13 +77,13 @@ vector < list <string> >  CommandToList(string CommandString,SAConnection &con){
     try {com.Execute();}
     catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
-    const int COLLUMN_CNT = com.FieldCount();
+    Table.Length = com.FieldCount();
 
     com.FetchNext();
 
-    for(int i = 0; i < COLLUMN_CNT; i++) {
+    for(int i = 0; i < Table.Length; i++) {
         SAString tmp = com[i];
-        TableArray.push_back( list < string > {(string)(const char*)tmp});
+        Table.CollName.push_back( (string)(const char*)tmp );
     }
 
 
@@ -89,7 +92,7 @@ vector < list <string> >  CommandToList(string CommandString,SAConnection &con){
     }
 
 
-    return TableArray;
+   // return TableArray;
 }
 
 
