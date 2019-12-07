@@ -1,3 +1,7 @@
+
+
+
+
 -- ako veterinar vec postoji, ovo ce ga izbrisat
 
 -- sve se radi kao SYS osim ku ne pise drugacije
