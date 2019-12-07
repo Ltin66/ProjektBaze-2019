@@ -10,7 +10,7 @@ create table inspekcija_tip(
 /
 
 create table inspekcija_korisnik(
-    inspekcija_korisnik_id          INTEGER         NOT NULL , --auto incr
+    inspekcija_korisnik_id          INTEGER         NOT NULL 2, --auto incr
     korisnik_id                     INTEGER         NOT NULL ,
     cijena_total                    NUMERIC(15,2)   NOT NULL ,
     CONSTRAINT INS_KOR_PK PRIMARY KEY (inspekcija_korisnik_id),

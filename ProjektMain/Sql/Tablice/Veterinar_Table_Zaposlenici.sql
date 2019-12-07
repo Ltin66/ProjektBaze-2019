@@ -1,11 +1,12 @@
 
+-- TODO: check da sifra ima samo brojeve, nesmije imati ostale znakove i mora imati 8 znakova, bez razmaka
 
 CREATE TABLE zaposlenik (
-    zaposlenik_id           INTEGER             NOT NULL,
+    zaposlenik_id           INTEGER             NOT NULL, --auto incr
     ime                     VARCHAR(40)         NOT NULL,
     srednje_ime             VARCHAR(40)         DEFAULT '@' NOT NULL,
     prezime                 VARCHAR(40)         NOT NULL,
-    sifra                   VARCHAR(6)          NOT NULL,
+    sifra                   CHAR(8)             NOT NULL,  -- sifra je za pretrazivanje zaposlenika
     datum_zap               DATE                NOT NULL,
     jmbg                    INTEGER             NOT NULL,
     CONSTRAINT ZAP_PK PRIMARY KEY (zaposlenik_id) USING INDEX
@@ -14,7 +15,7 @@ CREATE TABLE zaposlenik (
 
 
 CREATE TABLE radni_status_tip (
-    radni_status_tip_id     INTEGER             NOT NULL,
+    radni_status_tip_id     INTEGER             NOT NULL, --auto incr
     naziv                   VARCHAR(20)         NOT NULL,
     opis_radnog_mjesta      CLOB                DEFAULT '@' NOT NULL,
     CONSTRAINT RAD_STAT_TIP_PK PRIMARY KEY (radni_status_tip_id) USING INDEX
@@ -22,7 +23,7 @@ CREATE TABLE radni_status_tip (
 /
 
 CREATE TABLE radni_status (
-    status_id               INTEGER             NOT NULL,
+    status_id               INTEGER             NOT NULL, --auto incr
     zaposlenik_id           INTEGER             NOT NULL,
     datum_pocetka           DATE                NOT NULL,
     datum_kraja             DATE                DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL,
@@ -38,7 +39,7 @@ CREATE TABLE radni_status (
 
 
 CREATE TABLE odsutnost_tip(
-    odsutnost_tip_id        INTEGER             NOT NULL,
+    odsutnost_tip_id        INTEGER             NOT NULL, --auto incr
     naziv                   VARCHAR(40)         NOT NULL,
     primanje_place          NUMBER(1,0)             NOT NULL,
     opis                    CLOB                DEFAULT '@' NOT NULL,
@@ -47,7 +48,7 @@ CREATE TABLE odsutnost_tip(
 /
 
 CREATE TABLE zaposlenici_odsutnost(
-    odsutnost_id            INTEGER             NOT NULL,
+    odsutnost_id            INTEGER             NOT NULL, -- auto incr
     zaposlenik_id           INTEGER             NOT NULL,
     odsutnost_tip_id        INTEGER             NOT NULL,
     datum_pocetka           DATE                NOT NULL,
@@ -64,7 +65,7 @@ CREATE TABLE zaposlenici_odsutnost(
 
 
 CREATE TABLE zaposlenici_dolazak(
-    zaposlenik_id           INTEGER             NOT NULL ,
+    zaposlenik_id           INTEGER             NOT NULL , --auto incr
     datum                   DATE                NOT NULL ,
     datum_dolaska           DATE                DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
     datum_odlaska           DATE                DEFAULT TO_DATE('02.01.0001','DD.MM.YYYY') NOT NULL ,
@@ -76,22 +77,22 @@ CREATE TABLE zaposlenici_dolazak(
 
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (1,'Mirko1','Mirkec1',TO_DATE('01.01.2008','DD.MM.YYYY'),1,'AAA001')/
+    values (1,'Mirko1','Mirkec1',TO_DATE('01.01.2008','DD.MM.YYYY'),1,'00100001')/
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (2,'Mirko2','Mirkec2',TO_DATE('02.01.2008','DD.MM.YYYY'),2,'AAA002')/
+    values (2,'Mirko2','Mirkec2',TO_DATE('02.01.2008','DD.MM.YYYY'),2,'00100002')/
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (3,'Mirko3','Mirkec3',TO_DATE('03.01.2008','DD.MM.YYYY'),3,'AAA003')/
+    values (3,'Mirko3','Mirkec3',TO_DATE('03.01.2008','DD.MM.YYYY'),3,'00100003')/
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (4,'Mirko4','Mirkec4',TO_DATE('04.01.2008','DD.MM.YYYY'),4,'AAA004')/
+    values (4,'Mirko4','Mirkec4',TO_DATE('04.01.2008','DD.MM.YYYY'),4,'00100005')/
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (5,'Mirko5','Mirkec5',TO_DATE('05.01.2008','DD.MM.YYYY'),5,'AAA005')/
+    values (5,'Mirko5','Mirkec5',TO_DATE('05.01.2008','DD.MM.YYYY'),5,'00100007')/
 
 INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
-    values (6,'Mirko6','Mirkec6',TO_DATE('06.01.2008','DD.MM.YYYY'),6,'AAA006')/
+    values (6,'Mirko6','Mirkec6',TO_DATE('06.01.2008','DD.MM.YYYY'),6,'00100302')/
 
 -------------------------------------------------------------------------------------
 
