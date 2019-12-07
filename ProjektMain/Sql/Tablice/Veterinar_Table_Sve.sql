@@ -147,24 +147,25 @@ create table korisnik_zivotinja(
 --TODO : constraint cijena > 0
 
 create table intervencija_tip (
-    tip_id                INTEGER         NOT NULL , -- auto incr
+    intervencija_tip_id                INTEGER         NOT NULL , -- auto incr
     naziv                 VARCHAR(40)     NOT NULL ,
     cijena                NUMERIC(16,2)   NOT NULL ,
     opis                  CLOB DEFAULT '@' NOT NULL ,
-    CONSTRAINT INT_TIP_PK PRIMARY KEY (tip_id)
+    CONSTRAINT INT_TIP_PK PRIMARY KEY (intervencija_tip_id)
 )
 /
 
 -- TODO : treba staviti default za timestamp
 
 create table intervencija(
-  intervencija_id           INTEGER         NOT NULL, -- auto incr
-  tip_id                    INTEGER         NOT NULL,
-  korisnik_id               INTEGER         NOT NULL,
-  datum                     TIMESTAMP       NOT NULL,
-  opis                      CLOB DEFAULT '@' NOT NULL ,
-  CONSTRAINT INT_PK PRIMARY KEY (intervencija_id),
-  CONSTRAINT INT_FK FOREIGN KEY (korisnik_id) REFERENCES korisnik(korisnik_id)
+    intervencija_id           INTEGER         NOT NULL, -- auto incr
+    intervencija_tip_id       INTEGER         NOT NULL,
+    korisnik_id               INTEGER         NOT NULL,
+    datum                     TIMESTAMP       NOT NULL,
+    opis                      CLOB DEFAULT '@' NOT NULL ,
+    CONSTRAINT INT_PK PRIMARY KEY (intervencija_id),
+    CONSTRAINT INT_FK_KOR FOREIGN KEY (korisnik_id) REFERENCES korisnik(korisnik_id),
+    CONSTRAINT INT_FK_TIP FOREIGN KEY (intervencija_tip_id) REFERENCES intervencija_tip(intervencija_tip_id)
 )
 /
 
