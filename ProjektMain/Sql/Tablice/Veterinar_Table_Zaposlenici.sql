@@ -5,7 +5,7 @@ CREATE TABLE zaposlenik (
     ime                     VARCHAR(40)         NOT NULL,
     srednje_ime             VARCHAR(40)         DEFAULT '@' NOT NULL,
     prezime                 VARCHAR(40)         NOT NULL,
-    --status                INTEGER             NOT NULL,
+    sifra                   VARCHAR(6)         NOT NULL,
     datum_zap               DATE                NOT NULL,
     jmbg                    INTEGER             NOT NULL,
     CONSTRAINT ZAP_PK PRIMARY KEY (zaposlenik_id) USING INDEX
@@ -74,23 +74,24 @@ CREATE TABLE zaposlenici_dolazak(
 
 -------------------------------------------------------------------------------
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (1,'Mirko1','Mirkec1',TO_DATE('01.01.2008','DD.MM.YYYY'),1)/
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (2,'Mirko2','Mirkec2',TO_DATE('02.01.2008','DD.MM.YYYY'),2)/
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (1,'Mirko1','Mirkec1',TO_DATE('01.01.2008','DD.MM.YYYY'),1,'AAA001')/
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (3,'Mirko3','Mirkec3',TO_DATE('03.01.2008','DD.MM.YYYY'),3)/
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (2,'Mirko2','Mirkec2',TO_DATE('02.01.2008','DD.MM.YYYY'),2,'AAA002')/
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (4,'Mirko4','Mirkec4',TO_DATE('04.01.2008','DD.MM.YYYY'),4)/
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (3,'Mirko3','Mirkec3',TO_DATE('03.01.2008','DD.MM.YYYY'),3,'AAA003')/
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (5,'Mirko5','Mirkec5',TO_DATE('05.01.2008','DD.MM.YYYY'),5)/
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (4,'Mirko4','Mirkec4',TO_DATE('04.01.2008','DD.MM.YYYY'),4,'AAA004')/
 
-INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg)
-    values (6,'Mirko6','Mirkec6',TO_DATE('06.01.2008','DD.MM.YYYY'),6)/
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (5,'Mirko5','Mirkec5',TO_DATE('05.01.2008','DD.MM.YYYY'),5,'AAA005')/
+
+INSERT INTO zaposlenik (zaposlenik_id, ime, prezime,datum_zap,jmbg,sifra)
+    values (6,'Mirko6','Mirkec6',TO_DATE('06.01.2008','DD.MM.YYYY'),6,'AAA006')/
 
 -------------------------------------------------------------------------------------
 
@@ -201,4 +202,62 @@ INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlas
 INSERT INTO zaposlenici_odsutnost (odsutnost_id, zaposlenik_id, odsutnost_tip_id, datum_pocetka, datum_kraja)
     VALUES (1,5,1,TO_DATE('03.02.2008','DD.MM.YYYY'),TO_DATE('05.02.2008','DD.MM.YYYY'))/
 
+
+-------------------------------------------------------------------------------------
+
+
+-- Mat view, osnovne informacije o zaposlenicima
+
+CREATE MATERIALIZED VIEW Zap_Info
+    NOCACHE
+    NOCOMPRESS
+    NEVER REFRESH
+    AS SELECT sifra , ime , prezime FROM zaposlenik/
+
+
+
+
+-- Triger za Update nad zaposlenikom
+CREATE OR REPLACE TRIGGER ZAP_MAT_UPD
+    AFTER UPDATE OF sifra,ime,prezime ON zaposlenik
+    FOR EACH ROW
+    ENABLE
+    BEGIN
+        IF :NEW.sifra <> :OLD.sifra THEN
+           UPDATE ZAP_INFO SET sifra = :NEW.sifra WHERE sifra = :OLD.sifra;
+        end if;
+
+        IF :NEW.ime <> :OLD.ime THEN
+           UPDATE ZAP_INFO SET ime = :NEW.ime WHERE sifra = :NEW.sifra;
+        end if;
+
+        IF :NEW.prezime <> :OLD.prezime THEN
+            UPDATE ZAP_INFO SET prezime = :NEW.prezime WHERE sifra = :NEW.sifra;
+        end if;
+
+    END;
+
+
+
+-- DElete trig
+CREATE OR REPLACE TRIGGER ZAP_MAT_DEL
+    AFTER DELETE ON zaposlenik
+    FOR EACH ROW
+    ENABLE
+    BEGIN
+        DELETE FROM ZAP_INFO WHERE :OLD.sifra = ZAP_INFO.SIFRA;
+    END;
+
+
+
+-- Insert trigger
+CREATE OR REPLACE TRIGGER ZAP_MAT_INS
+    AFTER INSERT ON zaposlenik
+    FOR EACH ROW
+    ENABLE
+    BEGIN
+        INSERT INTO ZAP_INFO(sifra, ime, prezime)
+        VALUES (:NEW.sifra,:NEW.ime,:NEW.prezime);
+
+    END;
 
