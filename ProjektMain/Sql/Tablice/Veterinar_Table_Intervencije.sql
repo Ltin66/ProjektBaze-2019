@@ -1,29 +1,36 @@
 
-create table intervencije_tip (
-  tipID INTEGER PRIMARY KEY,
-  naziv VARCHAR(20),
-  cijena NUMERIC(15,2)
+
+--TODO : constraint cijena > 0
+
+create table intervencija_tip (
+    tip_id                INTEGER         NOT NULL , -- auto incr
+    naziv                 VARCHAR(40)     NOT NULL ,
+    cijena                NUMERIC(16,2)   NOT NULL ,
+    opis                  CLOB DEFAULT '@' NOT NULL ,
+    CONSTRAINT INT_TIP_PK PRIMARY KEY (tip_id)
+)
+/
+
+-- TODO : treba staviti default za timestamp
+
+create table intervencija(
+  intervencija_id           INTEGER         NOT NULL, -- auto incr
+  tip_id                    INTEGER         NOT NULL,
+  korisnik_id               INTEGER         NOT NULL,
+  datum                     TIMESTAMP       NOT NULL,
+  opis                      CLOB DEFAULT '@' NOT NULL ,
+  CONSTRAINT INT_PK PRIMARY KEY (intervencija_id),
+  CONSTRAINT INT_FK FOREIGN KEY (korisnik_id) REFERENCES korisnik(korisnik_id)
 )
 /
 
 
-create table intervencije_log(
-  intervencijaID INTEGER NOT NULL PRIMARY KEY,
-  tipID INTEGER NOT NULL,
-  korisnikID INTEGER NOT NULL,
-  datum TIMESTAMP NOT NULL,
-  opis VARCHAR(200),
-  FOREIGN KEY(intervencijaID) REFERENCES skladiste_log(uslugaID),
-  FOREIGN KEY(tipID) REFERENCES intervencije_tip(tipID),
-  FOREIGN KEY(korisnikID) REFERENCES korisnik(korisnikID)
-)
-/
-
-
-create table intervencije_radnici(
-  intervenicjaID INTEGER NOT NULL,
-  zaposlenikID INTEGER NOT NULL,
-  FOREIGN KEY(intervencijeID) REFERENCES intervencije_log(intervencijaID),
-  FOREIGN KEY(zaposlenikID) REFERENCES zaposlenici(zaposlenikID)
+create table intervencija_zaposlenik(
+    intervencija_zaposlenik_id  INTEGER         NOT NULL , --auto incr
+    intervenicja_id             INTEGER         NOT NULL,
+    zaposlenik_id               INTEGER         NOT NULL,
+    CONSTRAINT INT_ZAP_PK PRIMARY KEY (intervencija_zaposlenik_id),
+    CONSTRAINT INT_ZAP_FK_INT FOREIGN KEY (intervenicja_id) REFERENCES intervencija(intervencija_id),
+    CONSTRAINT INT_ZAP_FK_ZAP FOREIGN KEY (zaposlenik_id) REFERENCES zaposlenik(zaposlenik_id)
 )
 /
