@@ -5,7 +5,7 @@ CREATE TABLE zaposlenik (
     ime                     VARCHAR(40)         NOT NULL,
     srednje_ime             VARCHAR(40)         DEFAULT '@' NOT NULL,
     prezime                 VARCHAR(40)         NOT NULL,
-    sifra                   VARCHAR(6)         NOT NULL,
+    sifra                   VARCHAR(6)          NOT NULL,
     datum_zap               DATE                NOT NULL,
     jmbg                    INTEGER             NOT NULL,
     CONSTRAINT ZAP_PK PRIMARY KEY (zaposlenik_id) USING INDEX
