@@ -15,7 +15,7 @@ struct korisnik{
     std::string username;
     std::string password;
 
-    std::string UserRole;
+    std::string UserRole = "UNW";
     //const char* password;
 
     SAString    SA_db_string;

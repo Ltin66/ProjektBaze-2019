@@ -258,6 +258,33 @@ ui_main.cpp.s:
 	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_main.cpp.s
 .PHONY : ui_main.cpp.s
 
+ui_user.o: ui_user.cpp.o
+
+.PHONY : ui_user.o
+
+# target to build an object file
+ui_user.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o
+.PHONY : ui_user.cpp.o
+
+ui_user.i: ui_user.cpp.i
+
+.PHONY : ui_user.i
+
+# target to preprocess a source file
+ui_user.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_user.cpp.i
+.PHONY : ui_user.cpp.i
+
+ui_user.s: ui_user.cpp.s
+
+.PHONY : ui_user.s
+
+# target to generate assembly for a file
+ui_user.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/ui_user.cpp.s
+.PHONY : ui_user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -282,6 +309,9 @@ help:
 	@echo "... ui_main.o"
 	@echo "... ui_main.i"
 	@echo "... ui_main.s"
+	@echo "... ui_user.o"
+	@echo "... ui_user.i"
+	@echo "... ui_user.s"
 .PHONY : help
 
 

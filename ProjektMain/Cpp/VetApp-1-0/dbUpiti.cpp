@@ -1,7 +1,7 @@
 //
 // Created by tin on 11/27/19.
 // gamad glupa, stupce broji od 1, ne od 0 , com[0] = SAException
-// prvo treba fetch za dobit coll type
+// prvo treba fetch za dobit coll type pa ih zato ctamo na kraju unosa  com u Data
 
 #include "dbUpiti.h"
 #include <SQLAPI.h>
@@ -79,12 +79,15 @@ void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
     try {com.Execute();}
     catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
+
+    //get RowCount i popuni Data sa prazim poljima
     Table.RowCnt = 0;
     Table.ColCnt = com.FieldCount();
     for(int i = 1; i <= Table.ColCnt; i++) Table.Data.emplace_back();
     //com.FetchNext();
 
 
+    //unos redova
     while(com.FetchNext()){
         Table.RowCnt ++;
         for(int i = 1; i <= com.FieldCount(); i++){
@@ -93,10 +96,13 @@ void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
         }
     }
 
+
+    //unos imena redova
     for(int i = 1; i <= Table.ColCnt; i++) {
         SAString tmp = com[i].Name();
         Table.CollName.push_back( (string)(const char*)tmp );
     }
+
 
     //cout<<endl<<"TU3"<<endl;
 }

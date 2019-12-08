@@ -12,6 +12,13 @@
 #include "dbTablice.h"
 
 
+struct dbQuery{
+    std::string dbQueryString;
+    std::vector < std::string > dbQueryArgs;
+    std::vector < int > dbQueryArgsPoz;
+    bool dbQueryType[3] = {false,false,false};
+};
+
 int SelectAllFromTable(std::string table,SAConnection &con);
 
 //2D lista, prvi elem u podlisti je naziv stupca

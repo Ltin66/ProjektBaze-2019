@@ -12,12 +12,13 @@
 #include "dbUpiti.h"
 #include "dbTablice.h"
 #include "dbConnection.h"
+#include "ui_user.h"
 
 #include <list>
 #include <vector>
 #include <algorithm>
 
-#define dbTableType std::vector < std::vector <std::string> >
+//#define dbTableType std::vector < std::vector <std::string> >
 
 using namespace std;
 
@@ -25,54 +26,58 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-
-    korisnik  kor;
-    SAConnection con;
-
-
-    for(int i =0; i<5;i++) cout<<ui_intro_banner[i]<<endl; //intro vet baza
-    for(int i =0; i<2;i++) cout<<endl;
+    while(true) {
+        korisnik kor;
+        SAConnection con;
 
 
-    int odabir = 0;
-    cout<<"Glavni Izbornik :"<<endl;
-    cout<<"1 - Prijava"<<endl;
-    cout<<"2 - Postavke"<<endl;
-    cout<<"0 - Izlaz"<<endl;
-    ui_input();
-    cin>>odabir;
+        for (int i = 0; i < 5; i++) cout << ui_intro_banner[i] << endl; //intro vet baza
+        for (int i = 0; i < 2; i++) cout << endl;
 
 
-    if(odabir == 0) return 0;
-    else if(odabir == 2) ui_postavke();
-    else if(odabir == 1){
+        int odabir = 0;
+        cout << "Glavni Izbornik :" << endl;
+        cout << "1 - Prijava" << endl;
+        cout << "2 - Postavke" << endl;
+        cout << "0 - Izlaz" << endl;
+        ui_input();
+        cin >> odabir;
 
-        ui_prijava(kor);
-        dbConnect(kor,con);
-        kor.UserRole = dbUserType(con);
 
-        ui_clear();
-        cout<<"Dobrodošli "<<kor.username;
-        ui_separator();
+        if (odabir == 0) return 0;
+        else if (odabir == 2) ui_postavke();
+        else if (odabir == 1) {
 
-        if(kor.UserRole == "RACUNOVODA") {
-            cout<<"Racunovoda\n";
-            {//temp dbTable
-                dbTable T;
-                CommandToTable("SELECT * FROM ZAPOSLENIK",T,con);
-                ui_showTable(T);
+            int tmp = ui_prijava(kor);
+            dbConnect(kor, con);
+            if(tmp == 501) kor.UserRole = dbUserType(con);
+
+            //ui_clear();
+            //cout << "Dobrodošli " << kor.username;
+            //ui_separator();
+
+            if (kor.UserRole == "RACUNOVODA" && tmp == 501) {
+                cout << "Racunovoda\n";
+                int tmp = uiUserRacunovodaMainMenu(con, kor);
+                if (tmp == 0) return 0;
             }
-        }
-        else if(kor.UserRole == "VODITELJ_ODJELA") {
-            cout<<"voditelj odjela\n";
-        }
-        else if(kor.UserRole == "DOKTOR") {
-            cout<<"doktore\n";
-        }
-        else ui_error("USER ROLE NOT DEFINED");
 
+            else if (kor.UserRole == "VODITELJ_ODJELA" && tmp == 501 ) {
+                cout << "voditelj odjela\n";
+                int tmp = uiUserVoditeljOdjelaMainMenu(con, kor);
+                if (tmp == 0) return 0;
+            }
+
+            else if (kor.UserRole == "DOKTOR" && tmp == 501) {
+                cout << "doktore\n";
+                int tmp = uiUserDoktorMainMenu(con, kor);
+                if (tmp == 0) return 0;
+            }
+
+            else if( tmp == 501) ui_error("USER ROLE NOT DEFINED");
+
+        }
     }
-
 
     //dbConnect(kor,con);
     //dbDisconnect(con);

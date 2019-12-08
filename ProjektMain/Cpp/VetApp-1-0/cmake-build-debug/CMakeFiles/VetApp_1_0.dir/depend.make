@@ -19,9 +19,18 @@ CMakeFiles/VetApp_1_0.dir/main.cpp.o: ../dbTablice.h
 CMakeFiles/VetApp_1_0.dir/main.cpp.o: ../dbUpiti.h
 CMakeFiles/VetApp_1_0.dir/main.cpp.o: ../main.cpp
 CMakeFiles/VetApp_1_0.dir/main.cpp.o: ../ui_main.h
+CMakeFiles/VetApp_1_0.dir/main.cpp.o: ../ui_user.h
 
 CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o: /home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
 CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o: ../dbConnection.h
 CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o: ../dbTablice.h
 CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o: ../ui_main.cpp
+
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: /home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../dbConnection.h
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../dbTablice.h
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../dbUpiti.h
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../ui_main.h
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../ui_user.cpp
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o: ../ui_user.h
 

@@ -11,6 +11,9 @@
 using namespace std;
 
 
+void ui_print(const string& val,int size = 1){
+    cout<<val<<endl;
+}
 
 
 void ui_clear(int n = 40){
@@ -48,10 +51,11 @@ while(flg){
 
     ui_clear(2);
 
-    cout<<"Jeste li zadovoljni sa unosom (Y/N) : ";
+    cout<<"Jeste li zadovoljni sa unosom ( (Y)es / (N)o / (E)xit ) : ";
     ui_input();
     cin>>tmp;
     if(tmp == 'Y' || tmp == 'y') flg = false;
+    else if(tmp == 'E' || tmp == 'e') return -1;
 }
 
     kor.db_string = "XE";
@@ -65,7 +69,7 @@ while(flg){
 
 
 
-    return 0;
+    return 501;
 }
 
 
@@ -77,12 +81,12 @@ void ui_postavke(){
 int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10){
     if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<Table.CollName[i]<<" || ";
 
-    cout<<endl;
+    cout<<endl<<Table.ColCnt;
 
     if(!Table.Data.empty()){
-        for(int i = 0;i < Table.ColCnt;i++) {
-            cout<<i<<" : ";
-                for(int j = 0;j<Table.RowCnt;j++){
+        for(int i = 0;i < Table.ColCnt-1;i++) {
+            cout<<i+1<<" : ";
+                for(int j = 0;j<Table.RowCnt-1;j++){
                     cout<<Table.Data[j][i]<<" | ";
                 }
             cout<<"\n";

@@ -111,6 +111,12 @@
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h">
 			<Option target="VetApp_1_0"/>
 		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

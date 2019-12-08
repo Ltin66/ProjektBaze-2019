@@ -20,8 +20,17 @@ CMakeFiles/VetApp_1_0.dir/main.cpp.o
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.h
 CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o
  /home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h
  /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.cpp
+CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o
+ /home/tin/CppDbLibs/SQLAPI/include/SQLAPI.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.cpp
+ /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.h
