@@ -36,7 +36,7 @@ create table ambulanta_usluga (
 
 -- TODO : check da su zivotinja_tip_id jednake od korisnika i usluge, nemoze krava doci na pregled za mačke
 create table ambulanta(
-    ambulanta_id                       INTEGER        NOT NULL , --auto incr
+    ambulanta_id                       INTEGER        NOT NULL ,
     ambulanta_usluga_id                INTEGER        NOT NULL ,
     datum                              DATE           DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
     opis                               CLOB           DEFAULT '@' NOT NULL ,
@@ -46,7 +46,7 @@ create table ambulanta(
 /
 
 create table ambulanta_zaposlenik(
-    ambulanta_zaposlenik_id                 INTEGER         NOT NULL ,
+    ambulanta_zaposlenik_id                 INTEGER         NOT NULL , --auto incr
     ambulanta_id                            INTEGER         NOT NULL,
     zaposlenik_id                           INTEGER         NOT NULL,
     CONSTRAINT AMB_ZAP_PK PRIMARY KEY (ambulanta_zaposlenik_id),
