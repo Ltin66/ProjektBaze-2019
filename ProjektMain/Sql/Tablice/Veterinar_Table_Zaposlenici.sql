@@ -1,3 +1,5 @@
+---//TODO treba provjeriti dali smije toliko sati raditi , ako je vec odradio max sati
+---//TODO ako radi dva + puta u istom danu nemogu mu odrađeni sati priječi sljedeči termin dolaska, ili mogu ?
 
 -- TODO: check da sifra ima samo brojeve, nesmije imati ostale znakove i mora imati 8 znakova, bez razmaka
 
