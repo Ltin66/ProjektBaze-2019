@@ -104,9 +104,27 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
 
 int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
+    ui_clear();
+    cout << "Dobrodošli " << kor.username;
+    ui_separator();
+    while(true) {
+        int odabir = 0;
+
+        ui_print("Izbornik");
+
+
+        ui_print("0 - Izlaz iz Programa");
+        ui_print("10 - Izlaz u Glavni Izbornik");
+
+        ui_input();
+        cin>>odabir;
 
 
 
+
+        if(odabir == 0) return 0;
+        else if(odabir == 10) return -1;
+    }
 
 }
 

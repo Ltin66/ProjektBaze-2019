@@ -11,6 +11,8 @@
 using namespace std;
 
 
+
+
 void ui_print(const string& val,int size = 1){
     cout<<val<<endl;
 }
@@ -99,4 +101,13 @@ void ui_error(const string& err_msg = "ERROR", int err_num = -1){
     if(err_num != -1) cout<<endl<<err_msg<<" : "<<err_num;
     else cout<<"\n"<<err_msg<<"\n";
     ui_separator();
+}
+
+
+bool ui_confirm(){
+    cout<<"\n Jeste li Sigurni? \n (Y)es / (N)o ";
+    char tmp = 0;
+    ui_input();
+    cin>>tmp;
+    return tmp == 'y' || tmp == 'Y';
 }

@@ -12,6 +12,8 @@
 
 //void ui_error(std::string err_msg = "ERROR", int err_num = -1);
 
+bool ui_confirm();
+
 void ui_print(const std::string& val,int size = 1);
 
 void ui_clear(int n = 40);
