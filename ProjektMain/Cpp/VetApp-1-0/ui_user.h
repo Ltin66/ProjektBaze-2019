@@ -23,4 +23,6 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor);
 
 int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor);
 
+int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor);
+
 #endif //VETAPP_1_0_UI_USER_H

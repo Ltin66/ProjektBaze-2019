@@ -30,7 +30,6 @@ DROP USER mirkomirkec9 CASCADE /
 create role racunovoda/
 
 grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
-grant create synonym to racunovoda/
 grant select on ZAPOSLENIK to racunovoda/
 grant select on RADNI_STATUS to racunovoda/
 grant select on RADNI_STATUS_TIP to racunovoda/
@@ -42,7 +41,13 @@ grant select on ODSUTNOST_TIP to racunovoda/
 
 create role doktor/
 
-grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+grant CREATE SESSION to doktor/  --da bi se mogao taj user spojiti na bazu
+grant select on ZAPOSLENIK to doktor/
+grant select on RADNI_STATUS to doktor/
+grant select on RADNI_STATUS_TIP to doktor/
+grant select on ZAPOSLENICI_DOLAZAK to doktor/
+grant select on ZAPOSLENICI_ODSUTNOST to doktor/
+grant select on ODSUTNOST_TIP to doktor/
 
 ------------------------------------------------------------------
 
