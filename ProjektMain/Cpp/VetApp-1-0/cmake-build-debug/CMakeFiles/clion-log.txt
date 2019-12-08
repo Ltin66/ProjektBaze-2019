@@ -1,4 +1,4 @@
-/home/tin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5233.103/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0
+/home/tin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5233.144/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug

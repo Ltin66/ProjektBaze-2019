@@ -12,8 +12,9 @@
 struct dbTable{
     std::vector < std::vector <std::string> > Data;
     std::vector < std::string > CollName;
-    int Length;
-
+    std::vector < std::string > CollDataType;
+    int ColCnt;
+    int RowCnt;
 };
 
 void dbTableClear(dbTable &Table);

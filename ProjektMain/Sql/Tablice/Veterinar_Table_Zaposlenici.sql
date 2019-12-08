@@ -10,7 +10,7 @@ CREATE TABLE zaposlenik (
     datum_zap               DATE                NOT NULL,
     jmbg                    INTEGER             NOT NULL,
     CONSTRAINT ZAP_PK PRIMARY KEY (zaposlenik_id) USING INDEX
-)
+) TABLESPACE veterinar
 /
 
 

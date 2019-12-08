@@ -68,17 +68,29 @@ while(flg){
     return 0;
 }
 
+
+void ui_postavke(){
+    cout<<"Bravo";
+}
+
+
 int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10){
-    if(!Table.CollName.empty()) for(int i = 0;i<Table.Length;i++) cout<<
+    if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<Table.CollName[i]<<" || ";
+
+    cout<<endl;
 
     if(!Table.Data.empty()){
-        for(int i = 0;i < Table.Length;i++) {
-
+        for(int i = 0;i < Table.ColCnt;i++) {
+            cout<<i<<" : ";
+                for(int j = 0;j<Table.RowCnt;j++){
+                    cout<<Table.Data[j][i]<<" | ";
+                }
+            cout<<"\n";
         }
     }
 }
 
-void ui_error(string err_msg = "ERROR", int err_num = -1){
+void ui_error(const string& err_msg = "ERROR", int err_num = -1){
     ui_separator();
     if(err_num != -1) cout<<endl<<err_msg<<" : "<<err_num;
     else cout<<"\n"<<err_msg<<"\n";

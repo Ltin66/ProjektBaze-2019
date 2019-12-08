@@ -23,9 +23,6 @@ using namespace std;
 
 
 
-
-
-
 int main(int argc, char* argv[])
 {
 
@@ -40,12 +37,14 @@ int main(int argc, char* argv[])
     int odabir = 0;
     cout<<"Glavni Izbornik :"<<endl;
     cout<<"1 - Prijava"<<endl;
+    cout<<"2 - Postavke"<<endl;
     cout<<"0 - Izlaz"<<endl;
     ui_input();
     cin>>odabir;
 
 
     if(odabir == 0) return 0;
+    else if(odabir == 2) ui_postavke();
     else if(odabir == 1){
 
         ui_prijava(kor);
@@ -56,9 +55,20 @@ int main(int argc, char* argv[])
         cout<<"Dobrodošli "<<kor.username;
         ui_separator();
 
-        if(kor.UserRole == "RACUNOVODA") return 0;
-        else if(kor.UserRole == "VODITELJ_ODJELA") return 0;
-        else if(kor.UserRole == "VODITELJ_ODJELA") return 0;
+        if(kor.UserRole == "RACUNOVODA") {
+            cout<<"Racunovoda\n";
+            {//temp dbTable
+                dbTable T;
+                CommandToTable("SELECT * FROM ZAPOSLENIK",T,con);
+                ui_showTable(T);
+            }
+        }
+        else if(kor.UserRole == "VODITELJ_ODJELA") {
+            cout<<"voditelj odjela\n";
+        }
+        else if(kor.UserRole == "DOKTOR") {
+            cout<<"doktore\n";
+        }
         else ui_error("USER ROLE NOT DEFINED");
 
     }

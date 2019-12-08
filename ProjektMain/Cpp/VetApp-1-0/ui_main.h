@@ -8,8 +8,9 @@
 
 #include <string>
 #include "dbConnection.h"
+#include "dbTablice.h"
 
-void ui_error(std::string err_msg = "ERROR", int err_num = -1);
+//void ui_error(std::string err_msg = "ERROR", int err_num = -1);
 
 void ui_clear(int n = 40);
 
@@ -18,6 +19,12 @@ void ui_separator(int n = 40);
 void ui_input();
 
 int ui_prijava(korisnik &kor);
+
+void ui_postavke();
+
+int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10);
+
+void ui_error(const std::string& err_msg = "ERROR", int err_num = -1);
 
 const std::string ui_intro_banner [5] = {
         (R"( __     __   _            _                    ____                 )"),

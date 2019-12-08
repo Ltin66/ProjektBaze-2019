@@ -1,6 +1,7 @@
 //
 // Created by tin on 11/27/19.
-//
+// gamad glupa, stupce broji od 1, ne od 0 , com[0] = SAException
+// prvo treba fetch za dobit coll type
 
 #include "dbUpiti.h"
 #include <SQLAPI.h>
@@ -74,25 +75,30 @@ void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
     com.setConnection(&con);
     com.setCommandText(SAScomm);
 
+
     try {com.Execute();}
     catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
-    Table.Length = com.FieldCount();
-
-    com.FetchNext();
-
-    for(int i = 0; i < Table.Length; i++) {
-        SAString tmp = com[i];
-        Table.CollName.push_back( (string)(const char*)tmp );
-    }
+    Table.RowCnt = 0;
+    Table.ColCnt = com.FieldCount();
+    for(int i = 1; i <= Table.ColCnt; i++) Table.Data.emplace_back();
+    //com.FetchNext();
 
 
     while(com.FetchNext()){
-        //for(int i = 0; i < COLLUMN_CNT; i++)  TableArray[i].push_back( com[i] );
+        Table.RowCnt ++;
+        for(int i = 1; i <= com.FieldCount(); i++){
+            SAString tmp = com[i];
+            Table.Data[i-1].push_back( (string)(const char*)tmp );
+        }
     }
 
+    for(int i = 1; i <= Table.ColCnt; i++) {
+        SAString tmp = com[i].Name();
+        Table.CollName.push_back( (string)(const char*)tmp );
+    }
 
-   // return TableArray;
+    //cout<<endl<<"TU3"<<endl;
 }
 
 

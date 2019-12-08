@@ -10,6 +10,8 @@ DROP USER veterinar_sys CASCADE /
 DROP TABLESPACE veterinar  /
 DROP ROLE vet_sys/
 DROP ROLE racunovoda/
+DROP ROLE doktor/
+DROP ROLE voditelj_odjela/
 
 DROP USER mirkomirkec3 CASCADE /
 -----------------------------------------
@@ -18,13 +20,7 @@ DROP USER mirkomirkec3 CASCADE /
 -- Kao SYS
 
 -----------------------------------------
--- maknuti komentar od DATAFILE, 1. je za linx, 2. je za win
-CREATE TABLESPACE veterinar LOGGING
-  DATAFILE '/lib/oracle/oradata/XE/veterinar.ora'
-  --DATAFILE 'C:\oraclexe\app\oracle\oradata\xe\veterinar.ora'
-  SIZE 100M REUSE AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED
-  EXTENT MANAGEMENT LOCAL
-/
+
 
 -- Još Uvijek KAO SYS
 
@@ -36,13 +32,16 @@ create role vet_sys/
 
 grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE,
       CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER,
-      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE,GRANT ANY ROLE,GRANT ANY PRIVILEGE,ALTER USER,CREATE USER to vet_sys;
+      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE,GRANT ANY ROLE,GRANT ANY PRIVILEGE,ALTER USER,CREATE USER, CREATE TABLESPACE, CREATE ANY SYNONYM to vet_sys;
 
-create user veterinar_sys identified by 1234  DEFAULT TABLESPACE veterinar/
+create user veterinar_sys identified by 1234 /
 grant vet_sys to veterinar_sys/
-ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
 ------------------------------------------------------------------
 
+
+--SAD KAO VETERINAR_SYS
+
+------------------------------------------------------------------
 -- PRVO SE MORAJU KREIRATI TABLICE I SL. PRIJE DODAVANJA OSTaLIH ULOGA, tablice se dodaju kao veterinar_sys
 
 -- SAD KAO veterinar_sys DODAVANJE ULOGA I KORISNIKA, samo da izgleda kao da ih je on napravio
@@ -50,9 +49,35 @@ ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
 
 --jos ce se to promijenit ali samo za testiranje je tako
 
+-- maknuti komentar od DATAFILE, 1. je za linx, 2. je za win
+CREATE TABLESPACE veterinar --LOGGING
+    DATAFILE '/lib/oracle/oradata/XE/veterinar.ora'
+  --DATAFILE 'C:\oraclexe\app\oracle\oradata\xe\veterinar.ora'
+    SIZE 500M REUSE AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED
+    EXTENT MANAGEMENT LOCAL
+/
+
+
+ALTER USER veterinar_sys  DEFAULT TABLESPACE veterinar/
+ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
+
+
+------------------------------------------------------------------
+
+
+--SAD KAO VETERINAR_SYS STVORITI TABLICE PA NASTAVIT OVDJE DALJE
+
+------------------------------------------------------------------
+
+
+
+
+
+
 create role racunovoda/
 
 grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+grant create synonym to racunovoda/
 grant select on ZAPOSLENIK to racunovoda/
 grant select on RADNI_STATUS to racunovoda/
 grant select on RADNI_STATUS_TIP to racunovoda/
@@ -89,6 +114,10 @@ create user mirkomirkec3 identified by 1234  DEFAULT TABLESPACE veterinar/
 grant racunovoda to mirkomirkec3/
 ALTER USER mirkomirkec3  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 
+/*
+select * from ZAPOSLENIK;
+create synonym ZAPOSLENIK for VETERINAR_SYS.ZAPOSLENIK;
+*/
 ----------------------------------------------------------------------
 
 -- koji su doktori
@@ -110,6 +139,17 @@ ALTER USER mirkomirkec1  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memo
 
 ----------------------------------------------------------------------
 
+
+
+CREATE OR REPLACE PROCEDURE create_user_racunovoda
+    (user_name IN Varchar,passwd IN Varchar)
+    AS
+    BEGIN
+        EXECUTE IMMEDIATE
+            'create user ' || user_name || ' identified by ' || passwd || ' DEFAULT TABLESPACE  veterinar';
+        EXECUTE IMMEDIATE
+            'grant racunovoda to ' :user_name;
+    end;
 
 
 
