@@ -114,6 +114,8 @@ create user mirkomirkec3 identified by 1234  DEFAULT TABLESPACE veterinar/
 grant racunovoda to mirkomirkec3/
 ALTER USER mirkomirkec3  QUOTA UNLIMITED ON veterinar;  -- dajemo useru max memoriju na alociranje ?
 
+create synonym mirkomirkec3.zaposlenik for veterinar_sys.ZAPOSLENIK;
+
 /*
 select * from ZAPOSLENIK;
 create synonym ZAPOSLENIK for VETERINAR_SYS.ZAPOSLENIK;
