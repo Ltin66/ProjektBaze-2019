@@ -4,8 +4,10 @@
 
 -- View 1 doktor - sljedecih n zakazanih pregleda (automatsko ažuriranje)
 
--- Insert 1 doktor - dodaj pregled (funkcija)
+-- Insert 1 doktor - dodaj pregled (funkcija) i jednog doktora
 
 -- Insert 2 voda_odjela - dodaj doktore na pregled (funkcija)(transakcija, dali može polje sa imenima?)
 
--- Update 1 - ??
+-- Update 1 - izmjeni opis pregleda
+
+-- Delete 1 - izbrisi pregled sa ID 
