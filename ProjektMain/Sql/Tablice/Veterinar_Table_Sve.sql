@@ -66,14 +66,16 @@ CREATE TABLE zaposlenici_odsutnost(
 
 
 
-
+--DROP TABLE ZAPOSLENICI_DOLAZAK
 
 CREATE TABLE zaposlenici_dolazak(
     zaposlenik_id           INTEGER             NOT NULL , --auto incr
     datum                   DATE                NOT NULL ,
     datum_dolaska           DATE                DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
     datum_odlaska           DATE                DEFAULT TO_DATE('02.01.0001','DD.MM.YYYY') NOT NULL ,
-    CONSTRAINT ZAP_DOL_PK PRIMARY KEY (zaposlenik_id, datum) USING INDEX
+    CONSTRAINT ZAP_DOL_PK PRIMARY KEY (zaposlenik_id, datum) USING INDEX,
+    CONSTRAINT ZAP_DOL_FK FOREIGN KEY (zaposlenik_id) REFERENCES zaposlenik(zaposlenik_id)
+
 )
 /
 
