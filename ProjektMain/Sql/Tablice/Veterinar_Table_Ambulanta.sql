@@ -6,7 +6,7 @@ create table ambulanta_korisnik_zivotinja (
     korisnik_zivotinja_id           INTEGER         NOT NULL ,
     CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korisnik_zivotnja_id) USING INDEX ,
     CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
-    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotnja(korisnik_zivotinja_id),
+    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
     CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
 )
 /
