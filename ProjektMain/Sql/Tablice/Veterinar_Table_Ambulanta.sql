@@ -1,7 +1,7 @@
 
 
 create table ambulanta_korisnik_zivotinja (
-    ambulanta_korisnik_zivotnja_id           INTEGER         NOT NULL , --auto incr
+    ambulanta_korisnik_zivotinja_id           INTEGER         NOT NULL , --auto incr
     ambulanta_id                    INTEGER         NOT NULL ,
     korisnik_zivotinja_id           INTEGER         NOT NULL ,
     CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korisnik_zivotnja_id) USING INDEX ,
