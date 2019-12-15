@@ -1,24 +1,17 @@
+drop table ambulanta_usluga_tip ;
+drop table ambulanta CASCADE CONSTRAINTS ;
+drop table ambulanta_usluga;
+drop table ambulanta_korisnik_zivotinja;
+drop table ambulanta_zaposlenik;
 
 
-create table ambulanta_korisnik_zivotinja (
-    ambulanta_korisnik_zivotnja_id           INTEGER         NOT NULL , --auto incr
-    ambulanta_id                    INTEGER         NOT NULL ,
-    korisnik_zivotinja_id           INTEGER         NOT NULL ,
-    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korisnik_zivotnja_id) USING INDEX ,
-    CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
-    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
-    CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
-)
-/
 
 create table ambulanta_usluga_tip(
     ambulanta_usluga_tip_id         INTEGER         NOT NULL , --auto incr
     naziv                           VARCHAR(20)     NOT NULL ,
-    CONSTRAINT AMB_USL_TIP_PK PRIMARY KEY (ambulanta_usluga_tip_ID) USING INDEX
+    CONSTRAINT AMB_USL_TIP_PK PRIMARY KEY (ambulanta_usluga_tip_id) USING INDEX
 )
 /
-
-
 -- TODO : check cijena > 0
 create table ambulanta_usluga (
     ambulanta_usluga_id               INTEGER         NOT NULL , --auto incr
@@ -32,9 +25,6 @@ create table ambulanta_usluga (
     --constr za zivotinja tip id
 )
 /
-
-
--- TODO : check da su zivotinja_tip_id jednake od korisnika i usluge, nemoze krava doci na pregled za mačke
 create table ambulanta(
     ambulanta_id                       INTEGER        NOT NULL ,
     ambulanta_usluga_id                INTEGER        NOT NULL ,
@@ -44,6 +34,25 @@ create table ambulanta(
     CONSTRAINT AMB_FK FOREIGN KEY (ambulanta_usluga_id) REFERENCES ambulanta_usluga(ambulanta_usluga_id)
 )
 /
+
+create table ambulanta_korisnik_zivotinja (
+    ambulanta_korziv_id           INTEGER         NOT NULL , --auto incr
+    ambulanta_id                    INTEGER         NOT NULL ,
+    korisnik_zivotinja_id           INTEGER         NOT NULL ,
+    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korziv_id) USING INDEX ,
+    CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
+    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
+    CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
+)
+/
+
+
+
+
+
+
+
+-- TODO : check da su zivotinja_tip_id jednake od korisnika i usluge, nemoze krava doci na pregled za mačke
 
 create table ambulanta_zaposlenik(
     ambulanta_zaposlenik_id                 INTEGER         NOT NULL , --auto incr
