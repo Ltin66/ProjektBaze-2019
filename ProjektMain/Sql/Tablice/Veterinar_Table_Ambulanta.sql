@@ -1,23 +1,5 @@
-drop table ambulanta_usluga_tip ;
-drop table ambulanta CASCADE CONSTRAINTS ;
-drop table ambulanta_usluga;
-drop table ambulanta_korisnik_zivotinja;
-drop table ambulanta_zaposlenik;
 
-<<<<<<< HEAD
 
-=======
-create table ambulanta_korisnik_zivotinja (
-    ambulanta_korziv_id           INTEGER         NOT NULL , --auto incr
-    ambulanta_id                    INTEGER         NOT NULL ,
-    korisnik_zivotinja_id           INTEGER         NOT NULL ,
-    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korziv_id) USING INDEX ,
-    CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
-    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
-    CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
-)
-/
->>>>>>> master
 
 create table ambulanta_usluga_tip(
     ambulanta_usluga_tip_id         INTEGER         NOT NULL , --auto incr
