@@ -6,7 +6,7 @@ create table korisnik (
     ime                     VARCHAR(20)         NOT NULL,
     srednje_ime             VARCHAR(40)         DEFAULT '@' NOT NULL,
     prezime                 VARCHAR(40)         NOT NULL,
-    sifra                   CHAR(8)             NOT NULL,  -- sifra je za pretrazivanje
+    sifra                   CHAR(8)             NOT NULL  CONSTRAINT PROVJERA_SIFRA CHECK( LENGTH(SIFRA) = 8),  -- sifra je za pretrazivanje
     datum_poc               DATE                NOT NULL,
     jmbg                    INTEGER             NOT NULL,
     aktivan                 NUMERIC(1) DEFAULT 1 NOT NULL ,

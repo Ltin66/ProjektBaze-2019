@@ -16,8 +16,8 @@ create table ambulanta_usluga (
     cijena                            NUMERIC(16,2)   NOT NULL ,
     opis                              CLOB            DEFAULT '@' NOT NULL ,
     CONSTRAINT AMB_US_PK PRIMARY KEY (ambulanta_usluga_id),
-    CONSTRAINT AMB_US_FK_USL_TIP FOREIGN KEY (ambulanta_usluga_tip_id) REFERENCES ambulanta_usluga_tip(ambulanta_usluga_tip_id)
-    --constr za zivotinja tip id
+    CONSTRAINT AMB_US_FK_USL_TIP FOREIGN KEY (ambulanta_usluga_tip_id) REFERENCES ambulanta_usluga_tip(ambulanta_usluga_tip_id),
+    --CONSTRAIN PROVJERA_ZIVOTINJE CHECK (zivotinja_tip_id IN SELECT korisnik_id FROM korisnik)
 )
 /
 create table ambulanta(
