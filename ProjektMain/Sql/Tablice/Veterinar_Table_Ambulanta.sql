@@ -7,19 +7,21 @@ create table ambulanta_usluga_tip(
     CONSTRAINT AMB_USL_TIP_PK PRIMARY KEY (ambulanta_usluga_tip_id) USING INDEX
 )
 /
+--USING INDEX
 -- TODO : check cijena > 0
 create table ambulanta_usluga (
     ambulanta_usluga_id               INTEGER         NOT NULL , --auto incr
     naziv                             VARCHAR(20)     NOT NULL ,
     ambulanta_usluga_tip_id           INTEGER         NOT NULL ,
     zivotinja_tip_id                  INTEGER         NOT NULL ,
-    cijena                            NUMERIC(16,2)   NOT NULL ,
+    cijena                            NUMERIC(16,2)   NOT NULL CONSTRAINT PROVJERA_CIJENE CHECK(cijena > 0),
     opis                              CLOB            DEFAULT '@' NOT NULL ,
     CONSTRAINT AMB_US_PK PRIMARY KEY (ambulanta_usluga_id),
-    CONSTRAINT AMB_US_FK_USL_TIP FOREIGN KEY (ambulanta_usluga_tip_id) REFERENCES ambulanta_usluga_tip(ambulanta_usluga_tip_id),
-    --CONSTRAIN PROVJERA_ZIVOTINJE CHECK (zivotinja_tip_id IN SELECT korisnik_id FROM korisnik)
+    CONSTRAINT AMB_US_FK_USL_TIP FOREIGN KEY (ambulanta_usluga_tip_id) REFERENCES ambulanta_usluga_tip(ambulanta_usluga_tip_id)
+    --,CONSTRAIN PROVJERA_ZIVOTINJE CHECK (zivotinja_tip_id IN SELECT korisnik_id FROM korisnik)
 )
 /
+
 create table ambulanta(
     ambulanta_id                       INTEGER        NOT NULL ,
     ambulanta_usluga_id                INTEGER        NOT NULL ,
@@ -34,7 +36,7 @@ create table ambulanta_korisnik_zivotinja (
     ambulanta_korziv_id           INTEGER         NOT NULL , --auto incr
     ambulanta_id                    INTEGER         NOT NULL ,
     korisnik_zivotinja_id           INTEGER         NOT NULL ,
-    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korziv_id) USING INDEX ,
+    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korziv_id) ,
     CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
     CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
     CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
