@@ -79,6 +79,13 @@ CREATE TABLE zaposlenici_dolazak(
 )
 /
 
+-- STARE VERZIJE; NE TO
+
+-- 1. ZAPOSLENICI
+-- 2. KOR ZIV
+-- 3. AMB
+-- 4. INSPkill discord
+
 
 
 ----------------------------------------------------------------------------------------

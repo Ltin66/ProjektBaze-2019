@@ -132,6 +132,113 @@ INSERT INTO zaposlenici_odsutnost (odsutnost_id, zaposlenik_id, odsutnost_tip_id
 
 
 -------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+--Tablica ''KORISNIK'':
+
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (1,'Dario1','D.1','Nikolic1','10000001',TO_DATE('05.02.2008','DD.MM.YYYY'),10,1,'Kont rola psa')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (2,'Dario2','D.2','Nikolic2','10000002',TO_DATE('06.02.2008','DD.MM.YYYY'),11,1,'Kont rola mačke')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (3,'Dario3','D.3','Nikolic3','10000003',TO_DATE('07.02.2008','DD.MM.YYYY'),12,1,'Kont rola krave')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (4,'Dario4','D.4','Nikolic4','10000004',TO_DATE('08.02.2008','DD.MM.YYYY'),13,1,'Kont rola konja')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (5,'Dario5','D.5','Nikolic5','10000005',TO_DATE('09.02.2008','DD.MM.YYYY'),14,1,'Kont rola psa')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (6,'Dario6','D.6','Nikolic6','10000006',TO_DATE('10.02.2008','DD.MM.YYYY'),15,1,'Kont rola svinje')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (7,'Dario7','D.7','Nikolic7','10000007',TO_DATE('11.02.2008','DD.MM.YYYY'),16,1,'Kont rola mačke')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (8,'Dario8','D.8','Nikolic8','10000008',TO_DATE('12.02.2008','DD.MM.YYYY'),17,1,'Kont rola koze')/
+INSERT INTO KORISNIK (korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis)
+   values (9,'Dario9','D.9','Nikolic9','10000009',TO_DATE('13.02.2008','DD.MM.YYYY'),18,1,'Kont rola ovce')/
+
+------------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''ZIVOTINJA_VELICINA'':
+
+INSERT INTO ZIVOTINJA_VELICINA (zivotinja_velicina_id, velicina, OPIS)
+   values (1, 1,'Mala veličina')/
+INSERT INTO ZIVOTINJA_VELICINA (zivotinja_velicina_id, velicina, OPIS)
+   values (2, 2,'Srednja veličina')/
+INSERT INTO ZIVOTINJA_VELICINA (zivotinja_velicina_id, velicina, OPIS)
+   values (3, 3,'Velika veličina')/
+
+------------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''Zivotinja_tip'':
+
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (1,'Pas',2,'Pas')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (2,'Mačka',1,'Kućna mačka')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (3,'Krava',3,'Krava')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (4,'Konj',3,'Konj')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (5,'Svinja',2,'Domaća svinja')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (6,'Ovca',2,'Ovca')/
+INSERT INTO ZIVOTINJA_TIP (zivotinja_tip_id, naziv, zivotinja_velicina_id, opis)
+   values (7,'Koza',2,'Koza')/
+
+------------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''Zivotinja'':
+
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (1, 1, 'Pas', 'Vau')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (2, 2, 'Mačka', 'Mjau')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (3, 3, 'Krava', 'Muuu')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (4, 4, 'Konj', 'Neigh')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (5, 5, 'Svinja', 'Oink')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (6, 6, 'Ovca', 'Baa')/
+INSERT INTO ZIVOTINJA (ZIVOTINJA_ID, ZIVOTINJA_TIP_ID, IME, OPIS)
+   values (7, 7, 'Koza', 'Bee')/
+
+------------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''Korisnik_zivotinja'':
+
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (1,1,1)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (2,2,2)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (3,3,3)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (4,4,4)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (5,1,5)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (6,5,6)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (7,2,7)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (8,7,8)/
+INSERT INTO KORISNIK_ZIVOTINJA (korisnik_zivotinja_id, zivotinja_id, korisnik_id)
+   values (9,6,9)/
+
+
+
+
+
+
+
+
 --Tablica ''AMBULANTA_USLUGA_TIP''
 --Općenito Pregledi/medicinske stvari
 INSERT INTO AMBULANTA_USLUGA_TIP (ambulanta_usluga_tip_id, naziv)
@@ -315,3 +422,68 @@ INSERT INTO AMBULANTA_USLUGA (AMBULANTA_USLUGA_ID, NAZIV, AMBULANTA_USLUGA_TIP_I
     values (42, 'Pomoć kod poroda', 16, 6, 100.00, 'Pomoć kod poroda - Ovca')/
 INSERT INTO AMBULANTA_USLUGA (AMBULANTA_USLUGA_ID, NAZIV, AMBULANTA_USLUGA_TIP_ID, ZIVOTINJA_TIP_ID, CIJENA, OPIS)
     values (43, 'Pomoć kod poroda', 16, 7, 100.00, 'Pomoć kod poroda - Koza')/
+
+
+ --------------------------------------------------------------------------------------------------------
+
+--Tablica ''AMBULANTA'':
+
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (1, 1, TO_DATE('05.02.2008 10:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Pregled buha i parazita - Pas')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (2, 32, TO_DATE('06.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Kastriranje - Mačak')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (3, 31, TO_DATE('06.02.2008 11:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Kastriranje - Pas')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (4, 27, TO_DATE('07.02.2008 09:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Kiruški zahvat - Pas (lakše)')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (5, 2, TO_DATE('07.02.2008 12:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Pregled buha i parazita - Mačka')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (6, 2, TO_DATE('07.02.2008 13:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Pregled buha i parazita - Mačka')/
+INSERT INTO AMBULANTA (AMBULANTA_ID, AMBULANTA_USLUGA_ID, DATUM, OPIS)
+    values (7, 11, TO_DATE('08.02.2008 11:00:00', 'DD.MM.YYYY hh24:mi:ss'), 'Zaštitna cijepila - Pas')/
+
+------------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''AMBULANTA_ZAPOSLENIK'':
+
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (1,1,3)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (2,2,4)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (3,3,4)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (4,4,5)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (5,5,3)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (6,6,3)/
+INSERT INTO AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
+    values (7,7,5)/
+
+-----------------------------------------------------------------------------------------------------------------------
+
+--Tablica ''AMBULANTA_KORISNIK_ZIVOTINJA'':
+
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (1, 1, 1)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (2, 2, 2)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (3, 3, 1)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (4, 4, 5)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (5, 5, 2)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (6, 6, 7)/
+INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA (AMBULANTA_KORZIV_ID, AMBULANTA_ID, KORISNIK_ZIVOTINJA_ID)
+    values (7, 7, 1)/
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
