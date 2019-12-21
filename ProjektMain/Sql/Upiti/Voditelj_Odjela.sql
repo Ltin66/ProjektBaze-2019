@@ -1,7 +1,10 @@
 1. prikaz zaposlenika (View)
 (create view select * form zaposlenik)
 
-2. izbrisi pregeld sa ID pregled procedura
+2. izbrisi pregeld sa ID pregled procedura 
+
+(pregledID AKA AmbulantaID, misli se na pregled u Ambulanti, dakle redak u Amb tablici je jedan "pregled u ambulanti" )  
+
 (treba izbirisati KorisnikZivotinjaAmbulanta za pregled ID , izbrisati ZaposlenikAmbulanta za AmbulantaID i izbrisati AmbulantaID)
 
 3. dodaj doktora na pregled procedura
