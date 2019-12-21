@@ -11,7 +11,7 @@
 
 begin
 
-    create_user_racunovoda('mirkomirkec3','1234');
+    create_user_racunovoda('mirkomirkec4','1234');
 
     --create_user_racunovoda('mirkomirkec9','1234');
 

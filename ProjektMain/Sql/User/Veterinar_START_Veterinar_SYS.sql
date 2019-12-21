@@ -37,6 +37,8 @@ grant select on ZAPOSLENICI_DOLAZAK to racunovoda/
 grant select on ZAPOSLENICI_ODSUTNOST to racunovoda/
 grant select on ODSUTNOST_TIP to racunovoda/
 
+grant execute on INSERTZIVOTINJA to racunovoda/
+
 ------------------------------------------------------------------
 
 create role doktor/

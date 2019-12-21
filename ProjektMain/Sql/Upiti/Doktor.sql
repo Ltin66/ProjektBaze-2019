@@ -140,10 +140,10 @@ END;
 /
 
 BEGIN
-   INSERTZIVOTINJA(8, 1, 'Pas', 'Vau');
+   INSERTZIVOTINJA(213, 1, 'Pas', 'Vau');
 END;
 
-
+SELECT * FROM ZIVOTINJA;
 
 1n.  Dodaj KorisnikaZivotinju - procedura
 

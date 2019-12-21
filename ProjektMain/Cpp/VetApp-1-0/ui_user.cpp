@@ -25,7 +25,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
         ui_print("Izbornik");
 
         ui_print("1 - Zaposlenici");
-        ui_print("2 - Izracun Place");
+        ui_print("2 - Izracun Place"); // stvara novu zivotinju preko prcedure
         ui_print("3 - Unos Zaposlenika");
 
         ui_print("4 - Raspored");
@@ -45,6 +45,20 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 ui_showTable(T);
             }
         else if(odabir == 2){
+                SACommand cmd(&con);
+                cmd.setCommandText("INSERTZIVOTINJA");
+                //SAParam a1 = 0.0;
+
+                cmd.Param("p_ziv_id").setAsNumeric() = 0.0;
+                cmd.Param("p_ziv_tip_id").setAsNumeric() = 1.0;
+                cmd.Param("p_ime").setAsString() = "Pas";
+                cmd.Param("p_opis").setAsString() = "Tin je ovo preko programam ubacio";
+
+
+
+                try {cmd.Execute();}
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
             //unesite ID zaposlenika ->
             //pozpvi funkicju i ispisi
         }

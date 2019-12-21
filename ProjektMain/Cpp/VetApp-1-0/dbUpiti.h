@@ -19,6 +19,8 @@ struct dbQuery{
     bool dbQueryType[3] = {false,false,false};
 };
 
+//void ExecProcedure(std::string ComTxT, std::vector < )
+
 int SelectAllFromTable(std::string table,SAConnection &con);
 
 //2D lista, prvi elem u podlisti je naziv stupca
