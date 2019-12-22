@@ -13,7 +13,7 @@ google Datagrip DBMS OUTPUT, pored terminala  za services window je batun nvm np
 
 
 2. sljedecih n zakazanih pregleda (kao funkcija)
-(unesemo broj n i dobimo prvih n pregleda (zakazani pregledi su oni kojim ja datum "01.01.01" (treba vidit ali ja mislim da je taj)))
+(unesemo broj n i dobimo prvih n pregleda (zakazani pregledi su oni kojim ja datum VECI OD TRENUTNOG)))
 
 3. dodaj 1 pregled , 1 doktora i 1 KorisnikZivotinja za taj pregled (procedura)
 (unesemo podatke za za pregled, preko rocedure i izvršimo transakciju , unosimo IDdoktora za pregled i ID KorisnikZivotinja, ako 

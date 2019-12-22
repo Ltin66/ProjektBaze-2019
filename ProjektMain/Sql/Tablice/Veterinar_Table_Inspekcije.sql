@@ -1,5 +1,10 @@
 
 -- TODO : check da je cijena > 0
+
+
+--OPIS:
+--  služi za pohranjivanje osnovnih inspekcijskih usluga npr. inspekcija stoke, inspekcija hrane,.....
+--
 create table inspekcija_tip(
     inspekcija_tip_id             INTEGER         NOT NULL , --auto incr
     naziv                         VARCHAR(20)     NOT NULL ,
@@ -8,6 +13,11 @@ create table inspekcija_tip(
 )
 /
 
+
+
+--OPIS:
+--  služi za spajanje inspekcije sa korisnikom
+--
 create table inspekcija_korisnik(
     inspekcija_korisnik_id          INTEGER         NOT NULL , --auto incr
     korisnik_id                     INTEGER         NOT NULL ,
@@ -21,11 +31,14 @@ create table inspekcija_korisnik(
 -- Oracle nema bool pa se radi sa NUMERIC(1) - u koji spremamo 0 ili 1, -1 za unknown gdje može
 -- TODO check da je vrijednost izvresno 1 ili 0
 
+--OPIS:
+--  glavna tablica za inspekcije gdje povezujemo tip inspekcije sa nekom inspekcijom
+--
 create table inspekcija(
     inspekcija_id                   INTEGER         NOT NULL, --auto incr
     inspekcija_tip_id               INTEGER         NOT NULL,
-    datum                           DATE DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
-    opis                            CLOB DEFAULT '@' NOT NULL ,
+    datum                           DATE            DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
+    opis                            CLOB            DEFAULT '@' NOT NULL ,
     CONSTRAINT INS_PK PRIMARY KEY (inspekcija_id),
     CONSTRAINT INS_FK FOREIGN KEY (inspekcija_tip_id) REFERENCES inspekcija_tip(inspekcija_tip_id)
 --  ,  CONSTRAINT CHECK PROVJERA_INSPEKCIJE CHECK (INSPEKCIJA(NUMEBER(1,0)))
@@ -33,6 +46,9 @@ create table inspekcija(
 )
 /
 
+--OPIS:
+--
+--
 create table inspekcija_zaposlenik(
     inspekcija_zaposlenik_id        INTEGER         NOT NULL , --auto incr
     inspekcija_id                   INTEGER         NOT NULL,

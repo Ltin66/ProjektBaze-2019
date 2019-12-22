@@ -1,6 +1,11 @@
 
+--OPIS:
+--
+--
 
-
+--OPIS:
+-- sluzi za pohranjivanje osnovnih usluga npr. ultrazvuk, provjera mokrace,....
+--
 create table ambulanta_usluga_tip(
     ambulanta_usluga_tip_id         INTEGER         NOT NULL , --auto incr
     naziv                           VARCHAR(20)     NOT NULL ,
@@ -9,6 +14,11 @@ create table ambulanta_usluga_tip(
 /
 --USING INDEX
 -- TODO : check cijena > 0
+
+--OPIS:
+--
+-- sluzi za spajanje zivotinje sa osnovnim uslugama, jer svaka osnovna usluga može imati razlicitu cijenu ovisno o
+-- vrsti i velicini zivotinje
 create table ambulanta_usluga (
     ambulanta_usluga_id               INTEGER         NOT NULL , --auto incr
     naziv                             VARCHAR(20)     NOT NULL ,
@@ -22,15 +32,23 @@ create table ambulanta_usluga (
 )
 /
 
+--OPIS:
+--  glavna tablica za pohranu pregleda/usluga u ambulanti, tu se spaja usluga sa ambulantom i datumom kada je izvresno
+--
 create table ambulanta(
     ambulanta_id                       INTEGER        NOT NULL ,
     ambulanta_usluga_id                INTEGER        NOT NULL ,
-    datum                              DATE           DEFAULT TO_DATE('01.01.0001','DD.MM.YYYY') NOT NULL ,
+    datum                              DATE           NOT NULL ,
     opis                               CLOB           DEFAULT '@' NOT NULL ,
     CONSTRAINT AMB_PK PRIMARY KEY (ambulanta_id),
     CONSTRAINT AMB_FK FOREIGN KEY (ambulanta_usluga_id) REFERENCES ambulanta_usluga(ambulanta_usluga_id)
 )
 /
+
+
+--OPIS:
+--  služi za spajanje ambulante sa korinik_zivotinjom
+--
 
 create table ambulanta_korisnik_zivotinja (
     ambulanta_korziv_id           INTEGER         NOT NULL , --auto incr
@@ -51,6 +69,9 @@ create table ambulanta_korisnik_zivotinja (
 
 -- TODO : check da su zivotinja_tip_id jednake od korisnika i usluge, nemoze krava doci na pregled za mačke
 
+--OPIS:
+-- sluti za spajanje ambulante sa zaposlenikom koji je radio na tom pregledu/usluzi
+--
 create table ambulanta_zaposlenik(
     ambulanta_zaposlenik_id                 INTEGER         NOT NULL , --auto incr
     ambulanta_id                            INTEGER         NOT NULL,
