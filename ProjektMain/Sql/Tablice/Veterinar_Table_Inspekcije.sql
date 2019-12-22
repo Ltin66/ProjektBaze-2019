@@ -47,7 +47,7 @@ create table inspekcija(
 /
 
 --OPIS:
---
+--  spajanje inspekcije sa zaposlenikom koji je izvrsio tu inspekciju, može ih biti više
 --
 create table inspekcija_zaposlenik(
     inspekcija_zaposlenik_id        INTEGER         NOT NULL , --auto incr

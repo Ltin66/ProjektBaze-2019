@@ -3,6 +3,9 @@
 
 -- TODO: check da sifra ima samo brojeve, nesmije imati ostale znakove i mora imati 8 znakova, bez razmaka
 
+--OPIS:
+--  glavna tablica za zaposlenike
+--
 CREATE TABLE zaposlenik (
     zaposlenik_id           INTEGER             NOT NULL, --auto incr
     ime                     VARCHAR(40)         NOT NULL,
@@ -16,6 +19,9 @@ CREATE TABLE zaposlenik (
 )
 /
 
+--OPIS:
+--   sta zaposlenik može biti, dali je doktor,....
+--
 
 CREATE TABLE radni_status_tip (
     radni_status_tip_id     INTEGER             NOT NULL, --auto incr
@@ -25,6 +31,9 @@ CREATE TABLE radni_status_tip (
 )
 /
 
+--OPIS:
+--   spajanje korisnika i njegovog radnog statusa, od kad do kad je doktor,..... i ostali podaci o njemu
+--
 CREATE TABLE radni_status (
     status_id               INTEGER             NOT NULL, --auto incr
     zaposlenik_id           INTEGER             NOT NULL,
@@ -41,6 +50,9 @@ CREATE TABLE radni_status (
 /
 
 
+--OPIS:
+--      tipovi odsutnosti
+--
 CREATE TABLE odsutnost_tip(
     odsutnost_tip_id        INTEGER             NOT NULL, --auto incr
     naziv                   VARCHAR(40)         NOT NULL,
@@ -50,6 +62,9 @@ CREATE TABLE odsutnost_tip(
 )
 /
 
+--OPIS:
+--  od kad do kad je bio odsutan
+--
 CREATE TABLE zaposlenici_odsutnost(
     odsutnost_id            INTEGER             NOT NULL, -- auto incr
     zaposlenik_id           INTEGER             NOT NULL,
@@ -67,6 +82,9 @@ CREATE TABLE zaposlenici_odsutnost(
 
 
 
+--OPIS:
+--  kad je odredeni zaposlenik dosao na posao
+--
 CREATE TABLE zaposlenici_dolazak(
     zaposlenik_id           INTEGER             NOT NULL ,
     datum                   DATE                NOT NULL ,

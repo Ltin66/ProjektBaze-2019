@@ -1,6 +1,9 @@
 
 -- TODO: check da sifra ima samo brojeve, nesmije imati ostale znakove i mora imati 8 znakova, bez razmaka
 
+--OPIS:
+-- glavna tablica za spremanje korsnika
+--
 create table korisnik (
     korisnik_id             INTEGER             NOT NULL , --auto incr
     ime                     VARCHAR(20)         NOT NULL,
@@ -15,6 +18,9 @@ create table korisnik (
 )
 /
 
+--OPIS:
+--  koej je velicine zivotinja, velika, srednja, mala
+--
 create table zivotinja_velicina (
     zivotinja_velicina_id   INTEGER             NOT NULL,   --auto incr
     velicina                INTEGER             NOT NULL ,
@@ -23,6 +29,9 @@ create table zivotinja_velicina (
 )
 /
 
+--OPIS:
+--  kojeg je tipa zivotinja, mačka,pas,....
+--
 create table zivotinja_tip (
     zivotinja_tip_id        INTEGER             NOT NULL , -- auto incr
     naziv                   VARCHAR(20)         NOT NULL,
@@ -33,6 +42,9 @@ create table zivotinja_tip (
 )
 /
 
+--OPIS:
+--  glavna tablica gdje se dodaje zivotinja i njezin tip
+--
 create table zivotinja (
     zivotinja_id            INTEGER             NOT NULL , --auto incr
     zivotinja_tip_id        INTEGER             NOT NULL,
@@ -43,6 +55,9 @@ create table zivotinja (
 )
 /
 
+--OPIS:
+--  služi za spajanje zivtinja i korisnika, 1 zivotinja moze imati vise korisnika
+--
 create table korisnik_zivotinja(
     korisnik_zivotinja_id       INTEGER             NOT NULL, --auto incr
     zivotinja_id                INTEGER             NOT NULL,
