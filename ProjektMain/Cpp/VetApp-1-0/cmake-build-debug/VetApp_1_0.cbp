@@ -84,6 +84,30 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
 		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.cpp">
 			<Option target="VetApp_1_0"/>
 		</Unit>

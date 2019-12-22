@@ -4,6 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o"
+  "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o"
+  "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o"
+  "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o"
   "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o"
   "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o"
   "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.cpp" "/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o"

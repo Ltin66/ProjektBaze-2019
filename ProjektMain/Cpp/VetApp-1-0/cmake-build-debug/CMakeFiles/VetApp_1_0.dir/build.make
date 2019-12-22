@@ -135,6 +135,58 @@ CMakeFiles/VetApp_1_0.dir/ui_user.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VetApp_1_0.dir/ui_user.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.cpp -o CMakeFiles/VetApp_1_0.dir/ui_user.cpp.s
 
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o: CMakeFiles/VetApp_1_0.dir/flags.make
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o: ../User_Menu/ui_menu_Vet_Sys.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o -c /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp > CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.i
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.s
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o: CMakeFiles/VetApp_1_0.dir/flags.make
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o: ../User_Menu/ui_menu_Voditelj_Odjela.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o -c /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp > CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.i
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.s
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o: CMakeFiles/VetApp_1_0.dir/flags.make
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o: ../User_Menu/ui_menu_Racunovoda.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o -c /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp > CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.i
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.s
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o: CMakeFiles/VetApp_1_0.dir/flags.make
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o: ../User_Menu/ui_menu_Doktor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o -c /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp > CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.i
+
+CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp -o CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.s
+
 # Object files for target VetApp_1_0
 VetApp_1_0_OBJECTS = \
 "CMakeFiles/VetApp_1_0.dir/main.cpp.o" \
@@ -142,7 +194,11 @@ VetApp_1_0_OBJECTS = \
 "CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o" \
 "CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o" \
 "CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o" \
-"CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o"
+"CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o" \
+"CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o" \
+"CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o" \
+"CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o" \
+"CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o"
 
 # External object files for target VetApp_1_0
 VetApp_1_0_EXTERNAL_OBJECTS =
@@ -153,10 +209,14 @@ VetApp_1_0: CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o
 VetApp_1_0: CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o
 VetApp_1_0: CMakeFiles/VetApp_1_0.dir/ui_main.cpp.o
 VetApp_1_0: CMakeFiles/VetApp_1_0.dir/ui_user.cpp.o
+VetApp_1_0: CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o
+VetApp_1_0: CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o
+VetApp_1_0: CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o
+VetApp_1_0: CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o
 VetApp_1_0: CMakeFiles/VetApp_1_0.dir/build.make
 VetApp_1_0: /home/tin/CppDbLibs/SQLAPI/lib/libsqlapi.a
 VetApp_1_0: CMakeFiles/VetApp_1_0.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable VetApp_1_0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable VetApp_1_0"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VetApp_1_0.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

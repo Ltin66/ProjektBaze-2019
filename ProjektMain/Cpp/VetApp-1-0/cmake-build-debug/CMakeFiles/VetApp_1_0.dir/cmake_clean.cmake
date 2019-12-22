@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o"
+  "CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o"
+  "CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o"
+  "CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o"
   "CMakeFiles/VetApp_1_0.dir/dbConnection.cpp.o"
   "CMakeFiles/VetApp_1_0.dir/dbTablice.cpp.o"
   "CMakeFiles/VetApp_1_0.dir/dbUpiti.cpp.o"

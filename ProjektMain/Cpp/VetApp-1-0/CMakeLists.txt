@@ -3,7 +3,7 @@ project(VetApp_1_0)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VetApp_1_0 main.cpp dbConnection.cpp dbConnection.h dbTablice.h dbUpiti.h dbTablice.cpp dbUpiti.cpp ui_main.h ui_main.cpp ui_user.cpp ui_user.h)
+add_executable(VetApp_1_0 main.cpp dbConnection.cpp dbConnection.h dbTablice.h dbUpiti.h dbTablice.cpp dbUpiti.cpp ui_main.h ui_main.cpp ui_user.cpp ui_user.h User_Menu/ui_menu_Vet_Sys.cpp User_Menu/ui_menu_Vet_Sys.h User_Menu/ui_menu_Voditelj_Odjela.cpp User_Menu/ui_menu_Voditelj_Odjela.h User_Menu/ui_menu_Racunovoda.cpp User_Menu/ui_menu_Racunovoda.h User_Menu/ui_menu_Doktor.cpp User_Menu/ui_menu_Doktor.h)
 
 #linux postavke, za win treba zamijenit lib path
 

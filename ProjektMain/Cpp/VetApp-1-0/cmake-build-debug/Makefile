@@ -123,6 +123,114 @@ VetApp_1_0/fast:
 	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/build
 .PHONY : VetApp_1_0/fast
 
+User_Menu/ui_menu_Doktor.o: User_Menu/ui_menu_Doktor.cpp.o
+
+.PHONY : User_Menu/ui_menu_Doktor.o
+
+# target to build an object file
+User_Menu/ui_menu_Doktor.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.o
+.PHONY : User_Menu/ui_menu_Doktor.cpp.o
+
+User_Menu/ui_menu_Doktor.i: User_Menu/ui_menu_Doktor.cpp.i
+
+.PHONY : User_Menu/ui_menu_Doktor.i
+
+# target to preprocess a source file
+User_Menu/ui_menu_Doktor.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.i
+.PHONY : User_Menu/ui_menu_Doktor.cpp.i
+
+User_Menu/ui_menu_Doktor.s: User_Menu/ui_menu_Doktor.cpp.s
+
+.PHONY : User_Menu/ui_menu_Doktor.s
+
+# target to generate assembly for a file
+User_Menu/ui_menu_Doktor.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Doktor.cpp.s
+.PHONY : User_Menu/ui_menu_Doktor.cpp.s
+
+User_Menu/ui_menu_Racunovoda.o: User_Menu/ui_menu_Racunovoda.cpp.o
+
+.PHONY : User_Menu/ui_menu_Racunovoda.o
+
+# target to build an object file
+User_Menu/ui_menu_Racunovoda.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.o
+.PHONY : User_Menu/ui_menu_Racunovoda.cpp.o
+
+User_Menu/ui_menu_Racunovoda.i: User_Menu/ui_menu_Racunovoda.cpp.i
+
+.PHONY : User_Menu/ui_menu_Racunovoda.i
+
+# target to preprocess a source file
+User_Menu/ui_menu_Racunovoda.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.i
+.PHONY : User_Menu/ui_menu_Racunovoda.cpp.i
+
+User_Menu/ui_menu_Racunovoda.s: User_Menu/ui_menu_Racunovoda.cpp.s
+
+.PHONY : User_Menu/ui_menu_Racunovoda.s
+
+# target to generate assembly for a file
+User_Menu/ui_menu_Racunovoda.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Racunovoda.cpp.s
+.PHONY : User_Menu/ui_menu_Racunovoda.cpp.s
+
+User_Menu/ui_menu_Vet_Sys.o: User_Menu/ui_menu_Vet_Sys.cpp.o
+
+.PHONY : User_Menu/ui_menu_Vet_Sys.o
+
+# target to build an object file
+User_Menu/ui_menu_Vet_Sys.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.o
+.PHONY : User_Menu/ui_menu_Vet_Sys.cpp.o
+
+User_Menu/ui_menu_Vet_Sys.i: User_Menu/ui_menu_Vet_Sys.cpp.i
+
+.PHONY : User_Menu/ui_menu_Vet_Sys.i
+
+# target to preprocess a source file
+User_Menu/ui_menu_Vet_Sys.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.i
+.PHONY : User_Menu/ui_menu_Vet_Sys.cpp.i
+
+User_Menu/ui_menu_Vet_Sys.s: User_Menu/ui_menu_Vet_Sys.cpp.s
+
+.PHONY : User_Menu/ui_menu_Vet_Sys.s
+
+# target to generate assembly for a file
+User_Menu/ui_menu_Vet_Sys.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Vet_Sys.cpp.s
+.PHONY : User_Menu/ui_menu_Vet_Sys.cpp.s
+
+User_Menu/ui_menu_Voditelj_Odjela.o: User_Menu/ui_menu_Voditelj_Odjela.cpp.o
+
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.o
+
+# target to build an object file
+User_Menu/ui_menu_Voditelj_Odjela.cpp.o:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.o
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.cpp.o
+
+User_Menu/ui_menu_Voditelj_Odjela.i: User_Menu/ui_menu_Voditelj_Odjela.cpp.i
+
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.i
+
+# target to preprocess a source file
+User_Menu/ui_menu_Voditelj_Odjela.cpp.i:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.i
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.cpp.i
+
+User_Menu/ui_menu_Voditelj_Odjela.s: User_Menu/ui_menu_Voditelj_Odjela.cpp.s
+
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.s
+
+# target to generate assembly for a file
+User_Menu/ui_menu_Voditelj_Odjela.cpp.s:
+	$(MAKE) -f CMakeFiles/VetApp_1_0.dir/build.make CMakeFiles/VetApp_1_0.dir/User_Menu/ui_menu_Voditelj_Odjela.cpp.s
+.PHONY : User_Menu/ui_menu_Voditelj_Odjela.cpp.s
+
 dbConnection.o: dbConnection.cpp.o
 
 .PHONY : dbConnection.o
@@ -294,6 +402,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... VetApp_1_0"
 	@echo "... edit_cache"
+	@echo "... User_Menu/ui_menu_Doktor.o"
+	@echo "... User_Menu/ui_menu_Doktor.i"
+	@echo "... User_Menu/ui_menu_Doktor.s"
+	@echo "... User_Menu/ui_menu_Racunovoda.o"
+	@echo "... User_Menu/ui_menu_Racunovoda.i"
+	@echo "... User_Menu/ui_menu_Racunovoda.s"
+	@echo "... User_Menu/ui_menu_Vet_Sys.o"
+	@echo "... User_Menu/ui_menu_Vet_Sys.i"
+	@echo "... User_Menu/ui_menu_Vet_Sys.s"
+	@echo "... User_Menu/ui_menu_Voditelj_Odjela.o"
+	@echo "... User_Menu/ui_menu_Voditelj_Odjela.i"
+	@echo "... User_Menu/ui_menu_Voditelj_Odjela.s"
 	@echo "... dbConnection.o"
 	@echo "... dbConnection.i"
 	@echo "... dbConnection.s"
