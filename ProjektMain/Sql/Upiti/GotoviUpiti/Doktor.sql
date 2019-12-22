@@ -1,6 +1,6 @@
-Doktor.sql
+--Doktor.sql
 ------------------------------------------------------------------------------------------------------------------------
-1. Info o ambulanti za ambulantaID - procedura
+--1. Info o ambulanti za ambulantaID - procedura
 
 CREATE OR REPLACE PROCEDURE selectAMBULANTA(
 	   p_id IN AMBULANTA.AMBULANTA_ID%TYPE,
@@ -17,6 +17,9 @@ BEGIN
 END;
 /
 
+
+
+
 DECLARE
    o_usluga AMBULANTA.AMBULANTA_USLUGA_ID%TYPE;
    o_datum AMBULANTA.DATUM%TYPE;
@@ -32,11 +35,11 @@ BEGIN
 END;
 /
 ------------------------------------------------------------------------------------------------------------------------
-@@@ 2. Sljedećih n zakazanih pregleda - funkcija
+--@@@ 2. Sljedećih n zakazanih pregleda - funkcija
 ------------------------------------------------------------------------------------------------------------------------
-3. Dodaj 1 pregled , 1 doktora i 1 KorisnikZivotinja za taj pregled - procedura
+--3. Dodaj 1 pregled , 1 doktora i 1 KorisnikZivotinja za taj pregled - procedura
 
-Pregled:
+--Pregled:
 CREATE OR REPLACE PROCEDURE insertAMBULANTA (
        p_amb_id IN AMBULANTA.AMBULANTA_ID%TYPE,
        p_amb_usl_id IN AMBULANTA.AMBULANTA_USLUGA_ID%TYPE,
@@ -58,7 +61,7 @@ BEGIN
 END;
 
 
-Doktor:
+--Doktor:
 create PROCEDURE insertDOKTOR_AMBULANTA (
        p_amb_dok_id IN AMBULANTA_ZAPOSLENIK.AMBULANTA_ZAPOSLENIK_ID%TYPE,
        p_amb_id IN AMBULANTA_ZAPOSLENIK.AMBULANTA_ID%TYPE,
@@ -80,7 +83,7 @@ BEGIN
 END;
 
 
-KorisnikZivotinja:
+--KorisnikZivotinja:
 CREATE OR REPLACE PROCEDURE insertKORISNIK_ZIVOTINJA (
        p_korziv IN KORISNIK_ZIVOTINJA.KORISNIK_ZIVOTINJA_ID%TYPE,
        p_ziv_id IN KORISNIK_ZIVOTINJA.ZIVOTINJA_ID%TYPE,
@@ -100,7 +103,7 @@ BEGIN
    INSERTKORISNIK_ZIVOTINJA(10, 1, 10);
 END;
 ------------------------------------------------------------------------------------------------------------------------
-4. Izmjeni opis pregleda - procedura
+--4. Izmjeni opis pregleda - procedura
 
 CREATE OR REPLACE PROCEDURE updateAMBULANTA_opis (
            p_id IN AMBULANTA.AMBULANTA_ID%TYPE,
@@ -116,7 +119,7 @@ BEGIN
    updateAMBULANTA_opis(1, 'Pregled šape');
 END;
 ------------------------------------------------------------------------------------------------------------------------
-5. Dodaj korisnika - procedura
+--5. Dodaj korisnika - procedura
 
 CREATE OR REPLACE PROCEDURE insertKORISNIK (
 	   p_korisnik_id IN KORISNIK.KORISNIK_ID%TYPE,
@@ -143,7 +146,7 @@ BEGIN
    INSERTKORISNIK(10, 'Dario10', 'D.10', 'Nikolic10', 10000010, TO_DATE('14.02.2008','DD.MM.YYYY'), 19, 1, 'Kontrola psa');
 END;
 ------------------------------------------------------------------------------------------------------------------------
-6. Dodaj životinju - procedura
+--6. Dodaj životinju - procedura
 
 CREATE OR REPLACE PROCEDURE insertZIVOTINJA (
        p_ziv_id IN ZIVOTINJA.ZIVOTINJA_ID%TYPE,
@@ -166,7 +169,7 @@ BEGIN
    INSERTZIVOTINJA(8, 1, 'Pas', 'Vau');
 END;
 ------------------------------------------------------------------------------------------------------------------------
-7. Izbriši korisnika - procedura 
+--7. Izbriši korisnika - procedura
 CREATE OR REPLACE PROCEDURE deleteKORISNIK(p_korisnik_id IN KORISNIK.KORISNIK_ID%TYPE)
 IS
 BEGIN
@@ -182,9 +185,9 @@ BEGIN
    deleteKORISNIK(10);
 END;
 ------------------------------------------------------------------------------------------------------------------------
-@@@ 8. Izbriši životinju - procedura
+--@@@ 8. Izbriši životinju - procedura
 ------------------------------------------------------------------------------------------------------------------------
-9. Materializiran pogled - svi  korisnici 
+--9. Materializiran pogled - svi  korisnici
     
     CREATE MATERIALIZED VIEW Kor_Info
     NOCACHE
@@ -192,9 +195,9 @@ END;
     NEVER REFRESH
     AS SELECT korisnik_id, ime, srednje_ime, prezime, sifra, datum_poc, jmbg, aktivan, opis FROM korisnik/
 ------------------------------------------------------------------------------------------------------------------------
-@@@ 10. Svi pregledi za Korisnik iD - funkcija
+--@@@ 10. Svi pregledi za Korisnik iD - funkcija
 ------------------------------------------------------------------------------------------------------------------------
-11. Pogled - sve KorisnikID i za svaki ispiši njegovu životinju (i one korisnike koji nemaju životinju)
+--11. Pogled - sve KorisnikID i za svaki ispiši njegovu životinju (i one korisnike koji nemaju životinju)
 
 CREATE OR REPLACE VIEW korisnik_view AS
   SELECT KORISNIK.korisnik_id, KORISNIK_ZIVOTINJA.zivotinja_id
@@ -203,58 +206,4 @@ CREATE OR REPLACE VIEW korisnik_view AS
   ORDER BY korisnik_id;
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-Voditelj_Odjela.sql
-------------------------------------------------------------------------------------------------------------------------
-@@@ 5. Prikaži doktora za pregled ID - funkcija  
-------------------------------------------------------------------------------------------------------------------------
-6. Prikaži inspekcije - view
-
-CREATE VIEW inspekcia_view AS
-  SELECT * FROM INSPEKCIJA;
-------------------------------------------------------------------------------------------------------------------------
-7. Dodaj inspekciju i doktora - procedura
-
-CREATE OR REPLACE PROCEDURE insertINSPEKCIJA (
-       p_ins_id IN INSPEKCIJA.INSPEKCIJA_ID%TYPE,
-       p_ins_tip_id IN INSPEKCIJA.INSPEKCIJA_TIP_ID%TYPE,
-       p_datum IN INSPEKCIJA.DATUM%TYPE,
-       p_opis IN INSPEKCIJA.OPIS%TYPE)
-
-IS
-BEGIN
-
-  INSERT INTO INSPEKCIJA (INSPEKCIJA_ID, INSPEKCIJA_TIP_ID, DATUM, OPIS)
-  values (p_ins_id, p_ins_tip_id, p_datum, p_opis);
-
-  COMMIT;
-
-END;
-/
-
-BEGIN
-   INSERTINSPEKCIJA(5,3, TO_DATE('25.03.2009','DD.MM.YYYY'), 'Inspekcija mlijeka na farmi');
-END;
-
-
-
-CREATE OR REPLACE PROCEDURE insertDOKTOR (
-       p_dok_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ZAPOSLENIK_ID%TYPE,
-       p_inspekcija_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ID%TYPE,
-       p_zaposlenik_id IN INSPEKCIJA_ZAPOSLENIK.ZAPOSLENIK_ID%TYPE)
-
-IS
-BEGIN
-
-  INSERT INTO INSPEKCIJA_ZAPOSLENIK (INSPEKCIJA_ZAPOSLENIK_ID, INSPEKCIJA_ID, ZAPOSLENIK_ID)
-  values (p_dok_id, p_inspekcija_id, p_zaposlenik_id);
-
-  COMMIT;
-
-END;
-/
-
-BEGIN
-   INSERTDOKTOR(5,5,5);
-END;
 ------------------------------------------------------------------------------------------------------------------------

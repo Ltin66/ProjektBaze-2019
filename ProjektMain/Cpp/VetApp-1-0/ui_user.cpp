@@ -24,15 +24,15 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
-        ui_print("1 - Zaposlenici");
-        ui_print("2 - Izracun Place"); // stvara novu zivotinju preko prcedure
-        ui_print("3 - Unos Zaposlenika");
+        ui_print("1 -  Popis Zaposlenika");
+        ui_print("2 -  Izracun Place"); // stvara novu zivotinju preko prcedure
+        ui_print("3 -  Unos Zaposlenika");
 
-        ui_print("4 - Raspored");
-        ui_print("5 - Unos Rasporeda");
-        ui_print("6 - Unos Dolaska");
+        ui_print("4 -  Raspored");
+        ui_print("5 -  Unos Rasporeda");
+        ui_print("6 -  Unos Dolaska");
 
-        ui_print("0 - Izlaz iz Programa");
+        ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
 
         ui_input();
@@ -45,19 +45,6 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 ui_showTable(T);
             }
         else if(odabir == 2){
-                SACommand cmd(&con);
-                cmd.setCommandText("INSERTZIVOTINJA");
-                //SAParam a1 = 0.0;
-
-                cmd.Param("p_ziv_id").setAsNumeric() = 0.0;
-                cmd.Param("p_ziv_tip_id").setAsNumeric() = 1.0;
-                cmd.Param("p_ime").setAsString() = "Pas";
-                cmd.Param("p_opis").setAsString() = "Tin je ovo preko programam ubacio";
-
-
-
-                try {cmd.Execute();}
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
             //unesite ID zaposlenika ->
             //pozpvi funkicju i ispisi
@@ -112,7 +99,7 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("1 -  Prikaz Informacija Svih Zaposlenika");
 
-        ui_print("11 - Prikaz Doktora");
+
         ui_print("2 -  Brisanje Pregleda");
         ui_print("3 -  Dodavanje Doktora na Pregled");
         ui_print("4 -  Brisanje Doktora s Pregleda");
@@ -120,6 +107,8 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("5 -  Prikaz Svih Inspekcija");
         ui_print("6 -  Dodaj inspekciju i doktora");
+
+        ui_print("11 - Prikaz Doktora");
 
         ui_print("12 - Zakazane Inspekcije");
         ui_print("14 - Izmjena opisa inspekcije");
@@ -187,7 +176,6 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         ui_print("Izbornik");
 
         ui_print("1 - Informacije o Ambulanti");
-        ui_print("12 - Prikaz zaposlenika"); //onaj mat_view gjde se manje vidi
 
         ui_print("2 - Zakazani pregledi");
         ui_print("3 - Dodavanje pregleda");
@@ -202,6 +190,8 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         ui_print("9 -  Spajanje Zivotinje i korisnika");
 
         ui_print("11 - Ispis pregleda za pojedinog Korinsika");
+        ui_print("12 - Prikaz zaposlenika"); //onaj mat_view gjde se manje vidi
+
 
         ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
@@ -265,6 +255,12 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
+        ui_print("1 - Doadaj Doktora");
+        ui_print("2 - Doadaj Racunovodu");
+        ui_print("3 - Doadaj Voditelja Odjela");
+
+        ui_print("4 - Log");
+
 
         ui_print("0 - Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
@@ -281,3 +277,21 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
 }
 
+
+
+
+/*
+ *              SACommand cmd(&con);
+                cmd.setCommandText("INSERTZIVOTINJA");
+                //SAParam a1 = 0.0;
+
+                cmd.Param("p_ziv_id").setAsNumeric() = 0.0;
+                cmd.Param("p_ziv_tip_id").setAsNumeric() = 1.0;
+                cmd.Param("p_ime").setAsString() = "Pas";
+                cmd.Param("p_opis").setAsString() = "Tin je ovo preko programam ubacio";
+
+                try {cmd.Execute();}
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+ *
+ */

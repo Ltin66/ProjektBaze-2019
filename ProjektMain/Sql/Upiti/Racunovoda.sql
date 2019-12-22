@@ -1,5 +1,11 @@
 1. placa zaposlenika ID za n-ti mjesec u m-toj godini procedura
-(TODO )
+(satnica svakog zaposlenika piše u RADNI_STATUS,
+PROMIJENIO SAM TABLICU RADNI_STATUS i u Veterinar_DATA tako da unosi koliko je sati odradio)
+
+pomnoži se ukupan broj radnih_satii iz ZAPOSLENIK_DOLAZAK ali samo za određeni mjesec u određenoj godini
+za određenog zaposlenika ID
+
+
 
 2. unos novog zaposlenika procedura
 (inser into zaposlenik (<Uneseno ime> <-||- Srednje Ime> <-||- prezime > ..... ))

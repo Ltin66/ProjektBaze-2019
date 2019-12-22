@@ -52,26 +52,32 @@ int main(int argc, char* argv[])
             dbConnect(kor, con);
             if(tmp == 501) kor.UserRole = dbUserType(con);
 
-            //ui_clear();
-            //cout << "Dobrodošli " << kor.username;
-            //ui_separator();
+            ui_clear();
+            cout << "Dobrodošli " << kor.username;
+            ui_separator();
 
             if (kor.UserRole == "RACUNOVODA" && tmp == 501) {
                 cout << "Racunovoda\n";
-                int tmp = uiUserRacunovodaMainMenu(con, kor);
-                if (tmp == 0) return 0;
+                int tmpp = uiUserRacunovodaMainMenu(con, kor);
+                if (tmpp == 0) return 0;
             }
 
             else if (kor.UserRole == "VODITELJ_ODJELA" && tmp == 501 ) {
                 cout << "voditelj odjela\n";
-                int tmp = uiUserVoditeljOdjelaMainMenu(con, kor);
-                if (tmp == 0) return 0;
+                int tmpp = uiUserVoditeljOdjelaMainMenu(con, kor);
+                if (tmpp == 0) return 0;
             }
 
             else if (kor.UserRole == "DOKTOR" && tmp == 501) {
                 cout << "doktore\n";
-                int tmp = uiUserDoktorMainMenu(con, kor);
-                if (tmp == 0) return 0;
+                int tmpp = uiUserDoktorMainMenu(con, kor);
+                if (tmpp == 0) return 0;
+            }
+
+            else if (kor.UserRole == "VET_SYS" && tmp == 501) {
+                cout << "admin\n";
+                int tmpp = uiUserVeterinarSysMainMenu(con, kor);
+                if (tmpp == 0) return 0;
             }
 
             else if( tmp == 501) ui_error("USER ROLE NOT DEFINED");

@@ -65,35 +65,35 @@ INSERT INTO odsutnost_tip (odsutnost_tip_id, naziv, primanje_place)
 
 -------------------------------------------------------------------------------------
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (1,
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),7)/
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (2,
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),7)/
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (3,
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),7)/
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (4,
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),8)/
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (5,
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('01.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('01.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),6)/
 
 -------------------------------------------------------------------------------------
 
@@ -117,11 +117,11 @@ INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska)
             TO_DATE('02.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('02.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
 
-INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska)
+INSERT INTO zaposlenici_dolazak (zaposlenik_id, datum, datum_dolaska,datum_odlaska,odradeni_sati)
     values (5,
             TO_DATE('02.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
             TO_DATE('02.02.2008 08:00:00', 'DD.MM.YYYY hh24:mi:ss'),
-            TO_DATE('02.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'))/
+            TO_DATE('02.02.2008 14:00:00', 'DD.MM.YYYY hh24:mi:ss'),2)/
 
 
 -------------------------------------------------------------------------------------
