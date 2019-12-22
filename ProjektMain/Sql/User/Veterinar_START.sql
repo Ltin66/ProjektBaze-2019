@@ -40,7 +40,7 @@ ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;
 -----------------------------------------
 
 
--- SAD Veterinar_START_Veterinar_SYS.sql
+-- SAD Veterinar_User_Roles.sql
 
 
 -----------------------------------------

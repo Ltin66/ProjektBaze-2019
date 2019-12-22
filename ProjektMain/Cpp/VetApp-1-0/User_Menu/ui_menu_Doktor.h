@@ -6,9 +6,21 @@
 #define VETAPP_1_0_UI_MENU_DOKTOR_H
 
 
-class ui_menu_Doktor {
+#include "../ui_main.h"
 
-};
+#include "../dbUpiti.h"
+#include "../dbTablice.h"
+#include "../dbConnection.h"
+#include "../ui_user.h"
+
+#include <list>
+#include <vector>
+#include <algorithm>
+
+
+
+int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor);
+
 
 
 #endif //VETAPP_1_0_UI_MENU_DOKTOR_H

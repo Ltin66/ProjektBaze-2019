@@ -277,7 +277,7 @@ CREATE SEQUENCE SEQ_INTR_TIP
   CACHE 100;
 
 
---INTERVENCIJE NEMAMO
+--INTERVENCIJE NEMAMO VIŠE
 ----------------------------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER TRIG_SEQ_INTR_TIP

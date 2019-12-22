@@ -14,7 +14,7 @@
 #include <algorithm>
 
 using namespace std;
-
+/*
 int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     ui_clear();
     cout << "Dobrodošli " << kor.username;
@@ -278,7 +278,7 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 }
 
 
-
+*/
 
 /*
  *              SACommand cmd(&con);

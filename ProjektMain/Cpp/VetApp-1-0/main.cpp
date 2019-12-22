@@ -12,7 +12,13 @@
 #include "dbUpiti.h"
 #include "dbTablice.h"
 #include "dbConnection.h"
-#include "ui_user.h"
+//#include "ui_user.h"
+
+#include "User_Menu/ui_menu_Doktor.h"
+#include "User_Menu/ui_menu_Racunovoda.h"
+#include "User_Menu/ui_menu_Vet_Sys.h"
+#include "User_Menu/ui_menu_Voditelj_Odjela.h"
+
 
 #include <list>
 #include <vector>
