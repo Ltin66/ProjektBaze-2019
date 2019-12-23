@@ -29,7 +29,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
         ui_print("Izbornik");
 
         ui_print("1 -  Popis Zaposlenika");
-        ui_print("2 -  Izracun Place"); // stvara novu zivotinju preko prcedure
+        ui_print("2 -  Izracun Place");
         ui_print("3 -  Unos Zaposlenika");
 
         ui_print("4 -  Raspored");
@@ -49,38 +49,14 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             ui_showTable(T);
         }
         else if(odabir == 2){
-
-            //unesite ID zaposlenika ->
-            //pozpvi funkicju i ispisi
         }
         else if(odabir == 3){
-            //unesite ime zapo
-            //unesite prezime zap
-            //...
-            //jeste lis zadovoljni?
-            //pozpvi proceduru
         }
         else if(odabir == 4){
-            //unesite id zaposlenika
-            // unesite datum dolaska
-            //unesite radne sate
-            //pozovi proceduru
         }
         else if(odabir == 5){
-            //unesi id rasporeda
-            //jeli zap dosao (Y N)?
-            //pozovi proceduru
         }
         else if(odabir == 6){
-
-        }
-        else if(odabir == 7){
-
-        }
-        else if(odabir == 8){
-
-        }
-        else if(odabir == 9){
 
         }
         else if(odabir == 0) return 0;

@@ -30,21 +30,19 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
-        ui_print("1 - Informacije o Ambulanti");
+        ui_print("1 - Informacije o Ambulanti"); //fali procedura
 
         ui_print("2 - Zakazani pregledi"); //fali procedura
         ui_print("3 - Dodavanje pregleda"); //OK
         ui_print("4 - Izmjena opisa pregleda"); //OK
 
         ui_print("5 -  Dodavanje korisnika"); //OK
-        ui_print("6 -  Brisanje korisnika"); //OK
 
         ui_print("7 -  Dodavanje zivotinje"); //OK
-        ui_print("8 -  Brisanje zivotinje");  //fali procedura
 
         ui_print("9 -  Spajanje Zivotinje i korisnika"); //OK
 
-        ui_print("11 - Ispis pregleda za pojedinog Korinsika"); //fali procedura
+        ui_print("11 - Ispis pregleda za pojedinog Korisnika"); //fali procedura
         ui_print("12 - Prikaz zaposlenika"); //onaj mat_view gjde se manje vidi
 
         ui_print("13 -  Prikaz Tipova Zivotinja"); //select
@@ -224,30 +222,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
 
         }
-        else if(odabir == 6){
-            ui_print("Unesite ID Korisnika");
-            ui_input();
-            int id;
-            cin>>id;
 
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("deleteKORISNIK");
-
-                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-        }
         else if(odabir == 7){
             ui_print("Unesite Tip Zivotinje");
             ui_input();
@@ -290,31 +265,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
-        else if(odabir == 8){
 
-            ui_print("Unesite ID Zivotinje");
-            ui_input();
-            int id;
-            cin>>id;
-
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("deleteZivotinja");
-
-                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-        }
         else if(odabir == 9){
             ui_print("Unesite ID korisnika : ");
             ui_input();
