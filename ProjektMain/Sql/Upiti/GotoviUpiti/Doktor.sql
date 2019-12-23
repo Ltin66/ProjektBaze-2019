@@ -1,6 +1,6 @@
 --Doktor.sql
 ------------------------------------------------------------------------------------------------------------------------
---1. Info o ambulanti za ambulantaID - procedura
+
 ------------------------------------------------------------------------------------------------------------------------
 --1. Info o ambulanti za ambulantaID - procedura
 
@@ -31,6 +31,7 @@ DECLARE
 BEGIN
 
    selectAMBULANTA(2,o_usluga,o_naziv,o_datum, o_opis);
+
 
    DBMS_OUTPUT.PUT_LINE('Usluga :  ' || o_usluga);
    DBMS_OUTPUT.PUT_LINE('Naziv usluge :  ' || o_naziv);

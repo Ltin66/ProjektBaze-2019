@@ -14,7 +14,7 @@
 (delete from ZaposleniKAmbulanta where DOktorID = <uneseni DoktorID> && AmbulantaID = <unesneni AmbID>)
 
 5. prikazi doktora za pregled ID (funkcija)
-(sleect * form Ambulanta where DoktorID = DoktorID)
+(sleect doktorId form Ambulanta where ambID = ambID)
 
 
 6. prikazi inspekcije (View)

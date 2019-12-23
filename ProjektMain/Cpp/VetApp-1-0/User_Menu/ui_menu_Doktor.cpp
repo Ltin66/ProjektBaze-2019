@@ -31,7 +31,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
-        ui_print("1 - Informacije o Ambulanti");    //fali procedura
+        ui_print("1 - Informacije o Ambulanti");    //todo
 
         ui_print("2 - Zakazani pregledi");          //fali procedura
         ui_print("3 - Dodavanje pregleda");         //OK  RADI
@@ -43,7 +43,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("9 -  Spajanje Zivotinje i korisnika");    //OK
 
-        ui_print("11 - Ispis pregleda za pojedinog Korisnika");     //fali procedura
+        ui_print("11 - Ispis pregleda za pojedinog Korisnika");     //todo
         ui_print("12 - Prikaz zaposlenika");                        //onaj mat_view gjde se manje vidi
 
         ui_print("13 -  Prikaz Tipova Zivotinja");      //view

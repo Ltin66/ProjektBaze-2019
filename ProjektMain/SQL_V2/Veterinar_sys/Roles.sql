@@ -1,34 +1,4 @@
 
--- tek kad se zezne nešto
-DROP USER veterinar_sys CASCADE /
-DROP TABLESPACE veterinar  /
-DROP ROLE vet_sys/
-DROP ROLE racunovoda/
-DROP ROLE doktor/
-DROP ROLE voditelj_odjela/
-
-DROP USER mirkomirkec3 CASCADE /
-DROP USER mirkomirkec9 CASCADE /
-
------------------------------------------
-
-
--- Kao Veterinar_sys, ako su sve tablice i viewi dodani
--- nakon toga Veterinar_Add_Users.sql
-
------------------------------------------
-/*
- Veterinar Sys ima :
-
- dodaj doktora
- dodaj racunovodu
- dodaj voditelja odjela
-
- prikaz log--a
-
-
- */
-
 
 ----------------------------------------------------------------------
 --
@@ -79,7 +49,7 @@ create role doktor/
 
 grant CREATE SESSION to doktor/  --da bi se mogao taj user spojiti na bazu
 grant execute on INSERTAMBULANTA to doktor;
-grant execute on
+--grant execute on/
 --grant select on ZAPOSLENIK to doktor/
 
 
