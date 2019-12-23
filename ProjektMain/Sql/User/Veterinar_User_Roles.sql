@@ -35,7 +35,7 @@ DROP USER mirkomirkec9 CASCADE /
 --                  ROLES
 --
 ----------------------------------------------------------------------
-SELECT * FROM AMBULANTA;
+SELECT * FROM AMBULANTA;8
 
 create user mirkomirkec4 identified by 1234;
 grant doktor to mirkomirkec4;

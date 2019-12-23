@@ -1,39 +1,46 @@
 --Doktor.sql
 ------------------------------------------------------------------------------------------------------------------------
 --1. Info o ambulanti za ambulantaID - procedura
+------------------------------------------------------------------------------------------------------------------------
+--1. Info o ambulanti za ambulantaID - procedura
 
 CREATE OR REPLACE PROCEDURE selectAMBULANTA(
 	   p_id IN AMBULANTA.AMBULANTA_ID%TYPE,
 	   o_usluga OUT AMBULANTA.AMBULANTA_USLUGA_ID%TYPE,
+	   o_naziv OUT AMBULANTA_USLUGA.NAZIV%TYPE,
 	   o_datum OUT  AMBULANTA.DATUM%TYPE,
 	   o_opis OUT AMBULANTA.OPIS%TYPE)
 IS
 BEGIN
 
-  SELECT AMBULANTA_USLUGA_ID , DATUM, OPIS
-  INTO o_usluga, o_datum,  o_opis
-  from  AMBULANTA WHERE AMBULANTA_ID = p_id;
+  SELECT AMBULANTA.AMBULANTA_USLUGA_ID , AMBULANTA_USLUGA.NAZIV, AMBULANTA.DATUM, AMBULANTA.OPIS
+  INTO o_usluga, o_naziv, o_datum, o_opis
+  FROM AMBULANTA
+  JOIN ambulanta_usluga ON AMBULANTA.AMBULANTA_USLUGA_ID = ambulanta_usluga.ambulanta_usluga_id
+  WHERE AMBULANTA_ID = p_id;
 
 END;
 /
 
-
-
-
+--Test
 DECLARE
    o_usluga AMBULANTA.AMBULANTA_USLUGA_ID%TYPE;
+   o_naziv AMBULANTA_USLUGA.NAZIV%TYPE;
    o_datum AMBULANTA.DATUM%TYPE;
    o_opis AMBULANTA.OPIS%TYPE;
 BEGIN
 
-   selectAMBULANTA(1,o_usluga,o_datum,o_opis);
+   selectAMBULANTA(2,o_usluga,o_naziv,o_datum, o_opis);
 
    DBMS_OUTPUT.PUT_LINE('Usluga :  ' || o_usluga);
+   DBMS_OUTPUT.PUT_LINE('Naziv usluge :  ' || o_naziv);
    DBMS_OUTPUT.PUT_LINE('Datum :  ' || o_datum);
    DBMS_OUTPUT.PUT_LINE('Opis :  ' || o_opis);
 
 END;
 /
+------------------------------------------------------------------------------------------------------------------------
+
 ------------------------------------------------------------------------------------------------------------------------
 --@@@ 2. Sljedećih n zakazanih pregleda - funkcija
 ------------------------------------------------------------------------------------------------------------------------
