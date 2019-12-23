@@ -27,26 +27,27 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         int odabir = 0;
 
         //OK znaci da je napravljen, neznaci da radi kako treba
+        //RADI znaci da radi
 
         ui_print("Izbornik");
 
-        ui_print("1 - Informacije o Ambulanti"); //fali procedura
+        ui_print("1 - Informacije o Ambulanti");    //fali procedura
 
-        ui_print("2 - Zakazani pregledi"); //fali procedura
-        ui_print("3 - Dodavanje pregleda"); //OK
-        ui_print("4 - Izmjena opisa pregleda"); //OK
+        ui_print("2 - Zakazani pregledi");          //fali procedura
+        ui_print("3 - Dodavanje pregleda");         //OK  RADI
+        ui_print("4 - Izmjena opisa pregleda");     //OK
 
-        ui_print("5 -  Dodavanje korisnika"); //OK
+        ui_print("5 -  Dodavanje korisnika");       //OK
 
-        ui_print("7 -  Dodavanje zivotinje"); //OK
+        ui_print("7 -  Dodavanje zivotinje");       //OK
 
-        ui_print("9 -  Spajanje Zivotinje i korisnika"); //OK
+        ui_print("9 -  Spajanje Zivotinje i korisnika");    //OK
 
-        ui_print("11 - Ispis pregleda za pojedinog Korisnika"); //fali procedura
-        ui_print("12 - Prikaz zaposlenika"); //onaj mat_view gjde se manje vidi
+        ui_print("11 - Ispis pregleda za pojedinog Korisnika");     //fali procedura
+        ui_print("12 - Prikaz zaposlenika");                        //onaj mat_view gjde se manje vidi
 
-        ui_print("13 -  Prikaz Tipova Zivotinja"); //view
-        ui_print("14 -  Prikaz Usluga"); //view
+        ui_print("13 -  Prikaz Tipova Zivotinja");      //view
+        ui_print("14 -  Prikaz Usluga");                //view
 
         ui_print("15 -  Dodavanje Doktora na Pregled"); //OK
 
@@ -98,7 +99,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cout<<"ID : " << ID << '\n'<< "Datum : " <<dy<<'.'<<mnth<<'.'<<yr<<'\n' << "Opis : " << opis;
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
-                cmd.setCommandText("INSERTAMBULANTA");
+                cmd.setCommandText("VETERINAR_SYS.INSERTAMBULANTA");
 
 
             cmd.Param("p_amb_id").setAsNumeric() = 0.0;

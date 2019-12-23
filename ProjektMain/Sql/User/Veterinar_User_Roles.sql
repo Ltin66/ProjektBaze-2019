@@ -35,8 +35,18 @@ DROP USER mirkomirkec9 CASCADE /
 --                  ROLES
 --
 ----------------------------------------------------------------------
+SELECT * FROM AMBULANTA;
+
+create user mirkomirkec4 identified by 1234;
+grant doktor to mirkomirkec4;
+alter user mirkomirkec4 quota unlimited on veterinar;
+create synonym mirkomirkec4.INSERTAMBULANTA for veterinar_sys.INSERTAMBULANTA;
+grant execute on INSERTAMBULANTA to doktor;
 
 
+BEGIN
+   INSERTAMBULANTA(8, 12, TO_DATE('08.02.2008 11:30:00', 'DD.MM.YYYY hh24:mi:ss'), 'Zaštitna cijepila - Mačka');
+END;
 
 
 create role racunovoda/
@@ -108,7 +118,6 @@ zakazane inspekcije
 izmjena opisa inspekcija
 
  */
-
 
 
 ----------------------------------------------------------------------
