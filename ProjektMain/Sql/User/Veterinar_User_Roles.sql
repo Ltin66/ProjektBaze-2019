@@ -17,7 +17,17 @@ DROP USER mirkomirkec9 CASCADE /
 -- nakon toga Veterinar_Add_Users.sql
 
 -----------------------------------------
+/*
+ Veterinar Sys ima :
 
+ dodaj doktora
+ dodaj racunovodu
+ dodaj voditelja odjela
+
+ prikaz log--a
+
+
+ */
 
 
 ----------------------------------------------------------------------
@@ -27,14 +37,26 @@ DROP USER mirkomirkec9 CASCADE /
 ----------------------------------------------------------------------
 
 
+
+
 create role racunovoda/
 
 grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
 --grant select on ZAPOSLENIK to racunovoda/
 --grant select on ODSUTNOST_TIP to racunovoda/
-grant execute on INSERTZIVOTINJA to racunovoda/
+--grant execute on INSERTZIVOTINJA to racunovoda/
 
 
+/*
+Popis Zaposlenika
+izracun place
+unos zaposlenika
+
+raspored
+unos rasporeda
+unos dolaska
+
+ */
 
 
 ------------------------------------------------------------------
@@ -44,11 +66,48 @@ create role doktor/
 grant CREATE SESSION to doktor/  --da bi se mogao taj user spojiti na bazu
 --grant select on ZAPOSLENIK to doktor/
 
+
+
+/*
+INSERTAMBULANTA
+updateAMBULANTA_opis
+insertKORISNIK
+INSERTZIVOTINJA
+INSERTKORISNIK_ZIVOTINJA
+insertDOKTOR_AMBULANTA
+View Tipovi Usluga
+View Prikaz Usluga
+selectAMBULANTA
+ZAKAZANIPregledi
+Info o Ambulanti
+Korisnici i njihove zivotinje
+ */
+
+
 ------------------------------------------------------------------
 
 create role voditelj_odjela/
 
 grant CREATE SESSION to racunovoda/  --da bi se mogao taj user spojiti na bazu
+
+/*
+Informacije o Doktorima
+
+dodavanje doktora na pregled
+brisanje doktora sa pregleda
+brisanje korisnika
+
+brisanje zivotinje
+
+prikaz svih inspekcija
+dodavanje inspekcije
+dodavanje doktora na inspekciju
+
+zakazane inspekcije
+
+izmjena opisa inspekcija
+
+ */
 
 
 
@@ -86,6 +145,9 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
 
         -- SYNONYM
         --ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  for veterinar_sys.ZAPOSLENIK';
+        --EXECUTE IMMEDIATE (ex_stmt_a);
+
+        --ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS for veterinar_sys.insertzaposlenik';
         --EXECUTE IMMEDIATE (ex_stmt_a);
 /*
         ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS  veterinar';

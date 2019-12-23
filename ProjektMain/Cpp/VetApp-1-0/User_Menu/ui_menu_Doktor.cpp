@@ -45,8 +45,8 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         ui_print("11 - Ispis pregleda za pojedinog Korisnika"); //fali procedura
         ui_print("12 - Prikaz zaposlenika"); //onaj mat_view gjde se manje vidi
 
-        ui_print("13 -  Prikaz Tipova Zivotinja"); //select
-        ui_print("14 -  Prikaz Usluga"); //select
+        ui_print("13 -  Prikaz Tipova Zivotinja"); //view
+        ui_print("14 -  Prikaz Usluga"); //view
 
         ui_print("15 -  Dodavanje Doktora na Pregled"); //OK
 

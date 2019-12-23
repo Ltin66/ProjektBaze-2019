@@ -31,7 +31,7 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
         ui_print("Izbornik");
         ui_separator();
 
-        ui_print("1 -  Prikaz Informacija Svih Zaposlenika");
+        ui_print("1 -  Prikaz Informacija Svih Doktora");
 
 
         ui_print("2 -  Brisanje Pregleda");
@@ -45,12 +45,12 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
         ui_print("5 -  Prikaz Svih Inspekcija");
         ui_print("6 -  Dodaj inspekciju i doktora");
 
-        ui_print("11 - Prikaz Doktora");
+        //ui_print("11 - Prikaz Doktora");
 
         ui_print("12 - Zakazane Inspekcije");
         ui_print("14 - Izmjena opisa inspekcije");
 
-        ui_print("15 - AVG broj doktora na inspekcijama");
+        //ui_print("15 - AVG broj doktora na inspekcijama");
 
         ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
