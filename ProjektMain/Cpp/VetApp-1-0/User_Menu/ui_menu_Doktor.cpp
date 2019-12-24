@@ -31,9 +31,9 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
-        ui_print("1 - Informacije o Ambulanti");    //todo
+        ui_print("1 - Informacije o Ambulanti ID");    //todo
 
-        ui_print("2 - Zakazani pregledi");          //fali procedura
+        ui_print("2 - Zakazani pregledi");          //fali procedura ?
         ui_print("3 - Dodavanje pregleda");         //OK  RADI
         ui_print("4 - Izmjena opisa pregleda");     //OK
 
@@ -44,14 +44,14 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         ui_print("9 -  Spajanje Zivotinje i korisnika");    //OK
 
         ui_print("11 - Ispis pregleda za pojedinog Korisnika");     //todo
-        ui_print("12 - Prikaz zaposlenika");                        //onaj mat_view gjde se manje vidi
+        ui_print("12 - Prikaz zaposlenika");                        //onaj mat_view gjde se manje vidi, TODO refresh view
 
-        ui_print("13 -  Prikaz Tipova Zivotinja");      //view
-        ui_print("14 -  Prikaz Usluga");                //view
+        ui_print("13 -  Prikaz Tipova Zivotinja");      //view OK RADI
+        ui_print("14 -  Prikaz Usluga");                //view OK RADI
 
         ui_print("15 -  Dodavanje Doktora na Pregled"); //OK
 
-        ui_print("16 -  Prikaz svih ID-a Korisnika i Zivotinja za  Korisnik ID"); //funkcija
+        ui_print("16 -  Prikaz svih ID-a Korisnika i Zivotinja za  Korisnik ID"); //fali funkcija ?
 
         ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
@@ -87,19 +87,25 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
             SADateTime datum(yr,mnth,dy);
 
-            ui_print("Zelite li opis ");
-            string opis = "";
-            if(ui_confirm()){
+            ui_print("Zelite li opis  Y/N ");
+            ui_input();
+            char tmp;
+            cin>>tmp;
+            string opis = "@";
+            if(tmp == 'Y' || tmp == 'y'){
+                ui_print("Opis : \n");
                 ui_input();
-                cin>>opis;
+                cin>>tmp;
+                getline(cin,opis);
+                opis = tmp + opis;
             }
 
             SACommand cmd(&con);
 
-            cout<<"ID : " << ID << '\n'<< "Datum : " <<dy<<'.'<<mnth<<'.'<<yr<<'\n' << "Opis : " << opis;
+            cout<<endl<<"ID : " << ID << '\n'<< "Datum : " <<dy<<'.'<<mnth<<'.'<<yr<<'\n' << "Opis : " << opis<<endl;
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
-                cmd.setCommandText("VETERINAR_SYS.INSERTAMBULANTA");
+                cmd.setCommandText("DOKTOR_PACK.INSERTAMBULANTA");
 
 
             cmd.Param("p_amb_id").setAsNumeric() = 0.0;
@@ -110,8 +116,13 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             ui_clear();
             ui_separator();
             ui_print("OK");
+            ui_separator();
 
-                try {  cmd.Execute(); }
+
+                try {  cmd.Execute();
+                    ui_separator();
+                    ui_print("OK");
+                    ui_separator();}
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
             }
@@ -121,17 +132,26 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             ui_input();
             int ID;
             cin>>ID;
-            ui_print("Unesite Novi Opis :");
-            ui_input();
-            string opis;
-            cin>> opis;
+
+
+            ui_print("Unesite Novi Opis : ");
+            string opis = "@";
+            {
+                ui_print("Opis : \n");
+                ui_input();
+                char tmp;
+                cin>>tmp;
+                getline(cin,opis);
+                opis = tmp + opis;
+            }
+
 
             SACommand cmd(&con);
 
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-            cmd.setCommandText("updateAMBULANTA_opis");
+            cmd.setCommandText("DOKTOR_PACK.updateAMBULANTA_opis");
 
             cmd.Param("p_id").setAsNumeric() = ID + 0.0;
             cmd.Param("p_opis").setAsString() = opis.c_str();
@@ -186,11 +206,17 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             string jmbg;
             cin>>jmbg;
 
-            ui_print("Zelite li opis ");
-            string opis = "";
-            if(ui_confirm()){
+            ui_print("Zelite li opis  Y/N ");
+            ui_input();
+            char tmp;
+            cin>>tmp;
+            string opis = "@";
+            if(tmp == 'Y' || tmp == 'y'){
+                ui_print("Opis : \n");
                 ui_input();
-                cin>>opis;
+                cin>>tmp;
+                getline(cin,opis);
+                opis = tmp + opis;
             }
 
             SACommand cmd(&con);
@@ -198,7 +224,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("insertKORISNIK");
+                cmd.setCommandText("DOKTOR_PACK.insertKORISNIK");
 
                 cmd.Param("p_korisnik_id").setAsNumeric() =  0.0;
                 cmd.Param("p_ime").setAsString() = ime.c_str();
@@ -235,11 +261,17 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             string ime;
 
 
-            ui_print("Zelite li opis ");
-            string opis = "";
-            if(ui_confirm()){
+            ui_print("Zelite li opis  Y/N ");
+            ui_input();
+            char tmp;
+            cin>>tmp;
+            string opis = "@";
+            if(tmp == 'Y' || tmp == 'y'){
+                ui_print("Opis : \n");
                 ui_input();
-                cin>>opis;
+                cin>>tmp;
+                getline(cin,opis);
+                opis = tmp + opis;
             }
 
             SACommand cmd(&con);
@@ -247,7 +279,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("INSERTZIVOTINJA");
+                cmd.setCommandText("DOKTOR_PACK.INSERTZIVOTINJA");
 
                 cmd.Param("p_ziv_id").setAsNumeric() =  0.0;
                 //cmd.Param("p_opis").setAsString() = opis.c_str();
@@ -283,7 +315,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("INSERTKORISNIK_ZIVOTINJA");
+                cmd.setCommandText("DOKTOR_PACK.INSERTKORISNIK_ZIVOTINJA");
 
                 cmd.Param("p_korziv").setAsNumeric() =  0.0;
                 cmd.Param("p_ziv_id").setAsNumeric() =  zivId + 0.0;
@@ -303,14 +335,19 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         }
         else if(odabir == 12){
-
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM veterinar_sys.zaposlenik ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         else if(odabir == 13){
             dbTable tipovi_ziv;
-            CommandToTable("Select * FRom tipovi_zivotinja ")
+            CommandToTable("Select * FROM doktor_tipovi_zivotinja ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         else if(odabir == 14){
-
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM doktor_tipovi_usluga ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         else if(odabir == 15){
 
@@ -330,7 +367,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("insertDOKTOR_AMBULANTA");
+                cmd.setCommandText("DOKTOR_PACK.insertDOKTOR_AMBULANTA");
 
                 cmd.Param("p_amb_dok_id").setAsNumeric() =  0.0;
                 cmd.Param("p_amb_id").setAsNumeric() =  ambId + 0.0;
@@ -345,7 +382,9 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
             }
         }
-
+        else if(odabir == 16){
+            
+        }
         if(odabir == 0) return 0;
         else if(odabir == 10) return -1;
     }

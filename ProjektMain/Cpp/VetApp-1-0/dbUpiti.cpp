@@ -1,6 +1,6 @@
 //
 // Created by tin on 11/27/19.
-// gamad glupa, stupce broji od 1, ne od 0 , com[0] = SAException
+//   stupce broji od 1, ne od 0 , com[0] = SAException
 // prvo treba fetch za dobit coll type pa ih zato ctamo na kraju unosa  com u Data
 
 #include "dbUpiti.h"
@@ -83,6 +83,9 @@ void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
     //get RowCount i popuni Data sa prazim poljima
     Table.RowCnt = 0;
     Table.ColCnt = com.FieldCount();
+
+    //cout<<endl<<"BROJ STUPACAC : " << Table.ColCnt<<endl;
+
     for(int i = 1; i <= Table.ColCnt; i++) Table.Data.emplace_back();
     //com.FetchNext();
 
@@ -90,9 +93,10 @@ void CommandToTable(string CommandString,dbTable &Table,SAConnection &con){
     //unos redova
     while(com.FetchNext()){
         Table.RowCnt ++;
-        for(int i = 1; i <= com.FieldCount(); i++){
+        for(int i = 1; i <= Table.ColCnt ; i++){
             SAString tmp = com[i];
-            Table.Data[i-1].push_back( (string)(const char*)tmp );
+            Table.Data[i-1].push_back( (string)(const char*)tmp ); //com pocinje od 1 a Table od 0
+            //cout<<endl<<(string)(const char*)tmp;
         }
     }
 

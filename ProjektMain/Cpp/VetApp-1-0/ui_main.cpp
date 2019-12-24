@@ -80,20 +80,34 @@ void ui_postavke(){
 }
 
 
-int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10){
+int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10,bool redni_broj = false){
+
+    //cout<<"INFO : "<<endl
+
+    cout<<"Redni Broj ";
     if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<Table.CollName[i]<<" || ";
 
-    cout<<endl<<Table.ColCnt;
+    //cout<<endl<<Table.ColCnt;
+    cout<<endl<<Table.Data[0][0]<<" | "<<endl<<endl;
 
+    for(int i = 0;i < Table.RowCnt;i++){
+        if(redni_broj) cout<<i + 1<<" || ";
+        cout<<endl;
+        for(int j = 0;j < Table.ColCnt;j++) cout<<Table.Data[j][i]<<" | ";
+    }
+
+
+    /*
     if(!Table.Data.empty()){
         for(int i = 0;i < Table.ColCnt-1;i++) {
+            cout<<"\n";
             cout<<i+1<<" : ";
                 for(int j = 0;j<Table.RowCnt-1;j++){
                     cout<<Table.Data[j][i]<<" | ";
                 }
-            cout<<"\n";
         }
     }
+     */
 }
 
 void ui_error(const string& err_msg = "ERROR", int err_num = -1){

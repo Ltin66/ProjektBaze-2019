@@ -20,3 +20,8 @@ BEGIN
    DBMS_OUTPUT.PUT_LINE('Opis :  ' || o_opis);
 
 END;
+
+
+/BEGIN
+   DOKTOR_PACK.INSERTAMBULANTA(8, 12, TO_DATE('08.02.2008 11:30:00', 'DD.MM.YYYY hh24:mi:ss'), 'dasdsadsadassdaasddsa');
+END;

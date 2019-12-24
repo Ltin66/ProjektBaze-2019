@@ -26,7 +26,7 @@ int ui_prijava(korisnik &kor);
 
 void ui_postavke();
 
-int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10);
+int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10,bool redni_broj = false);
 
 void ui_error(const std::string& err_msg = "ERROR", int err_num = -1);
 
