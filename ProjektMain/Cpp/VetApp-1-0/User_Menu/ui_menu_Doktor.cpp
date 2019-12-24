@@ -1,6 +1,7 @@
 //
 // Created by tin on 12/22/19.
 //
+//Fale : Zakazani pregledi i ispis svih pregleda za korisnikID
 
 #include "ui_menu_Doktor.h"
 #include "../ui_user.h"
@@ -31,27 +32,27 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("Izbornik");
 
-        ui_print("1 - Informacije o Ambulanti ID");    //todo
+        ui_print("1 - Informacije o Ambulanti ID"); //SelectAmbulanta   //todo
 
-        ui_print("2 - Zakazani pregledi");          //fali procedura ?
-        ui_print("3 - Dodavanje pregleda");         //OK  RADI
-        ui_print("4 - Izmjena opisa pregleda");     //OK
+        ui_print("2 - Zakazani pregledi");          //fali
+        ui_print("3 - Dodavanje pregleda");     //InsertAmbulanta    //OK  RADI
+        ui_print("4 - Izmjena opisa pregleda"); //UpdateAmbulanta_opis    //OK
 
-        ui_print("5 -  Dodavanje korisnika");       //OK
+        ui_print("5 -  Dodavanje korisnika");  //InsertKorisnik     //OK
 
-        ui_print("7 -  Dodavanje zivotinje");       //OK
+        ui_print("7 -  Dodavanje zivotinje"); //InsertZivotinja      //OK
 
-        ui_print("9 -  Spajanje Zivotinje i korisnika");    //OK
+        ui_print("9 -  Spajanje Zivotinje i korisnika"); //InsertKorisnikZivotinja   //OK
 
-        ui_print("11 - Ispis pregleda za pojedinog Korisnika");     //todo
-        ui_print("12 - Prikaz zaposlenika");                        //onaj mat_view gjde se manje vidi, TODO refresh view
+        ui_print("11 - Ispis pregleda za pojedinog Korisnika");    //fali
+        ui_print("12 - Prikaz zaposlenika");        //Zaposlenik, ne svi attr      MOŽDA ->  //onaj mat_view gjde se manje vidi, TODO refresh view MOŽDA
 
-        ui_print("13 -  Prikaz Tipova Zivotinja");      //view OK RADI
-        ui_print("14 -  Prikaz Usluga");                //view OK RADI
+        ui_print("13 -  Prikaz Tipova Zivotinja");  // doktor_tipovi_zivotinja   //view OK RADI
+        ui_print("14 -  Prikaz Usluga");         //doktor_tipovi_usluga       //view OK RADI
 
-        ui_print("15 -  Dodavanje Doktora na Pregled"); //OK
+        ui_print("15 -  Dodavanje Doktora na Pregled"); //InsertDoktor_Ambulanta  //OK
 
-        ui_print("16 -  Prikaz svih ID-a Korisnika i Zivotinja za  Korisnik ID"); //fali funkcija ?
+        ui_print("16 -  Prikaz svih ID-a Korisnika i njihovih Zivotinja"); //KorisnikView //OK RADI
 
         ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
@@ -249,7 +250,6 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
 
         }
-
         else if(odabir == 7){
             ui_print("Unesite Tip Zivotinje");
             ui_input();
@@ -298,7 +298,6 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
-
         else if(odabir == 9){
             ui_print("Unesite ID korisnika : ");
             ui_input();
@@ -383,7 +382,9 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
         }
         else if(odabir == 16){
-            
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         if(odabir == 0) return 0;
         else if(odabir == 10) return -1;
