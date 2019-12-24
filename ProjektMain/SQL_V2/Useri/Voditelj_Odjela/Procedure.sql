@@ -1,6 +1,26 @@
+CREATE OR REPLACE PACKAGE VODITELJ_ODJELA_PACK AS
+PROCEDURE insertINSPEKCIJA (
+       p_ins_id IN INSPEKCIJA.INSPEKCIJA_ID%TYPE,
+       p_ins_tip_id IN INSPEKCIJA.INSPEKCIJA_TIP_ID%TYPE,
+       p_datum IN INSPEKCIJA.DATUM%TYPE,
+       p_opis IN INSPEKCIJA.OPIS%TYPE);
+
+
+ PROCEDURE insertDOKTOR (
+       p_dok_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ZAPOSLENIK_ID%TYPE,
+       p_inspekcija_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ID%TYPE,
+       p_zaposlenik_id IN INSPEKCIJA_ZAPOSLENIK.ZAPOSLENIK_ID%TYPE);
+
+     PROCEDURE deleteKORISNIK(p_korisnik_id IN KORISNIK.KORISNIK_ID%TYPE);
+
+    END;
+
+
+    CREATE OR REPLACE PACKAGE BODY VODITELJ_ODJELA_PACK AS
+
 --7. Dodaj inspekciju i doktora - procedura
 
-CREATE OR REPLACE PROCEDURE insertINSPEKCIJA (
+ PROCEDURE insertINSPEKCIJA (
        p_ins_id IN INSPEKCIJA.INSPEKCIJA_ID%TYPE,
        p_ins_tip_id IN INSPEKCIJA.INSPEKCIJA_TIP_ID%TYPE,
        p_datum IN INSPEKCIJA.DATUM%TYPE,
@@ -15,15 +35,12 @@ BEGIN
   COMMIT;
 
 END;
-/
-
-BEGIN
-   INSERTINSPEKCIJA(5,3, TO_DATE('25.03.2009','DD.MM.YYYY'), 'Inspekcija mlijeka na farmi');
-END;
 
 
 
-CREATE OR REPLACE PROCEDURE insertDOKTOR (
+
+
+ PROCEDURE insertDOKTOR (
        p_dok_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ZAPOSLENIK_ID%TYPE,
        p_inspekcija_id IN INSPEKCIJA_ZAPOSLENIK.INSPEKCIJA_ID%TYPE,
        p_zaposlenik_id IN INSPEKCIJA_ZAPOSLENIK.ZAPOSLENIK_ID%TYPE)
@@ -38,15 +55,12 @@ BEGIN
 
 
 END;
-/
 
-BEGIN
-   INSERTDOKTOR(5,5,5);
-END;
+
 ------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------
 --7. Izbriši korisnika - procedura
-CREATE OR REPLACE PROCEDURE deleteKORISNIK(p_korisnik_id IN KORISNIK.KORISNIK_ID%TYPE)
+ PROCEDURE deleteKORISNIK(p_korisnik_id IN KORISNIK.KORISNIK_ID%TYPE)
 IS
 BEGIN
 
@@ -55,9 +69,33 @@ BEGIN
   COMMIT;
 
 END;
-/
+
+
+------------------------------------------------------------------------------------------------------------------------
+END; --PROCEDURE BODY
+
+
+
+
+
+
+
+
+
+
+
+
+BEGIN
+   INSERTDOKTOR(5,5,5);
+END;
+
 
 BEGIN
    deleteKORISNIK(10);
 END;
-------------------------------------------------------------------------------------------------------------------------
+
+
+BEGIN
+   INSERTINSPEKCIJA(5,3, TO_DATE('25.03.2009','DD.MM.YYYY'), 'Inspekcija mlijeka na farmi');
+END;
+

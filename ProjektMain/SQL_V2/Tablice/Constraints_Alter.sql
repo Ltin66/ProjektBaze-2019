@@ -1,4 +1,4 @@
- 
+
 
 --1. Brisanjem (korisnik.korisnik_id PK) briše se automatski i (korisnik_zivotinja.korisnik_id FK)
 

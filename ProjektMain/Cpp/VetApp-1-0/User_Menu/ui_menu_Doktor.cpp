@@ -51,7 +51,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_print("15 -  Dodavanje Doktora na Pregled"); //OK
 
-        ui_print("16 -  Prikaz svih ID-a Korisnika i Zivotinja za  Korisnik ID"); //MAT view
+        ui_print("16 -  Prikaz svih ID-a Korisnika i Zivotinja za  Korisnik ID"); //funkcija
 
         ui_print("0 -  Izlaz iz Programa");
         ui_print("10 - Izlaz u Glavni Izbornik");
@@ -306,7 +306,8 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         }
         else if(odabir == 13){
-
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FRom tipovi_zivotinja ")
         }
         else if(odabir == 14){
 
