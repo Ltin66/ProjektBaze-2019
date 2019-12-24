@@ -12,6 +12,10 @@
 
 //void ui_error(std::string err_msg = "ERROR", int err_num = -1);
 
+
+void ui_print_menu(std::vector< std::string > stavke,const std::string& naslov,int naslov_space = 6,int stavke_space = 2,int size = 1,bool flg = false);
+
+
 bool ui_confirm();
 
 void ui_print(const std::string& val,int size = 1);

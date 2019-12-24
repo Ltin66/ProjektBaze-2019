@@ -21,54 +21,66 @@ using namespace std;
 
 
 int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
+    int offset = 0;
+    int offset_pl = 2;
+
     ui_clear();
     cout << "Dobrodošli " << kor.username;
     ui_separator();
+
+    vector <string> stavke_izbornik;
+
+    //OK znaci da je napravljen, neznaci da radi kako treba
+    //RADI znaci da radi
+
+
+    stavke_izbornik.push_back("Izlaz U Glavni Meni");
+    stavke_izbornik.push_back("Izlaz Iz Programa");
+
+    stavke_izbornik.push_back(" ");
+
+    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //todo
+    stavke_izbornik.push_back("Zakazani pregledi");         //fali
+    stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI
+    stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK
+    stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK
+    stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK
+    stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK
+    stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //fali
+    stavke_izbornik.push_back("Prikaz Zaposlenika");                //Zaposlenik, ne svi attr      MOŽDA ->  //onaj mat_view gjde se manje vidi, TODO refresh view MOŽDA
+    stavke_izbornik.push_back("Prikaz Tipova Zivotinja");// doktor_tipovi_zivotinja   //view OK RADI
+    stavke_izbornik.push_back("Prikaz Usluga Ambulante");  //doktor_tipovi_usluga       //view OK RADI
+    stavke_izbornik.push_back("Dodavanje Doktora na Pregled");//InsertDoktor_Ambulanta  //OK
+    stavke_izbornik.push_back("Prikaz svih ID-a Korisnika i njihovih Zivotinja");//KorisnikView //OK RADI
+    stavke_izbornik.push_back("Prikaz opisa AmbulanteID"); //TODO
+
+    for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
+
+    //offset += offset_pl;
+
     while(true) {
         int odabir = 0;
 
-        //OK znaci da je napravljen, neznaci da radi kako treba
-        //RADI znaci da radi
-
-        ui_print("Izbornik");
-
-        ui_print("1 - Informacije o Ambulanti ID"); //SelectAmbulanta   //todo
-
-        ui_print("2 - Zakazani pregledi");          //fali
-        ui_print("3 - Dodavanje pregleda");     //InsertAmbulanta    //OK  RADI
-        ui_print("4 - Izmjena opisa pregleda"); //UpdateAmbulanta_opis    //OK
-
-        ui_print("5 -  Dodavanje korisnika");  //InsertKorisnik     //OK
-
-        ui_print("7 -  Dodavanje zivotinje"); //InsertZivotinja      //OK
-
-        ui_print("9 -  Spajanje Zivotinje i korisnika"); //InsertKorisnikZivotinja   //OK
-
-        ui_print("11 - Ispis pregleda za pojedinog Korisnika");    //fali
-        ui_print("12 - Prikaz zaposlenika");        //Zaposlenik, ne svi attr      MOŽDA ->  //onaj mat_view gjde se manje vidi, TODO refresh view MOŽDA
-
-        ui_print("13 -  Prikaz Tipova Zivotinja");  // doktor_tipovi_zivotinja   //view OK RADI
-        ui_print("14 -  Prikaz Usluga");         //doktor_tipovi_usluga       //view OK RADI
-
-        ui_print("15 -  Dodavanje Doktora na Pregled"); //InsertDoktor_Ambulanta  //OK
-
-        ui_print("16 -  Prikaz svih ID-a Korisnika i njihovih Zivotinja"); //KorisnikView //OK RADI
-
-        ui_print("0 -  Izlaz iz Programa");
-        ui_print("10 - Izlaz u Glavni Izbornik");
-
-
+        ui_print_menu(stavke_izbornik,"Doktor Izbornik",8,3);
 
         ui_input();
         cin>>odabir;
 
-        if(odabir == 1){
+        cout<<stavke_izbornik[odabir+offset]<<endl;
+        cout<<"  offset : "<<offset;
+        cout<<" Uneseni : "<<odabir;
+        cout<<endl;
+
+        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return 0;
+        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return -1;
+
+        else if(stavke_izbornik[odabir+offset] == "Informacije o Ambulanti"){
 
         }
-        else if(odabir == 2){
+        else if(stavke_izbornik[odabir+offset] == "Zakazani pregledi"){
 
         }
-        else if(odabir == 3){
+        else if(stavke_izbornik[odabir+offset] == "Dodavanje pregleda"){
             ui_print("Unesite ID usluge ");
             ui_input();
             int ID;
@@ -128,7 +140,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
             }
         }
-        else if(odabir == 4){
+        else if(stavke_izbornik[odabir+offset] == "Izmjena opisa pregleda"){
             ui_print("Unesite ID pregleda : ");
             ui_input();
             int ID;
@@ -167,7 +179,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
-        else if(odabir == 5){
+        else if(stavke_izbornik[odabir+offset] == "Dodavanje Korisnika"){
             ui_print("Unesite Ime korisnika");
             ui_input();
             string ime;
@@ -250,7 +262,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
 
         }
-        else if(odabir == 7){
+        else if(stavke_izbornik[odabir+offset] == "Dodavanje Zivotinje"){
             ui_print("Unesite Tip Zivotinje");
             ui_input();
             int tip;
@@ -298,7 +310,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
-        else if(odabir == 9){
+        else if(stavke_izbornik[odabir+offset] == "Spajanje Zivotinje i Korisnika"){
             ui_print("Unesite ID korisnika : ");
             ui_input();
             int korId;
@@ -330,25 +342,25 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
-        else if(odabir == 11){
+        else if(stavke_izbornik[odabir+offset] == "Svi Pregledi Podjedinog Korisnika"){
 
         }
-        else if(odabir == 12){
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Zaposlenika"){
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM veterinar_sys.zaposlenik ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        else if(odabir == 13){
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Tipova Zivotinja"){
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM doktor_tipovi_zivotinja ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        else if(odabir == 14){
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Usluga Ambulante"){
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM doktor_tipovi_usluga ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        else if(odabir == 15){
+        else if(stavke_izbornik[odabir+offset] == "Dodavanje Doktora na Pregled"){
 
             ui_print("Unesite ID doktora");
             ui_input();
@@ -381,13 +393,17 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
             }
         }
-        else if(odabir == 16){
+        else if(stavke_izbornik[odabir+offset] == "Prikaz svih ID-a Korisnika i njihovih Zivotinja"){
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        if(odabir == 0) return 0;
-        else if(odabir == 10) return -1;
+        else if(stavke_izbornik[odabir+offset] == "Prikaz opisa AmbulanteID"){
+
+        }
+
+
+
     }
 }
 
@@ -407,4 +423,36 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
  *
- */
+ *//*
+        //OK znaci da je napravljen, neznaci da radi kako treba
+        //RADI znaci da radi
+
+        ui_print("Izbornik");
+
+        ui_print("1 - Informacije o Ambulanti ID");
+
+        ui_print("2 - Zakazani pregledi");
+        ui_print("3 - Dodavanje pregleda");
+        ui_print("4 - Izmjena opisa pregleda");
+        ui_print("5 -  Dodavanje korisnika");
+
+        ui_print("7 -  Dodavanje zivotinje");
+
+        ui_print("9 -  Spajanje Zivotinje i korisnika");
+
+        ui_print("11 - Ispis pregleda za pojedinog Korisnika");
+        ui_print("12 - Prikaz zaposlenika");
+
+        ui_print("13 -  Prikaz Tipova Zivotinja");
+        ui_print("14 -  Prikaz Usluga");
+
+        ui_print("15 -  Dodavanje Doktora na Pregled");
+
+        ui_print("16 -  Prikaz svih ID-a Korisnika i njihovih Zivotinja");
+
+        ui_print("17 -   Prikaz opisa AmbulanteID"); //TODO
+
+        ui_print("0 -  Izlaz iz Programa");
+        ui_print("10 - Izlaz u Glavni Izbornik");
+
+*/

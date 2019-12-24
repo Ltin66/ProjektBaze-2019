@@ -34,26 +34,26 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
         ui_print("1 -  Prikaz Informacija Svih Doktora");
 
 
-        ui_print("2 -  Brisanje Pregleda");
-        ui_print("3 -  Dodavanje Doktora na Pregled");
-        ui_print("4 -  Brisanje Doktora s Pregleda");
+        ui_print("2 -   Brisanje Pregleda");
+        ui_print("3 -   Dodavanje Doktora na Pregled");
+        ui_print("4 -   Brisanje Doktora s Pregleda");
         ui_print("16 -  Brisanje korisnika"); //OK
 
-        ui_print("8 -  Brisanje zivotinje");  //OK
+        ui_print("8 -   Brisanje zivotinje");  //OK
 
 
-        ui_print("5 -  Prikaz Svih Inspekcija");
-        ui_print("6 -  Dodaj inspekciju i doktora");
+        ui_print("5 -   Prikaz Svih Inspekcija");
+        ui_print("6 -   Dodaj inspekciju i doktora");
 
         //ui_print("11 - Prikaz Doktora");
 
-        ui_print("12 - Zakazane Inspekcije");
-        ui_print("14 - Izmjena opisa inspekcije");
+        ui_print("12 -  Zakazane Inspekcije");
+        ui_print("14 -  Izmjena opisa inspekcije");
 
         //ui_print("15 - AVG broj doktora na inspekcijama");
 
-        ui_print("0 -  Izlaz iz Programa");
-        ui_print("10 - Izlaz u Glavni Izbornik");
+        ui_print("0 -   Izlaz iz Programa");
+        ui_print("10 -  Izlaz u Glavni Izbornik");
 
         ui_input();
         cin>>odabir;
