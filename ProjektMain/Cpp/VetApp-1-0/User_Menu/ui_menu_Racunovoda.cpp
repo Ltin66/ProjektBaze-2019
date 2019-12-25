@@ -20,47 +20,73 @@ using namespace std;
 
 
 int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
+    int offset = 0;
+    int offset_pl = 2;
+
     ui_clear();
     cout << "Dobrodošli " << kor.username;
     ui_separator();
+
+    vector <string> stavke_izbornik;
+
+    //OK znaci da je napravljen, neznaci da radi kako treba
+    //RADI znaci da radi
+
+
+    stavke_izbornik.push_back("Izlaz U Glavni Meni");
+    stavke_izbornik.push_back("Izlaz Iz Programa");
+
+    stavke_izbornik.push_back(" ");
+
+    stavke_izbornik.push_back("Popis Zaposlenika");
+    stavke_izbornik.push_back("Izracun Place");
+    stavke_izbornik.push_back("Unos Zaposlenika");
+    stavke_izbornik.push_back("Raspored");
+    stavke_izbornik.push_back("Unos Rasporeda");
+    stavke_izbornik.push_back("Unos Dolaska");
+
+    for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
+
+
     while(true) {
         int odabir = 0;
 
-        ui_print("Izbornik");
 
-        ui_print("1 -  Popis Zaposlenika");
-        ui_print("2 -  Izracun Place");
-        ui_print("3 -  Unos Zaposlenika");
+        ui_print_menu(stavke_izbornik,"Doktor Izbornik",8,3);
 
-        ui_print("4 -  Raspored");
-        ui_print("5 -  Unos Rasporeda");
-        ui_print("6 -  Unos Dolaska");
-
-        ui_print("0 -  Izlaz iz Programa");
-        ui_print("10 - Izlaz u Glavni Izbornik");
 
         ui_input();
         cin>>odabir;
 
-        if(odabir == 1) {//temp dbTable
-            //cout<<"tu sam 1111111111111111111111";
-            dbTable T;
-            CommandToTable("SELECT * FROM ZAPOSLENIK",T,con);
-            ui_showTable(T);
-        }
-        else if(odabir == 2){
-        }
-        else if(odabir == 3){
-        }
-        else if(odabir == 4){
-        }
-        else if(odabir == 5){
-        }
-        else if(odabir == 6){
+        cout<<stavke_izbornik[odabir+offset]<<endl;
+        cout<<"  offset : "<<offset;
+        cout<<" Uneseni : "<<odabir;
+        cout<<endl;
+
+        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
+        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
+
+        else if(stavke_izbornik[odabir+offset] == "Popis Zaposlenika"){
 
         }
-        else if(odabir == 0) return 0;
-        else if(odabir == 10) return -1;
+        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Raspored"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){
+
+        }
+
+
+
     }
 }
 

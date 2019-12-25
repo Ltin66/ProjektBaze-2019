@@ -21,46 +21,62 @@ using namespace std;
 
 
 int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
+    int offset = 0;
+    int offset_pl = 2;
+
     ui_clear();
     cout << "Dobrodošli " << kor.username;
     ui_separator();
+
+    vector <string> stavke_izbornik;
+
+    //OK znaci da je napravljen, neznaci da radi kako treba
+    //RADI znaci da radi
+
+
+    stavke_izbornik.push_back("Izlaz U Glavni Meni");
+    stavke_izbornik.push_back("Izlaz Iz Programa");
+
+    stavke_izbornik.push_back(" ");
+
+    stavke_izbornik.push_back("Dodaj Doktora");
+    stavke_izbornik.push_back("Dodaj Racunovodu");
+    stavke_izbornik.push_back("Dodaj Voditelja Odjela");
+    stavke_izbornik.push_back("Log");
+
+    for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
+
+
     while(true) {
         int odabir = 0;
 
-        ui_print("Izbornik");
+        ui_print_menu(stavke_izbornik,"Doktor Izbornik",8,3);
 
-        ui_print("1 - Dodaj Doktora");
-        ui_print("2 - Dodaj Racunovodu");
-        ui_print("3 - Dodaj Voditelja Odjela");
-
-        ui_print("4 - Log");
-
-
-        ui_print("0 - Izlaz iz Programa");
-        ui_print("10 - Izlaz u Glavni Izbornik");
 
         ui_input();
         cin>>odabir;
 
-        if(odabir == 1){
+        cout<<stavke_izbornik[odabir+offset]<<endl;
+        cout<<"  offset : "<<offset;
+        cout<<" Uneseni : "<<odabir;
+        cout<<endl;
+
+        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
+        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
+
+        else if(stavke_izbornik[odabir+offset] == "Dodaj Doktora"){
 
         }
-        else if(odabir == 2){
+        else if(stavke_izbornik[odabir+offset] == "Dodaj Racunovodu"){
 
         }
-        else if(odabir == 3){
+        else if(stavke_izbornik[odabir+offset] == "Dodaj Voditelja Odjela"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Log"){
 
         }
 
-        else if(odabir == 4){
-
-        }
-
-
-
-
-        if(odabir == 0) return 0;
-        else if(odabir == 10) return -1;
     }
 
 }

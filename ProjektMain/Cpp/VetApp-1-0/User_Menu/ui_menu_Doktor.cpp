@@ -71,8 +71,8 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         cout<<" Uneseni : "<<odabir;
         cout<<endl;
 
-        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return 0;
-        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return -1;
+        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
+        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
         else if(stavke_izbornik[odabir+offset] == "Informacije o Ambulanti"){
 

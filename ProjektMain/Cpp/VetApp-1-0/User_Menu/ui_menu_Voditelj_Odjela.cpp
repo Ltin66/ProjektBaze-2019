@@ -20,95 +20,70 @@ using namespace std;
 
 
 int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
+    int offset = 0;
+    int offset_pl = 2;
+
     ui_clear();
     cout << "Dobrodošli " << kor.username;
     ui_separator();
-    while(true) {
-        ui_clear();
 
+    vector <string> stavke_izbornik;
+
+    //OK znaci da je napravljen, neznaci da radi kako treba
+    //RADI znaci da radi
+
+
+    stavke_izbornik.push_back("Izlaz U Glavni Meni");
+    stavke_izbornik.push_back("Izlaz Iz Programa");
+
+    stavke_izbornik.push_back(" ");
+
+    stavke_izbornik.push_back("Prikaz Informacija Svih Doktora");
+    stavke_izbornik.push_back("Brisanje Pregleda");
+    stavke_izbornik.push_back("Dodavanje Doktora na Pregled");
+    stavke_izbornik.push_back("Brisanje Doktora s Pregleda");
+    stavke_izbornik.push_back("Brisanje korisnika"); //OK
+    stavke_izbornik.push_back("Brisanje zivotinje"); //OK
+    stavke_izbornik.push_back("Prikaz Svih Inspekcija");
+    stavke_izbornik.push_back("Dodaj inspekciju i doktora");
+    stavke_izbornik.push_back("Zakazane Inspekcije");
+    stavke_izbornik.push_back("Izmjena opisa inspekcije");
+
+
+
+    for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
+
+
+    while(true) {
         int odabir = 0;
 
-        ui_print("Izbornik");
-        ui_separator();
+        ui_print_menu(stavke_izbornik,"Voditelj Odjela Izbornik",8,3);
 
-        ui_print("1 -  Prikaz Informacija Svih Doktora");
-
-
-        ui_print("2 -   Brisanje Pregleda");
-        ui_print("3 -   Dodavanje Doktora na Pregled");
-        ui_print("4 -   Brisanje Doktora s Pregleda");
-        ui_print("16 -  Brisanje korisnika"); //OK
-
-        ui_print("8 -   Brisanje zivotinje");  //OK
-
-
-        ui_print("5 -   Prikaz Svih Inspekcija");
-        ui_print("6 -   Dodaj inspekciju i doktora");
-
-        //ui_print("11 - Prikaz Doktora");
-
-        ui_print("12 -  Zakazane Inspekcije");
-        ui_print("14 -  Izmjena opisa inspekcije");
-
-        //ui_print("15 - AVG broj doktora na inspekcijama");
-
-        ui_print("0 -   Izlaz iz Programa");
-        ui_print("10 -  Izlaz u Glavni Izbornik");
 
         ui_input();
         cin>>odabir;
 
-        if(odabir == 1){
+        cout<<stavke_izbornik[odabir+offset]<<endl;
+        cout<<"  offset : "<<offset;
+        cout<<" Uneseni : "<<odabir;
+        cout<<endl;
 
+        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
+        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
-        }
-        else if(odabir == 2){
-
-        }
-        else if(odabir == 3){
-
-        }
-        else if(odabir == 4){
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Informacija Svih Doktora"){
 
         }
-        else if(odabir == 5){
+        else if(stavke_izbornik[odabir+offset] == "Brisanje Pregleda"){
 
         }
-        else if(odabir == 6){
+        else if(stavke_izbornik[odabir+offset] == "Dodavanje Doktora na Pregled"){
 
         }
-        else if(odabir == 7){
+        else if(stavke_izbornik[odabir+offset] == "Brisanje Doktora s Pregleda"){
 
         }
-        else if(odabir == 8){
-
-            ui_print("Unesite ID Zivotinje");
-            ui_input();
-            int id;
-            cin>>id;
-
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("deleteZivotinja");
-
-                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-        }
-        else if(odabir == 9){
-
-        }
-        else if(odabir == 16){
+        else if(stavke_izbornik[odabir+offset] == "Brisanje korisnika"){
             ui_print("Unesite ID Korisnika");
             ui_input();
             int id;
@@ -132,9 +107,46 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
             }
         }
+        else if(stavke_izbornik[odabir+offset] == "Brisanje zivotinje"){
+            ui_print("Unesite ID Zivotinje");
+            ui_input();
+            int id;
+            cin>>id;
 
-        if(odabir == 0) return 0;
-        else if(odabir == 10) return -1;
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("deleteZivotinja");
+
+                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {  cmd.Execute(); }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+            }
+        }
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Svih Inspekcija"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Dodaj inspekciju i doktora"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Zakazane Inspekcije"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Izmjena opisa inspekcije"){
+
+        }
+
+       
+
+
     }
 }
 
