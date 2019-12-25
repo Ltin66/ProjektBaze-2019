@@ -13,8 +13,12 @@
 //void ui_error(std::string err_msg = "ERROR", int err_num = -1);
 
 
+int num_of_char_in_str(std::string str);
+
+
 void ui_print_menu(std::vector< std::string > stavke,const std::string& naslov,int naslov_space = 6,int stavke_space = 2,int size = 1,bool flg = false);
 
+std::string ui_format_str_by_len(std::string data,int max_size);
 
 bool ui_confirm();
 
@@ -30,7 +34,7 @@ int ui_prijava(korisnik &kor);
 
 void ui_postavke();
 
-int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10,bool redni_broj = false);
+int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxRowSize = 5,const int PrintPauseLen = 10,const bool redni_broj = false);
 
 void ui_error(const std::string& err_msg = "ERROR", int err_num = -1);
 

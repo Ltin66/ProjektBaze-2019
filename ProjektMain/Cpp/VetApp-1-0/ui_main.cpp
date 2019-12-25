@@ -14,6 +14,30 @@
 using namespace std;
 
 
+//vraca duljinu stringa
+int num_of_char_in_str(string str)
+{
+    int i = 0, j = 0;
+    while (str[i])
+    {
+        if ((str[i] & 0xc0) != 0x80) j++;
+        i++;
+    }
+    return j;
+}
+
+
+string ui_format_str_by_len(string data, int max_size){
+
+    int str_ch_len = num_of_char_in_str(data);
+
+    if(str_ch_len > max_size) return data.substr(0,max_size-3) + "...";
+    string spc ((max_size - str_ch_len)  , ' ');
+    data = data + spc;
+
+    return data;
+}
+
 //ispisuje string -> val, trebao se zvati ui_println
 void ui_print(const string& val,int size = 1){
     cout<<val<<endl;
@@ -89,24 +113,46 @@ void ui_postavke(){
     cout<<"Bravo";
 }
 
+
 //funkcija za ispis tablica
-int ui_showTable(dbTable &Table,int MaxRowSize = 20, int MaxCollumnSize = 20,int PrintPauseLen = 10,bool redni_broj = false){
+int ui_showTable(dbTable &Table,const int MaxCollumnSize = 10,const int MaxRowSize = 5,const int PrintPauseLen = 10,const bool redni_broj = false){
 
-    //cout<<"INFO : "<<endl
+    ui_clear();
 
-    cout<<"Redni Broj ";
-    if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<Table.CollName[i]<<" || ";
-
-    //cout<<endl<<Table.ColCnt;
-    //cout<<endl<<Table.Data[0][0]<<" | "<<endl<<endl;
+    if(redni_broj) cout<<"Redni Broj ";
+    if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<ui_format_str_by_len(Table.CollName[i],MaxCollumnSize)<<"  ||  ";
+    ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
 
     for(int i = 0;i < Table.RowCnt;i++){
+
         if(redni_broj) cout<<i + 1<<" || ";
         cout<<endl;
-        for(int j = 0;j < Table.ColCnt;j++) cout<<Table.Data[j][i]<<" | ";
+        for(int j = 0;j < Table.ColCnt;j++) cout<<ui_format_str_by_len(Table.Data[j][i],MaxCollumnSize)<<"  ||  ";
+
+        if((i % PrintPauseLen == 0 && i != 0) || i+1 == Table.RowCnt){
+
+            ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
+            cout<<"(I)zlaz";
+            if(1 < i-PrintPauseLen) cout<<" || (G)ore";
+            if(i+1 != Table.RowCnt) cout<<" || (D)olje  ";
+            cout<<'\n';
+            char odabir = 0;
+            ui_input();
+            cin>>odabir;
+            if(odabir == 'I' || odabir == 'i') return 0; //da
+            else if((1 < i-PrintPauseLen) && (odabir == 'G' || odabir == 'g'))  (i - PrintPauseLen*2) > 0 ? i -= PrintPauseLen*2 : i = 0; // odi gore
+            else if((i+1 != Table.RowCnt) && (odabir == 'D' || odabir == 'd')) i = i; //nastavi dolje
+            else if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;  //vrati ako nemože dolje
+            else i -= PrintPauseLen; //vrati
+
+            ui_clear();
+            if(!Table.CollName.empty()) for(int i = 0;i<Table.ColCnt;i++) cout<<ui_format_str_by_len(Table.CollName[i],MaxCollumnSize)<<"  ||  ";
+            ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
+        }
+
     }
 
-
+    return 1;
 }
 
 //funkcija za ispis errora
@@ -119,7 +165,7 @@ void ui_error(const string& err_msg = "ERROR", int err_num = -1){
 
 //fun za potvrdivanje
 bool ui_confirm(){
-    cout<<"\n Jeste li Sigurni? \n (Y)es / (N)o ";
+    cout<<"\n Potvrdite odluku  (Y)es / (N)o ";
     char tmp = 0;
     ui_input();
     cin>>tmp;

@@ -13,7 +13,7 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+//using namespace std;
 /*
 int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     ui_clear();
