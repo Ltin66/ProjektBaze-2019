@@ -42,7 +42,8 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Dodaj Doktora");
     stavke_izbornik.push_back("Dodaj Racunovodu");
     stavke_izbornik.push_back("Dodaj Voditelja Odjela");
-    stavke_izbornik.push_back("Log");
+    stavke_izbornik.push_back("Log prijave i odjave"); //OK RADI
+    stavke_izbornik.push_back("Log zadnje prijave korisnika"); //OK RADI
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 
@@ -73,8 +74,18 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
         else if(stavke_izbornik[odabir+offset] == "Dodaj Voditelja Odjela"){
 
         }
-        else if(stavke_izbornik[odabir+offset] == "Log"){
+        else if(stavke_izbornik[odabir+offset] == "Log prijave i odjave"){
+            //select * from log_login_logout;
+            dbTable tipovi_ziv;
+            CommandToTable("select * from log_login_logout",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
 
+        else if(stavke_izbornik[odabir+offset] == "Log zadnje prijave korisnika"){
+            //select Naziv,MAX(vijeme) Vrijeme from log_login_logout WHERE tip = 'LOGON' GROUP BY Naziv;
+            dbTable tipovi_ziv;
+            CommandToTable("select Naziv,MAX(vijeme) Vrijeme from log_login_logout WHERE tip = 'LOGON' GROUP BY Naziv",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
 
     }

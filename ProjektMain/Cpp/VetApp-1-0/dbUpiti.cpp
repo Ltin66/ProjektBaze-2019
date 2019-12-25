@@ -17,7 +17,7 @@ using namespace std;
 
 string dbUserType(SAConnection &con){
 
-    string command = "select * from USER_ROLE_PRIVS where USERNAME = USER";
+    string command = "select * from USER_ROLE_PRIVS where USERNAME = USER AND ADMIN_OPTION = 'NO' ";
     SAString SAScomm = command.c_str();
 
     //cout<<endl<<command<<endl;

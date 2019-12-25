@@ -60,6 +60,7 @@ int main(int argc, char* argv[])
 
             ui_clear();
             cout << "Dobrodošli " << kor.username;
+            cout<<kor.UserRole<<endl;
             ui_separator();
 
             if (kor.UserRole == "RACUNOVODA" && tmp == 501) {

@@ -158,8 +158,11 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
 
 
 
+begin
+    create_user_voditelj_odjela('mirkomirkec1','1234');
+end;
 
-
+select * from USER_ROLE_PRIVS where USERNAME='MIRKOMIRKEC3' ;
 
 --radi, radi
 CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
