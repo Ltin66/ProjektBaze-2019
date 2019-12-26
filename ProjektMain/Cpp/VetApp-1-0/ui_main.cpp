@@ -120,69 +120,100 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollu
     int l_scr_offset = 2;
 
     int l_limit = 0;
-    int r_limit = MaxCollumnS;
-    int TableRowS_limit = Table.ColCnt;
+    int r_limit = MaxCollumnS-1;
+    int TableRowS_limit = Table.ColCnt - 1;
+
+    if(r_limit > TableRowS_limit) r_limit = TableRowS_limit;
 
     ui_clear();
 
     if(redni_broj) cout<<"Redni Broj ";
-    if(!Table.CollName.empty()) for(int i = l_limit;i<=r_limit;i++) cout<<ui_format_str_by_len(Table.CollName[i],MaxCollumnSize)<<"  ||  ";
-    ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
 
+    //ISPIS IMENA STUPACA
+    if(!Table.CollName.empty()) for(int i = l_limit;i<=r_limit;i++) cout<<ui_format_str_by_len(Table.CollName[i],MaxCollumnSize)<<"  ||  ";
+
+    ui_separator(MaxCollumnSize * (r_limit - l_limit + 1) + 4 * (r_limit - l_limit + 1) );
+
+    //ISPIS TABLICE
     for(int i = 0;i < Table.RowCnt;i++){
 
         if(redni_broj) cout<<i + 1<<" || ";
         cout<<endl;
+
+        //ISPIS REDA
         for(int j = l_limit;j <= r_limit;j++) cout<<ui_format_str_by_len(Table.Data[j][i],MaxCollumnSize)<<"  ||  ";
 
+
+        //KRETANJE PO TABLICI
         if((i % PrintPauseLen == 0 && i != 0) || i+1 == Table.RowCnt){
 
-            ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
+            ui_separator(MaxCollumnSize * (r_limit - l_limit + 1) + 4 * (r_limit - l_limit + 1) );
 
+            cout<<endl<<"Stranica : "<<
+            (i%PrintPauseLen ? i / PrintPauseLen + 1 : i / PrintPauseLen )
+            <<"/"<<
+            (Table.RowCnt%PrintPauseLen ? Table.RowCnt / PrintPauseLen + 1 : Table.RowCnt / PrintPauseLen) <<endl;
+
+            //ISPIS OPCIJA
             cout<<"(I)zlaz";
             if(1 < i-PrintPauseLen) cout<<" || (G)ore";
             if(i+1 != Table.RowCnt) cout<<" || (D)olje  ";
 
-            if(r_limit+1 != TableRowS_limit) cout<<" || d(E)sno  ";
-            if(l_limit - MaxCollumnS >= 0) cout<<" || (L)ijevo  ";
+            if(r_limit != TableRowS_limit) cout<<" || d(E)sno  ";
+            if(l_limit !=   0) cout<<" || (L)ijevo  ";
 
+            //UNOS OPCIJE
             cout<<'\n';
             char odabir = 0;
+            cout<<endl<<i<<" "<<l_limit<<" "<<r_limit<<endl;
             ui_input();
             cin>>odabir;
 
+            //IZLAZ
             if(odabir == 'I' || odabir == 'i') return 0; //da
 
+            //GORE
             else if((1 < i-PrintPauseLen) && (odabir == 'G' || odabir == 'g')) {
-                if(i+1 == Table.RowCnt) i = i -   PrintPauseLen - Table.RowCnt%PrintPauseLen + 1;
-                else i -= PrintPauseLen*2;
+                if(i+1 == Table.RowCnt) i = i -   PrintPauseLen - (i%10) ; //ako ih je manje od PrintPauseLen
+                //else i == 1 ? i = i - PrintPauseLen*2 - 1 : i = i - PrintPauseLen*2 ; //Vrati natrag ()-1 jer +1 na kraju iter
+                else i = i - PrintPauseLen - PrintPauseLen  ; //-2 = err
             }
+
+            //DOLJE
             else if((i+1 != Table.RowCnt) && (odabir == 'D' || odabir == 'd')) i = i; //nastavi dolje
 
-            else if((r_limit+1 != TableRowS_limit) && (odabir == 'E' || odabir == 'e')){
-                l_limit += MaxCollumnS;
+            //DESNO
+            else if((r_limit != TableRowS_limit) && (odabir == 'E' || odabir == 'e')){
+                l_limit += MaxCollumnS; //DIGNI
                 r_limit += MaxCollumnS;
-                if(r_limit >= TableRowS_limit) r_limit = TableRowS_limit - (TableRowS_limit%MaxCollumnS) +1;
+                if(r_limit >= TableRowS_limit) r_limit = TableRowS_limit - (TableRowS_limit%MaxCollumnS) +1; //AKO IH JE MANJE
 
-                if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;
-                else i -= PrintPauseLen;
+                if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1; //??
+                else i -= PrintPauseLen ;
             }
 
-            else if((l_limit - MaxCollumnS >= 0) && (odabir == 'L' || odabir == 'l')){
+            //LIJEVO
+            else if((l_limit !=   0) && (odabir == 'L' || odabir == 'l')){
                 if(r_limit +1 == TableRowS_limit) r_limit -= TableRowS_limit%MaxCollumnS +1;
                 l_limit -= MaxCollumnS;
                 r_limit -= MaxCollumnS;
                 if(l_limit == 0) r_limit = MaxCollumnS ;
+
                 if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;
-                else i -= PrintPauseLen;
+                else i -= PrintPauseLen  - 1;
             }
 
+            //VRATI
             else if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;  //vrati ako nemože dolje
-            else i -= PrintPauseLen; //vrati
+            else i = i - PrintPauseLen ; //vrati
 
+            if(i == 0) i = -1;
             ui_clear();
+
+            //ISPIS IMENA STUPACA
             if(!Table.CollName.empty()) for(int i = l_limit;i<=r_limit;i++) cout<<ui_format_str_by_len(Table.CollName[i],MaxCollumnSize)<<"  ||  ";
-            ui_separator(MaxCollumnSize * (Table.ColCnt + 1));
+
+            ui_separator(MaxCollumnSize * (r_limit - l_limit + 1) + 4 * (r_limit - l_limit + 1) );
         }
 
     }
