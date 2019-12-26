@@ -115,12 +115,14 @@ void ui_postavke(){
 
 
 //funkcija za ispis tablica
-int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollumnS = 5,const int PrintPauseLen = 10,const bool redni_broj = false){
+int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS = 5,const int PrintPauseLen = 10,const bool redni_broj = false){
 
     int l_scr_offset = 2;
 
+    MaxCollumnS --;
+
     int l_limit = 0;
-    int r_limit = MaxCollumnS-1;
+    int r_limit = MaxCollumnS;
     int TableRowS_limit = Table.ColCnt - 1;
 
     if(r_limit > TableRowS_limit) r_limit = TableRowS_limit;
@@ -184,9 +186,13 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollu
 
             //DESNO
             else if((r_limit != TableRowS_limit) && (odabir == 'E' || odabir == 'e')){
-                l_limit += MaxCollumnS; //DIGNI
-                r_limit += MaxCollumnS;
-                if(r_limit >= TableRowS_limit) r_limit = TableRowS_limit - (TableRowS_limit%MaxCollumnS) +1; //AKO IH JE MANJE
+                l_limit = r_limit;
+                if(r_limit + MaxCollumnS > TableRowS_limit) {
+                    r_limit += TableRowS_limit - l_limit;
+                    //l_limit--;
+                }
+                else r_limit += MaxCollumnS;
+
 
                 if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1; //??
                 else i -= PrintPauseLen ;
@@ -194,9 +200,11 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollu
 
             //LIJEVO
             else if((l_limit !=   0) && (odabir == 'L' || odabir == 'l')){
-                if(r_limit +1 == TableRowS_limit) r_limit -= TableRowS_limit%MaxCollumnS +1;
+                if(r_limit  == TableRowS_limit) r_limit = l_limit;
+                else r_limit -= MaxCollumnS;
+
                 l_limit -= MaxCollumnS;
-                r_limit -= MaxCollumnS;
+
                 if(l_limit == 0) r_limit = MaxCollumnS ;
 
                 if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;

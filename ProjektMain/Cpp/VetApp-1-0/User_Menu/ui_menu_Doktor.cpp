@@ -43,8 +43,8 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Zakazani pregledi");         //fali
     stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI
     stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK
-    stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK
-    stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK
+    stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK RADI
+    stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK RADI
     stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK RADI
     stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //fali
     stavke_izbornik.push_back("Prikaz Zaposlenika");                //Zaposlenik, ne svi attr      MOŽDA ->  //onaj mat_view gjde se manje vidi, TODO refresh view MOŽDA
