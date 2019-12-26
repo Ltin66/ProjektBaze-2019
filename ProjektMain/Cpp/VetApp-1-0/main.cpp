@@ -44,14 +44,14 @@ int main(int argc, char* argv[])
         int odabir = 0;
         cout << "Glavni Izbornik :" << endl;
         cout << "1 - Prijava" << endl;
-        cout << "2 - Postavke" << endl;
+        //cout << "2 - Postavke" << endl;
         cout << "0 - Izlaz" << endl;
         ui_input();
         cin >> odabir;
 
 
         if (odabir == 0) return 0;
-        else if (odabir == 2) ui_postavke();
+        //else if (odabir == 2) ui_postavke();
         else if (odabir == 1) {
 
             int tmp = ui_prijava(kor);

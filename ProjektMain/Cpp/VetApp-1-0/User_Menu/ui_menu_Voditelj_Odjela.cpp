@@ -49,6 +49,9 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Zakazane Inspekcije");
     stavke_izbornik.push_back("Izmjena opisa inspekcije");
 
+    stavke_izbornik.push_back("Dodaj Intervenciju");
+    stavke_izbornik.push_back("Prikaz Intervencija");
+    stavke_izbornik.push_back("Brisanje Intervencije");
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;

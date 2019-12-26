@@ -30,7 +30,7 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
     vector <string> stavke_izbornik;
 
-    //OK znaci da je napravljen, neznaci da radi kako treba
+    //OK znaci da je gotov, neznaci da radi kako treba
     //RADI znaci da radi
 
 
@@ -39,9 +39,9 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Dodaj Doktora");
-    stavke_izbornik.push_back("Dodaj Racunovodu");
-    stavke_izbornik.push_back("Dodaj Voditelja Odjela");
+    stavke_izbornik.push_back("Dodaj Doktora"); //OK RADI
+    stavke_izbornik.push_back("Dodaj Racunovodu"); //OK
+    stavke_izbornik.push_back("Dodaj Voditelja Odjela"); //OK
     stavke_izbornik.push_back("Log prijave i odjave"); //OK RADI
     stavke_izbornik.push_back("Log zadnje prijave korisnika"); //OK RADI
 
@@ -66,13 +66,97 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
         else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
         else if(stavke_izbornik[odabir+offset] == "Dodaj Doktora"){
+            string ime,sifra;
 
+            ui_print("Unesite ime korisnika :");
+            ui_input();
+            cin>>ime;
+
+            ui_print("Unesite šifru korisnika :");
+            ui_input();
+            cin>>sifra;
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("create_user_doktor");
+
+                cmd.Param("user_name").setAsString() = ime.c_str();
+                cmd.Param("passwd").setAsString() = sifra.c_str();
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {  cmd.Execute(); }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Dodaj Racunovodu"){
+            string ime,sifra;
 
+            ui_print("Unesite ime korisnika :");
+            ui_input();
+            cin>>ime;
+
+            ui_print("Unesite šifru korisnika :");
+            ui_input();
+            cin>>sifra;
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("create_user_racunovoda");
+
+                cmd.Param("user_name").setAsString() = ime.c_str();
+                cmd.Param("passwd").setAsString() = sifra.c_str();
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {  cmd.Execute(); }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Dodaj Voditelja Odjela"){
+            string ime,sifra;
 
+            ui_print("Unesite ime korisnika :");
+            ui_input();
+            cin>>ime;
+
+            ui_print("Unesite šifru korisnika :");
+            ui_input();
+            cin>>sifra;
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("create_voditelj_odjela");
+
+                cmd.Param("user_name").setAsString() = ime.c_str();
+                cmd.Param("passwd").setAsString() = sifra.c_str();
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {  cmd.Execute(); }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Log prijave i odjave"){
             //select * from log_login_logout;
@@ -80,7 +164,6 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
             CommandToTable("select * from log_login_logout",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-
         else if(stavke_izbornik[odabir+offset] == "Log zadnje prijave korisnika"){
             //select Naziv,MAX(vijeme) Vrijeme from log_login_logout WHERE tip = 'LOGON' GROUP BY Naziv;
             dbTable tipovi_ziv;
