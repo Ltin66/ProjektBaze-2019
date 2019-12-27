@@ -443,8 +443,6 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-
-
         //"Prikaz svih Posjeta Ambulanti"
         else if(stavke_izbornik[odabir+offset] == "Prikaz svih Posjeta Ambulanti"){
             dbTable tipovi_ziv;

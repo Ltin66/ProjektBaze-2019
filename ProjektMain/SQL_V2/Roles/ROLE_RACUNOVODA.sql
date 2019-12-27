@@ -4,6 +4,8 @@
     -- unos rasporeda
     -- raspored
     -- unos zaposlenika
+    -- pogled statusa zaposlenika
+    -- unos novog statusa
 
 create role racunovoda/
 

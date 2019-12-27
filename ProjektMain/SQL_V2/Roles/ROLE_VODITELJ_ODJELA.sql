@@ -1,9 +1,19 @@
 
 ------------------------------------------------------------------
+-- fali :
+    -- brisanje pregleda
+    --  brisanje doktora sa pregleda
+    -- brisanje zivotinje
+    -- dodaj inspekciju
+    -- zakazane inspekcije
+
+    --sve o intervencijama
 
 create role voditelj_odjela/
 grant CREATE SESSION to voditelj_odjela/  --da bi se mogao taj user spojiti na bazu
 grant execute on VODITELJ_ODJELA_PACK to voditelj_odjela;
+grant execute on dok_preg_id to voditelj_odjela;
+grant select on insp_view to voditelj_odjela;
 
 /*
 Informacije o Doktorima
@@ -58,5 +68,10 @@ CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
 
         ex_stmt_a := 'create synonym '|| user_name || '.INSP_VIEW  for veterinar_sys.INSP_VIEW';
         EXECUTE IMMEDIATE (ex_stmt_a);
-    end;
+
+        ex_stmt_a := 'create synonym '|| user_name || '.dok_preg_id  for veterinar_sys.dok_preg_id';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+
+        end;
 

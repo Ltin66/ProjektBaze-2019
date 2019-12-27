@@ -24,6 +24,11 @@ mrvicu je kompliciran,
 <UnsesnoVijelem dolaska> VrijemeOdlaska = <Uneseno Vrijeme Dolaska > + <Unsesni sati koje treba odraditi >)
 
 
+unesemo id zaposlenika,datum kada treba doci na posao "datum", i koliko sati treba odraditi
+
+u tablicu raspored insertamo id zzaposlenika, datum (datum kada treba doci na posao )
+i
+
 4. pregled rasporeda za sljedecih 7 dana (View
 (create view as dkkdk select * from raspored where datum >= CurrentDate - 7 dana)
 

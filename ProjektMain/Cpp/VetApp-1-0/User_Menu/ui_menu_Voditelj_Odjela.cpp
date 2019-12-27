@@ -38,22 +38,23 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Prikaz Informacija Svih Doktora"); //VO_OD_DOK_INFO
-    stavke_izbornik.push_back("Brisanje Pregleda");
-    stavke_izbornik.push_back("Dodavanje Doktora na Pregled");
-    stavke_izbornik.push_back("Brisanje Doktora s Pregleda");
-    stavke_izbornik.push_back("Brisanje korisnika"); //OK
-    stavke_izbornik.push_back("Brisanje zivotinje"); //OK
+    stavke_izbornik.push_back("Prikaz Informacija Svih Doktora"); //VO_OD_DOK_INFO //OK
+    stavke_izbornik.push_back("Brisanje Pregleda"); //fali
+    stavke_izbornik.push_back("Dodavanje Doktora na Pregled"); //insertDOKTOR_AMBULANTA
+    stavke_izbornik.push_back("Brisanje Doktora s Pregleda"); //select DOK_PREG_ID(1) from DUAL;
+    stavke_izbornik.push_back("Prikaz svih Korisnika"); //KORISNIK_VIEW //OK
+    stavke_izbornik.push_back("Brisanje korisnika"); //OK //deleteKORISNIK
+    stavke_izbornik.push_back("Brisanje zivotinje"); //fali
 
     stavke_izbornik.push_back("Prikaz Svih Inspekcija"); //INSP_VIEW
-    stavke_izbornik.push_back("Dodaj inspekciju");
-    stavke_izbornik.push_back("Dodaj Doktora na Inspekciju");
-    stavke_izbornik.push_back("Zakazane Inspekcije");
-    stavke_izbornik.push_back("Izmjena opisa inspekcije");
+    stavke_izbornik.push_back("Dodaj inspekciju"); //fali
+    stavke_izbornik.push_back("Dodaj Doktora na Inspekciju"); //insertDOKTORInspekcija
+    stavke_izbornik.push_back("Zakazane Inspekcije"); //fali
+    stavke_izbornik.push_back("Izmjena opisa inspekcije"); //update_opis_insp
 
-    stavke_izbornik.push_back("Dodaj Intervenciju");
-    stavke_izbornik.push_back("Prikaz Intervencija");
-    stavke_izbornik.push_back("Brisanje Intervencije");
+    stavke_izbornik.push_back("Dodaj Intervenciju"); //ja
+    stavke_izbornik.push_back("Prikaz Intervencija"); //ja
+    stavke_izbornik.push_back("Brisanje Intervencije"); //ja
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
@@ -77,6 +78,15 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
         else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
         else if(stavke_izbornik[odabir+offset] == "Prikaz Informacija Svih Doktora"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM VO_OD_DOK_INFO ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Prikaz svih Korisnika"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM KORISNIK_VIEW ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
 
         }
         else if(stavke_izbornik[odabir+offset] == "Brisanje Pregleda"){
@@ -137,7 +147,9 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
             }
         }
         else if(stavke_izbornik[odabir+offset] == "Prikaz Svih Inspekcija"){
-
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM INSP_VIEW ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         else if(stavke_izbornik[odabir+offset] == "Dodaj inspekciju i doktora"){
 
