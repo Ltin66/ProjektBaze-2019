@@ -2,7 +2,7 @@
 
 
 
--- TODO : treba staviti default za timestamp
+-- TODO : treba staviti default za timestamp možda
 
 create table intervencija(
     intervencija_id           INTEGER         NOT NULL, -- auto incr

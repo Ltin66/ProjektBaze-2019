@@ -38,7 +38,7 @@ ALTER TABLE ambulanta_korisnik_zivotinja
  ADD   CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id)
 ON DELETE CASCADE;
 
---OBA SLUŽE DA BI SE MOGLA BRISATI AMBULANTA  ili?
+--OBA SLUŽE DA BI SE MOGLA BRISATI AMBULANTA
 
 ALTER TABLE ambulanta_zaposlenik
 DROP CONSTRAINT AMB_ZAP_FK_AMB;
@@ -50,10 +50,63 @@ ON DELETE CASCADE;
 
 
 
+---------------------------------------------------------------------------------------
+-- INSPEKCIJE
 
+--
+
+--drop table INSPEKCIJA_KORISNIK;
+
+ALTER TABLE inspekcija_korisnik
+DROP CONSTRAINT INS_KOR_FK_INS;
+
+
+ALTER TABLE inspekcija_korisnik
+ADD     CONSTRAINT INS_KOR_FK_INS FOREIGN KEY(inspekcija_id) references inspekcija(inspekcija_id)
+
+    ON DELETE CASCADE;
+
+
+
+--OBA SLUŽE DA BI SE MOGLA BRISATI
+
+--    CONSTRAINT INS_ZAP_FK_INS FOREIGN KEY(inspekcija_id) references inspekcija(inspekcija_id),
+
+
+ALTER TABLE inspekcija_zaposlenik
+DROP CONSTRAINT INS_ZAP_FK_INS;
+
+
+ALTER TABLE inspekcija_zaposlenik
+ADD   CONSTRAINT INS_ZAP_FK_INS FOREIGN KEY(inspekcija_id) references inspekcija(inspekcija_id)
+
+    ON DELETE CASCADE;
+
+
+
+
+
+---------------------------------------------------------------------------------------
+-- Intervencije
+
+--INT_ZAP_FK_INT
+
+
+ALTER TABLE intervencija_zaposlenik
+DROP CONSTRAINT INT_ZAP_FK_INT;
+
+
+ALTER TABLE intervencija_zaposlenik
+ADD    CONSTRAINT INT_ZAP_FK_INT FOREIGN KEY (intervenicja_id) REFERENCES intervencija(intervencija_id)
+    ON DELETE CASCADE;
+
+
+
+
+---------------------------------------------------------------------------------------
 
 --TEST-- PROBAO radi sve ok
-select  * FROM AMBULANTA;
-delete from AMBULANTA where AMBULANTA_ID = 1;
+--select  * FROM AMBULANTA;
+--delete from AMBULANTA where AMBULANTA_ID = 1;
 
-SELECT * FROM AMBULANTA_ZAPOSLENIK;
+--SELECT * FROM AMBULANTA_ZAPOSLENIK;

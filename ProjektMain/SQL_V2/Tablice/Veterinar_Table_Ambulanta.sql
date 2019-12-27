@@ -1,83 +1,27 @@
 
---OPIS:
---
---
 
---OPIS:
--- sluzi za pohranjivanje osnovnih usluga npr. ultrazvuk, provjera mokrace,....
---
-create table ambulanta_usluga_tip(
-    ambulanta_usluga_tip_id         INTEGER         NOT NULL , --auto incr
-    naziv                           VARCHAR(20)     NOT NULL ,
-    CONSTRAINT AMB_USL_TIP_PK PRIMARY KEY (ambulanta_usluga_tip_id) USING INDEX
-)
-/
---USING INDEX
--- TODO : check cijena > 0
+create role vet_sys/
 
---OPIS:
---
--- sluzi za spajanje zivotinje sa osnovnim uslugama, jer svaka osnovna usluga može imati razlicitu cijenu ovisno o
--- vrsti i velicini zivotinje
-create table ambulanta_usluga (
-    ambulanta_usluga_id               INTEGER         NOT NULL , --auto incr
-    naziv                             VARCHAR(20)     NOT NULL ,
-    ambulanta_usluga_tip_id           INTEGER         NOT NULL ,
-    zivotinja_tip_id                  INTEGER         NOT NULL ,
-    cijena                            NUMERIC(16,2)   NOT NULL CONSTRAINT PROVJERA_CIJENE CHECK(cijena > 0),
-    opis                              CLOB            DEFAULT '@' NOT NULL ,
-    CONSTRAINT AMB_US_PK PRIMARY KEY (ambulanta_usluga_id),
-    CONSTRAINT AMB_US_FK_USL_TIP FOREIGN KEY (ambulanta_usluga_tip_id) REFERENCES ambulanta_usluga_tip(ambulanta_usluga_tip_id)
-    --,CONSTRAIN PROVJERA_ZIVOTINJE CHECK (zivotinja_tip_id IN SELECT korisnik_id FROM korisnik)
-)
-/
+grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, CREATE MATERIALIZED VIEW, CREATE PROCEDURE,
+      CREATE PUBLIC SYNONYM, CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE ANY TRIGGER,ADMINISTER DATABASE TRIGGER,
+      CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE,GRANT ANY ROLE,GRANT ANY PRIVILEGE,ALTER USER,CREATE USER, CREATE TABLESPACE, CREATE ANY SYNONYM
+    , DROP USER, EXECUTE ANY PROCEDURE to vet_sys;
 
---OPIS:
---  glavna tablica za pohranu pregleda/usluga u ambulanti, tu se spaja usluga sa ambulantom i datumom kada je izvresno
---
-create table ambulanta(
-    ambulanta_id                       INTEGER        NOT NULL ,
-    ambulanta_usluga_id                INTEGER        NOT NULL ,
-    datum                              DATE           NOT NULL ,
-    opis                               CLOB           DEFAULT '@' NOT NULL ,
-    CONSTRAINT AMB_PK PRIMARY KEY (ambulanta_id),
-    CONSTRAINT AMB_FK FOREIGN KEY (ambulanta_usluga_id) REFERENCES ambulanta_usluga(ambulanta_usluga_id)
-)
+create user veterinar_sys identified by 1234 /
+grant vet_sys to veterinar_sys/
+
+
+
+
+
+-- maknuti komentar od DATAFILE, 1. je za linx, 2. je za win
+CREATE TABLESPACE veterinar --LOGGING
+    DATAFILE '/lib/oracle/oradata/XE/veterinar.ora'
+  --DATAFILE 'C:\oraclexe\app\oracle\oradata\xe\veterinar.ora'
+    SIZE 500M REUSE AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED
+    EXTENT MANAGEMENT LOCAL
 /
 
 
---OPIS:
---  služi za spajanje ambulante sa korinik_zivotinjom
---
-
-create table ambulanta_korisnik_zivotinja (
-    ambulanta_korziv_id           INTEGER         NOT NULL , --auto incr
-    ambulanta_id                    INTEGER         NOT NULL ,
-    korisnik_zivotinja_id           INTEGER         NOT NULL ,
-    CONSTRAINT AMB_KOR_PK PRIMARY KEY (ambulanta_korziv_id) ,
-    CONSTRAINT AMB_KOR_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
-    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id),
-    CONSTRAINT AMB_KOR_UQ UNIQUE (ambulanta_id, korisnik_zivotinja_id) --za ambulanta_id moze doci isti korisnik samo jednom
-)
-/
-
-
-
-
-
-
-
--- TODO : check da su zivotinja_tip_id jednake od korisnika i usluge, nemoze krava doci na pregled za mačke
-
---OPIS:
--- sluti za spajanje ambulante sa zaposlenikom koji je radio na tom pregledu/usluzi
---
-create table ambulanta_zaposlenik(
-    ambulanta_zaposlenik_id                 INTEGER         NOT NULL , --auto incr
-    ambulanta_id                            INTEGER         NOT NULL,
-    zaposlenik_id                           INTEGER         NOT NULL,
-    CONSTRAINT AMB_ZAP_PK PRIMARY KEY (ambulanta_zaposlenik_id),
-    CONSTRAINT AMB_ZAP_FK_AMB FOREIGN KEY(ambulanta_id) REFERENCES ambulanta(ambulanta_id),
-    CONSTRAINT AMB_ZAP_FK_ZAP FOREIGN KEY(zaposlenik_id) REFERENCES zaposlenik(zaposlenik_id)
-)
-/
+ALTER USER veterinar_sys  DEFAULT TABLESPACE veterinar/
+ALTER USER veterinar_sys  QUOTA UNLIMITED ON veterinar;

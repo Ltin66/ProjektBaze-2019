@@ -53,6 +53,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Dodavanje Doktora na Pregled");//InsertDoktor_Ambulanta  //OK RADI
     stavke_izbornik.push_back("Prikaz svih ID-a Korisnika i njihovih Zivotinja");//KorisnikView //OK RADI
     stavke_izbornik.push_back("Prikaz opisa AmbulanteID"); //TODO
+    stavke_izbornik.push_back("Prikaz svih Posjeta Ambulanti");
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 
@@ -402,6 +403,12 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         }
 
+        //"Prikaz svih Posjeta Ambulanti"
+        else if(stavke_izbornik[odabir+offset] == "Prikaz svih Posjeta Ambulanti"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
 
 
     }
