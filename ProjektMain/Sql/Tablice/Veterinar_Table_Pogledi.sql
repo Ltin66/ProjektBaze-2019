@@ -57,6 +57,10 @@ CREATE OR REPLACE TRIGGER ZAP_INS
     END;
 
 
+
+
+
+
 -- Triger za Update nad zaposlenikom
 CREATE OR REPLACE TRIGGER ZAP_MAT_UPD
     AFTER UPDATE OF sifra,ime,prezime ON zaposlenik

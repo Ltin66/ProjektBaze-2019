@@ -17,6 +17,10 @@ CREATE OR REPLACE PACKAGE RACUNOVODA_PACK AS
 END;
 
 
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
 CREATE OR REPLACE PACKAGE BODY RACUNOVODA_PACK AS
 
 --5. Update vrijeme dolaska - procedura
