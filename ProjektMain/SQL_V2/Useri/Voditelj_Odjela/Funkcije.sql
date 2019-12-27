@@ -16,3 +16,29 @@ END;
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 select DOK_PREG_ID(1) from DUAL;
+
+
+
+
+-- Informacije o Doktorima
+
+-- INFO O ZAPOSLENICIMA OK RADI
+
+CREATE OR  REPLACE VIEW VO_OD_DOK_INFO
+    (ID,Ime,Srednje_Ime,Prezime,Sifra,Datum_pocetka,Biljeske)
+    AS
+    SELECT ZAP.ZAPOSLENIK_ID ID, ZAP.IME Ime,ZAP.SREDNJE_IME Srednje_Ime,
+           ZAP.PREZIME Prezime, ZAP.SIFRA Sifra,
+           RS.DATUM_POCETKA Datum_pocetka,   RS.BILJESKE Biljeske
+
+    FROM ZAPOSLENIK ZAP JOIN RADNI_STATUS RS ON ZAP.ZAPOSLENIK_ID = RS.ZAPOSLENIK_ID
+    JOIN RADNI_STATUS_TIP RST ON RS.RADNI_STATUS_TIP_ID = RST.RADNI_STATUS_TIP_ID
+    WHERE DATUM_POCETKA =
+          (SELECT MAX(RAS.Datum_pocetka) FROM RADNI_STATUS RAS
+          WHERE RAS.ZAPOSLENIK_ID = ZAP.ZAPOSLENIK_ID )
+          AND RST.NAZIV = 'doktor';
+
+--test
+
+select * from VO_OD_DOK_INFO;
+

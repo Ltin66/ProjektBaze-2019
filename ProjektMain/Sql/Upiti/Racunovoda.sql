@@ -8,7 +8,16 @@ za određenog zaposlenika ID
 
 
 2. unos novog zaposlenika procedura
-(inser into zaposlenik (<Uneseno ime> <-||- Srednje Ime> <-||- prezime > ..... ))
+
+mrvicu je kompliciran,
+    jedna proc za unos novog radnog statusa,
+    view za radne statuse, ORDER BY DATUM
+    jedna proc za unos zaposlenika
+
+    samo 2 inserta i jedan select *;
+
+    jer nemozemo direktno dodati zaposlenika ako nema radni status
+    a racunovoda nemoze dodati zaposlenika na radni status ako nemoze vidit koje svi radni statusi postoje
 
 3. unos rasporeda procedura
 (za zaposlenika ID unesi u raspred novi termin koje je : 

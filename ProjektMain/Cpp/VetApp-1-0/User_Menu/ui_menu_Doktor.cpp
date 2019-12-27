@@ -2,6 +2,7 @@
 // Created by tin on 12/22/19.
 //
 //Fale : Zakazani pregledi i ispis svih pregleda za korisnikID
+// SVE OSTALO JE ok
 
 #include "ui_menu_Doktor.h"
 #include "../ui_user.h"
@@ -32,14 +33,14 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
     //OK znaci da je napravljen, neznaci da radi kako treba
     //RADI znaci da radi
-
+    //+  - zadnja provjera radi
 
     stavke_izbornik.push_back("Izlaz U Glavni Meni");
     stavke_izbornik.push_back("Izlaz Iz Programa");
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //todo
+    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK
     stavke_izbornik.push_back("Zakazani pregledi");         //fali
     stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI
     stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK
@@ -47,13 +48,12 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK RADI
     stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK RADI
     stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //fali
-    stavke_izbornik.push_back("Prikaz Zaposlenika");                //Zaposlenik, ne svi attr      MOŽDA ->  //onaj mat_view gjde se manje vidi, TODO refresh view MOŽDA
+    stavke_izbornik.push_back("Prikaz Zaposlenika");           //zap_info //OK
     stavke_izbornik.push_back("Prikaz Tipova Zivotinja");// doktor_tipovi_zivotinja   //view OK RADI
     stavke_izbornik.push_back("Prikaz Usluga Ambulante");  //doktor_tipovi_usluga       //view OK RADI
     stavke_izbornik.push_back("Dodavanje Doktora na Pregled");//InsertDoktor_Ambulanta  //OK RADI
     stavke_izbornik.push_back("Prikaz svih ID-a Korisnika i njihovih Zivotinja");//KorisnikView //OK RADI
-    stavke_izbornik.push_back("Prikaz opisa AmbulanteID"); //TODO
-    stavke_izbornik.push_back("Prikaz svih Posjeta Ambulanti");
+    stavke_izbornik.push_back("Prikaz svih Posjeta Ambulanti"); //AMBULANTA_INFO //OK
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 
@@ -76,7 +76,51 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
         else if(stavke_izbornik[odabir+offset] == "Informacije o Ambulanti"){
+            string usluga = " ";
+            string naziv = " ";
+            string datum = " ";
+            string opis = " ";
 
+            ui_print("Unesite ID Pregleda : ");
+            int id = 0;
+            ui_input();
+            cin>>id;
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+                cmd.setCommandText("DOKTOR_PACK.selectAMBULANTA");
+
+
+                cmd.Param("p_id").setAsNumeric() = id + 0.0;
+
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+                ui_separator();
+
+
+                try {
+                    cmd.Execute();
+
+                    usluga = cmd.Param("o_usluga").asString();
+                    naziv  = cmd.Param("o_naziv").asString();
+                    datum  = cmd.Param("o_datum").asString();
+                    opis   = cmd.Param("o_opis").asString();
+
+                }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+                ui_print("Podaci za Ambulantu : " + to_string(id));
+                ui_print("  Naziv  : " + naziv);
+                ui_print("  Usluga : " + usluga);
+                ui_print("  Datum  : " + datum);
+                ui_print("  Opis   : " + opis);
+                if(naziv == usluga && datum == opis && naziv == " ") ui_print("Nepostojeci ID");
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Zakazani pregledi"){
 
@@ -348,7 +392,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
         }
         else if(stavke_izbornik[odabir+offset] == "Prikaz Zaposlenika"){
             dbTable tipovi_ziv;
-            CommandToTable("Select * FROM veterinar_sys.zaposlenik ",tipovi_ziv,con);
+            CommandToTable("Select * FROM zap_info ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
         else if(stavke_izbornik[odabir+offset] == "Prikaz Tipova Zivotinja"){
@@ -399,14 +443,12 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        else if(stavke_izbornik[odabir+offset] == "Prikaz opisa AmbulanteID"){
 
-        }
 
         //"Prikaz svih Posjeta Ambulanti"
         else if(stavke_izbornik[odabir+offset] == "Prikaz svih Posjeta Ambulanti"){
             dbTable tipovi_ziv;
-            CommandToTable("Select * FROM korisnik_view ",tipovi_ziv,con);
+            CommandToTable("Select * FROM ambulanta_info ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
 

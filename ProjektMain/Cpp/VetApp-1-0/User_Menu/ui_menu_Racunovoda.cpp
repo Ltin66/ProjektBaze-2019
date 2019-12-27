@@ -38,12 +38,15 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Popis Zaposlenika");
-    stavke_izbornik.push_back("Izracun Place");
-    stavke_izbornik.push_back("Unos Zaposlenika");
-    stavke_izbornik.push_back("Raspored");
-    stavke_izbornik.push_back("Unos Rasporeda");
-    stavke_izbornik.push_back("Unos Dolaska");
+    stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO
+    stavke_izbornik.push_back("Izracun Place");  //
+    stavke_izbornik.push_back("Unos Zaposlenika"); //
+    stavke_izbornik.push_back("Raspored"); //
+    stavke_izbornik.push_back("Unos Rasporeda"); //
+    stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak
+    stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA
+    stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA
+
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 
@@ -66,7 +69,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
         if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
         else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
-        else if(stavke_izbornik[odabir+offset] == "Popis Zaposlenika"){
+        else if(stavke_izbornik[odabir+offset] == "Popis Zaposlenika"){ //RAC_ZAP_INFO
 
         }
         else if(stavke_izbornik[odabir+offset] == "Izracun Place"){

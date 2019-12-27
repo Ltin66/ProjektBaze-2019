@@ -1,3 +1,24 @@
+--Prikaz svih posjeta ambulanti
+
+CREATE OR REPLACE VIEW AMBULANTA_INFO (ID,Zaposlenik_ID,KorisnikZivotinja_ID, Naziv_usluge,Datum) as
+    SELECT AM.AMBULANTA_ID ID,AZ.ZAPOSLENIK_ID Zaposlenik_ID,AKZ.KORISNIK_ZIVOTINJA_ID KorisnikZivotinja_ID,
+           AMBULANTA_USLUGA.NAZIV Naziv_usluge,AM.DATUM Datum FROM
+    AMBULANTA AM join AMBULANTA_ZAPOSLENIK AZ ON AM.AMBULANTA_ID = AZ.AMBULANTA_ID
+    JOIN AMBULANTA_KORISNIK_ZIVOTINJA AKZ ON AM.AMBULANTA_ID = AKZ.AMBULANTA_ID
+    JOIN AMBULANTA_USLUGA ON AM.AMBULANTA_USLUGA_ID = AMBULANTA_USLUGA.AMBULANTA_USLUGA_ID
+    JOIN AMBULANTA_USLUGA_TIP AUT ON AMBULANTA_USLUGA.AMBULANTA_USLUGA_TIP_ID = AUT.AMBULANTA_USLUGA_TIP_ID
+    ORDER BY AM.DATUM;
+
+--test
+
+select * from AMBULANTA_INFO;
+
+select * from AMBULANTA_ZAPOSLENIK;
+
+insert into AMBULANTA_ZAPOSLENIK  (AMBULANTA_ID,ZAPOSLENIK_ID) values (1,4);
+
+
+
 --11. Pogled - sve KorisnikID i za svaki ispiši njegovu životinju (i one korisnike koji nemaju životinju)
 
 CREATE OR REPLACE VIEW korisnik_view (ID,Ime,Prezime,ZivotinjaID,Ime_zivotinje,ZajednickiID) as SELECT KORISNIK.korisnik_id, KORISNIK.ime, KORISNIK.PREZIME,
@@ -58,7 +79,7 @@ CREATE MATERIALIZED VIEW Zap_Info
     NOCACHE
     NOCOMPRESS
     NEVER REFRESH
-    AS SELECT sifra , ime , prezime FROM zaposlenik/
+    AS SELECT  sifra , ime , prezime FROM zaposlenik/
 
 
 

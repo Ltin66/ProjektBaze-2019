@@ -38,14 +38,16 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Prikaz Informacija Svih Doktora");
+    stavke_izbornik.push_back("Prikaz Informacija Svih Doktora"); //VO_OD_DOK_INFO
     stavke_izbornik.push_back("Brisanje Pregleda");
     stavke_izbornik.push_back("Dodavanje Doktora na Pregled");
     stavke_izbornik.push_back("Brisanje Doktora s Pregleda");
     stavke_izbornik.push_back("Brisanje korisnika"); //OK
     stavke_izbornik.push_back("Brisanje zivotinje"); //OK
-    stavke_izbornik.push_back("Prikaz Svih Inspekcija");
-    stavke_izbornik.push_back("Dodaj inspekciju i doktora");
+
+    stavke_izbornik.push_back("Prikaz Svih Inspekcija"); //INSP_VIEW
+    stavke_izbornik.push_back("Dodaj inspekciju");
+    stavke_izbornik.push_back("Dodaj Doktora na Inspekciju");
     stavke_izbornik.push_back("Zakazane Inspekcije");
     stavke_izbornik.push_back("Izmjena opisa inspekcije");
 

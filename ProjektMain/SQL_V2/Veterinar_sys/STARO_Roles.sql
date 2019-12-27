@@ -5,22 +5,6 @@
 --                  ROLES
 --
 ----------------------------------------------------------------------
-SELECT * FROM AMBULANTA;
-
-create user mirkomirkec4 identified by 1234;
-grant doktor to mirkomirkec4;
-
-
-
-
-
-create synonym mirkomirkec4.INSERTAMBULANTA for veterinar_sys.INSERTAMBULANTA;
-alter user mirkomirkec4 quota unlimited on veterinar;
-
-
-BEGIN
-   INSERTAMBULANTA(8, 12, TO_DATE('08.02.2008 11:30:00', 'DD.MM.YYYY hh24:mi:ss'), 'Zaštitna cijepila - Mačka');
-END;
 
 
 create role racunovoda/
@@ -47,7 +31,9 @@ unos dolaska
 
 
 ------------------------------------------------------------------
-
+-- fali :
+    -- svi pregledi pojedinog korisnika
+    --  zakazani pregledi
 create role doktor/
 
 grant CREATE SESSION to doktor/  --da bi se mogao taj user spojiti na bazu
@@ -55,7 +41,7 @@ grant execute on DOKTOR_PACK to doktor;
 grant select on DOKTOR_TIPOVI_ZIVOTINJA to doktor;
 grant select on DOKTOR_TIPOVI_USLUGA to doktor;
 grant select on KORISNIK_VIEW to doktor;
-grant select on KOR_INFO to doktor;
+--grant select on KORISNIK_VIEW to doktor;
 
 --grant execute on/
 --grant select on ZAPOSLENIK to doktor/
@@ -121,6 +107,8 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
     ex_stmt_b   VARCHAR2 (1000);
     BEGIN
         -- TODO : ako vec postoji vrati gresku ?
+        -- mnvz sam ce vratit
+
         -- stvori usera
         ex_stmt_a := 'create user ' || user_name || ' identified by ' || passwd || ' DEFAULT TABLESPACE  veterinar';
         --ex_stmt_a := 'CREATE USER mirkomirkec3 identified by 1234';
@@ -135,34 +123,12 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
         ex_stmt_a := 'ALTER USER '|| user_name || ' QUOTA UNLIMITED ON veterinar';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-
-        -- SYNONYM
-        --ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  for veterinar_sys.ZAPOSLENIK';
-        --EXECUTE IMMEDIATE (ex_stmt_a);
-
-        --ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS for veterinar_sys.insertzaposlenik';
-        --EXECUTE IMMEDIATE (ex_stmt_a);
-/*
-        ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS  veterinar';
+        ex_stmt_a := 'create synonym '|| user_name || '.RAC_ZAP_INFO  for veterinar_sys.RAC_ZAP_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
-        EXECUTE IMMEDIATE (ex_stmt_a);
-
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
-        EXECUTE IMMEDIATE (ex_stmt_a);
-
-
-*/
     end;
 
 
-
-begin
-    create_user_voditelj_odjela('mirkomirkec1','1234');
-end;
-
-select * from USER_ROLE_PRIVS where USERNAME='MIRKOMIRKEC3' ;
 
 --radi, radi
 CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
@@ -186,28 +152,20 @@ CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
         -- dajemo mu prostora za rad ?
         ex_stmt_a := 'ALTER USER '|| user_name || ' QUOTA UNLIMITED ON veterinar';
         EXECUTE IMMEDIATE (ex_stmt_a);
-
-
-        -- SYNONYM
-        --ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  for veterinar_sys.ZAPOSLENIK';
-        --EXECUTE IMMEDIATE (ex_stmt_a);
-/*
-        ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS  veterinar';
+--VO_OD_DOK_INFO
+        ex_stmt_a := 'create synonym '|| user_name || '.VO_OD_DOK_INFO  for veterinar_sys.VO_OD_DOK_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
-        EXECUTE IMMEDIATE (ex_stmt_a);
 
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
+        ex_stmt_a := 'create synonym '|| user_name || '.INSP_VIEW  for veterinar_sys.INSP_VIEW';
         EXECUTE IMMEDIATE (ex_stmt_a);
-*/
     end;
 
 
 
 
 
-
+-- sve
 --radi, radi
 CREATE OR REPLACE PROCEDURE create_user_doktor
     (user_name IN Varchar,passwd IN Varchar)
@@ -244,21 +202,14 @@ CREATE OR REPLACE PROCEDURE create_user_doktor
 
         ex_stmt_a := 'create synonym '|| user_name || '.KORISNIK_VIEW  for veterinar_sys.KORISNIK_VIEW';
         EXECUTE IMMEDIATE (ex_stmt_a);
-/*
-        ex_stmt_a := 'create synonym '|| user_name || '.RADNI_STATUS  veterinar';
+
+
+        ex_stmt_a := 'create synonym '|| user_name || '.AMBULANTA_INFO  for veterinar_sys.AMBULANTA_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
+        ex_stmt_a := 'create synonym '|| user_name || '.ZAP_INFO  for veterinar_sys.ZAP_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-        ex_stmt_a := 'create synonym '|| user_name || '.zaposlenik  veterinar';
-        EXECUTE IMMEDIATE (ex_stmt_a);
-
-             grant select on DOKTOR_TIPOVI_ZIVOTINJA to doktor;
-grant select on DOKTOR_TIPOVI_USLUGA to doktor;
-grant select on KORISNIK_VIEW to doktor;
-grant select on KOR_INFO to doktor;
-*/
     end;
 
 
