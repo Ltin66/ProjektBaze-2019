@@ -208,11 +208,11 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
                 if(l_limit == 0) r_limit = MaxCollumnS ;
 
                 if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;
-                else i -= PrintPauseLen  - 1;
+                else i -= PrintPauseLen  ;
             }
 
             //VRATI
-            else if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;  //vrati ako nemože dolje
+            else if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;  //vrati ako nemože dolje, dali treba -1? neznam
             else i = i - PrintPauseLen ; //vrati
 
             if(i == 0) i = -1;
