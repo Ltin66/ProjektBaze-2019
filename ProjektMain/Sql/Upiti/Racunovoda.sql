@@ -20,19 +20,15 @@ mrvicu je kompliciran,
     a racunovoda nemoze dodati zaposlenika na radni status ako nemoze vidit koje svi radni statusi postoje
 
 3. unos rasporeda procedura
-(za zaposlenika ID unesi u raspred novi termin koje je : 
-<UnsesnoVijelem dolaska> VrijemeOdlaska = <Uneseno Vrijeme Dolaska > + <Unsesni sati koje treba odraditi >)
+unesemo datum i ID zaposlenika
 
-
-unesemo id zaposlenika,datum kada treba doci na posao "datum", i koliko sati treba odraditi
-
-u tablicu raspored insertamo id zzaposlenika, datum (datum kada treba doci na posao )
-i
 
 4. pregled rasporeda za sljedecih 7 dana (View
-(create view as dkkdk select * from raspored where datum >= CurrentDate - 7 dana)
+(create view as dkkdk select * from raspored where datum >= CurrentDate + 7 dana)
 
-5. update vrijeme dolaska procedura
+
+
+5. update vrijeme dolaska procedura -- ona 2
 update viejme dolaska za dolazak ID
 
 6. izracunaj cijenu za pregled ID procedura

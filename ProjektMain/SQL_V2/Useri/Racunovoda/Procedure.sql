@@ -1,12 +1,22 @@
 
 CREATE OR REPLACE PACKAGE RACUNOVODA_PACK AS
 
-    -- triger on update izracunaj odradene sate
- PROCEDURE updateZAPOSLENIK_dolazak ( --OK
+
+     PROCEDURE updateZAPOSLENIK_sati_odlazak ( --OK
     p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
     p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
-    p_dat_dolaska IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE
+    p_sati_odlazak IN ZAPOSLENICI_DOLAZAK.sati_odlaska%TYPE
 );
+
+     PROCEDURE updateZAPOSLENIK_sati_dolazak ( --OK
+    p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
+    p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
+    p_sati_dolazak IN ZAPOSLENICI_DOLAZAK.sati_dolaska%TYPE
+);
+
+
+
+
 
  PROCEDURE selectAMBULANTA_USLUGA_CIJENA(  --Ispraviti
     p_id IN AMBULANTA_USLUGA.AMBULANTA_USLUGA_ID%TYPE,
@@ -25,17 +35,29 @@ END;
 
 CREATE OR REPLACE PACKAGE BODY RACUNOVODA_PACK AS
 
---5. Update vrijeme dolaska - procedura
+--5. Update vrijeme dolaska - procedura   p_sati_dolazak
 
- PROCEDURE updateZAPOSLENIK_dolazak (
+    PROCEDURE updateZAPOSLENIK_sati_dolazak (
            p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
            p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
-           p_dat_dolaska IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE)
+           p_sati_dolazak IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE)
 IS
 BEGIN
-  UPDATE ZAPOSLENICI_DOLAZAK SET DATUM_DOLASKA=p_dat_dolaska WHERE ZAPOSLENIK_ID  = p_id AND DATUM = p_datum;
+  UPDATE ZAPOSLENICI_DOLAZAK SET sati_dolaska = p_sati_dolazak WHERE ZAPOSLENIK_ID  = p_id AND DATUM = p_datum;
   COMMIT;
 END;
+
+
+    PROCEDURE updateZAPOSLENIK_sati_odlazak (
+           p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
+           p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
+           p_sati_odlazak IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE)
+IS
+BEGIN
+  UPDATE ZAPOSLENICI_DOLAZAK SET sati_odlaska=p_sati_odlazak WHERE ZAPOSLENIK_ID  = p_id AND DATUM = p_datum;
+  COMMIT;
+END;
+
 
 
 ------------------------------------------------------------------------------------------------------------------------
