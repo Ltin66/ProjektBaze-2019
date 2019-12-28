@@ -40,7 +40,7 @@ CREATE OR REPLACE PACKAGE BODY RACUNOVODA_PACK AS
     PROCEDURE updateZAPOSLENIK_sati_dolazak (
            p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
            p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
-           p_sati_dolazak IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE)
+           p_sati_dolazak IN ZAPOSLENICI_DOLAZAK.sati_dolaska%TYPE)
 IS
 BEGIN
   UPDATE ZAPOSLENICI_DOLAZAK SET sati_dolaska = p_sati_dolazak WHERE ZAPOSLENIK_ID  = p_id AND DATUM = p_datum;
@@ -51,7 +51,7 @@ END;
     PROCEDURE updateZAPOSLENIK_sati_odlazak (
            p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
            p_datum IN ZAPOSLENICI_DOLAZAK.DATUM%TYPE,
-           p_sati_odlazak IN ZAPOSLENICI_DOLAZAK.DATUM_DOLASKA%TYPE)
+           p_sati_odlazak IN ZAPOSLENICI_DOLAZAK.sati_odlaska%TYPE)
 IS
 BEGIN
   UPDATE ZAPOSLENICI_DOLAZAK SET sati_odlaska=p_sati_odlazak WHERE ZAPOSLENIK_ID  = p_id AND DATUM = p_datum;
