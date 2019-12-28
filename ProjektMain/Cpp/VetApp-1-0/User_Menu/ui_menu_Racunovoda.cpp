@@ -38,7 +38,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK
+    stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI
     stavke_izbornik.push_back("Izracun Place");  // fali
     stavke_izbornik.push_back("Unos Zaposlenika"); // fali
     stavke_izbornik.push_back("Unos Statusa Zaposlenika"); // fali
@@ -47,7 +47,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Unos Rasporeda"); // fali
     stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK
     stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK
-    stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK
+    stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
@@ -75,18 +75,6 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM RAC_ZAP_INFO ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
-        }
-        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Raspored"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
-
         }
         else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){ //updateZAPOSLENIK_dolazak
             ui_print("Unesite ID Zaposlenika : ");
@@ -144,7 +132,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 }
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
-                ui_print("Cijena "+to_string(id)+" Inspekcije : "+ cijena);
+
             }
 
 
@@ -177,6 +165,10 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
                 ui_print("Cijena "+to_string(id)+" Inspekcije : "+ cijena);
+                cout<<"(I)zlaz";
+                char c = 0;//IZLAZ
+                ui_input();
+                cin>>c;
             }
 
         }
@@ -208,7 +200,31 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
                 ui_print("Cijena "+to_string(id)+" Usluge : "+ cijena);
+                cout<<"(I)zlaz";
+                char c = 0;//IZLAZ
+                ui_input();
+                cin>>c;
             }
+        }
+
+
+        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Statusa Zaposlenika"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Raspored"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Status Zaposlenika"){
+
         }
 
 

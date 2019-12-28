@@ -67,5 +67,8 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
         ex_stmt_a := 'create synonym '|| user_name || '.RAC_ZAP_INFO  for veterinar_sys.RAC_ZAP_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
+        ex_stmt_a := 'create synonym '|| user_name || '.RACUNOVODA_PACK  for veterinar_sys.RACUNOVODA_PACK';
+        EXECUTE IMMEDIATE (ex_stmt_a);
     end;
 
+--create synonym mirkomirkec2.RACUNOVODA_PACK for VETERINAR_SYS.RACUNOVODA_PACK;

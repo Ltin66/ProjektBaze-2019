@@ -27,6 +27,20 @@ ON DELETE CASCADE;
 ------------------------------------------------------------------------------------------------------------------------
 
 
+-- BITNO izgeda, brisanjem kor i/ili ziv treba se obrisati i amb_korziv jer se sa
+-- prijašnjim briše i korziv
+
+
+
+ALTER TABLE ambulanta_korisnik_zivotinja
+DROP CONSTRAINT AMB_KOR_FK_KOR_ZIV;
+
+
+ALTER TABLE ambulanta_korisnik_zivotinja
+add    CONSTRAINT AMB_KOR_FK_KOR_ZIV FOREIGN KEY(korisnik_zivotinja_id)  REFERENCES korisnik_zivotinja(korisnik_zivotinja_id)
+ON DELETE CASCADE;
+
+
 -- komentar
 
 

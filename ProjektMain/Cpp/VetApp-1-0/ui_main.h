@@ -34,7 +34,7 @@ int ui_prijava(korisnik &kor);
 
 void ui_postavke();
 
-int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollumnS = 4,const int PrintPauseLen = 10,const bool redni_broj = false);
+int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,const int MaxCollumnS = 4, int PrintPauseLen = 10,const bool redni_broj = false);
 
 void ui_error(const std::string& err_msg = "ERROR", int err_num = -1);
 

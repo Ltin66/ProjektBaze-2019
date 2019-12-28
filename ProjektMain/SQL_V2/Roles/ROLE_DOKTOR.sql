@@ -4,8 +4,7 @@
     -- svi pregledi pojedinog korisnika
     --  zakazani pregledi
 
-
-create role doktor/
+ create role doktor/
 
 grant CREATE SESSION to doktor/  --da bi se mogao taj user spojiti na bazu
 grant execute on DOKTOR_PACK to doktor;

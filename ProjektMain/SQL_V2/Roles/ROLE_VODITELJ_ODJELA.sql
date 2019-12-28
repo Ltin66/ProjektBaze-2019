@@ -14,7 +14,9 @@ grant CREATE SESSION to voditelj_odjela/  --da bi se mogao taj user spojiti na b
 grant execute on VODITELJ_ODJELA_PACK to voditelj_odjela;
 grant execute on dok_preg_id to voditelj_odjela;
 grant select on insp_view to voditelj_odjela;
-
+grant select on dual to voditelj_odjela;
+grant select on VO_OD_DOK_INFO to voditelj_odjela;
+grant select on KORISNIK_VIEW to voditelj_odjela;
 /*
 Informacije o Doktorima
 
@@ -72,6 +74,12 @@ CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
         ex_stmt_a := 'create synonym '|| user_name || '.dok_preg_id  for veterinar_sys.dok_preg_id';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
+        ex_stmt_a := 'create synonym '|| user_name || '.KORISNIK_VIEW  for veterinar_sys.KORISNIK_VIEW';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+                ex_stmt_a := 'create synonym '|| user_name || '.VODITELJ_ODJELA_PACK  for veterinar_sys.VODITELJ_ODJELA_PACK';
+        EXECUTE IMMEDIATE (ex_stmt_a);
 
         end;
 
+create  synonym MIRKOMIRKEC1.VODITELJ_ODJELA_PACK FOR VETERINAR_SYS.VODITELJ_ODJELA_PACK;

@@ -40,7 +40,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK
+    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK RADI
     stavke_izbornik.push_back("Zakazani pregledi");         //fali
     stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI
     stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK
@@ -119,7 +119,10 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
                 ui_print("  Datum  : " + datum);
                 ui_print("  Opis   : " + opis);
                 if(naziv == usluga && datum == opis && naziv == " ") ui_print("Nepostojeci ID");
-
+                ui_print("(I)zlaz");
+                ui_input();
+                char tmp_c = 0;
+                cin>>tmp_c;
             }
         }
         else if(stavke_izbornik[odabir+offset] == "Zakazani pregledi"){
@@ -133,17 +136,27 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
             ui_print("Unesite datum");
             ui_input();
-            int dy,mnth,yr;
+            int dy,mnth,yr,sati,minute;
             ui_print("Dan : ");
             cin>>dy; //"1.1.2019"
 
             ui_print("Mjesec : ");
+            ui_input();
             cin>>mnth; //"1.1.2019"
 
             ui_print("Godina : ");
+            ui_input();
             cin>>yr; //"1.1.2019"
 
-            SADateTime datum(yr,mnth,dy);
+            ui_print("Sati : ");
+            ui_input();
+            cin>>sati;
+
+            ui_print("Minute : ");
+            ui_input();
+            cin>>minute;
+
+            SADateTime datum(yr,mnth,dy,sati,minute,0);
 
             ui_print("Zelite li opis  Y/N ");
             ui_input();
@@ -316,7 +329,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             ui_print("Unesite Ime Zivotinje");
             ui_input();
             string ime;
-
+            cin>>ime;
 
             ui_print("Zelite li opis  Y/N ");
             ui_input();

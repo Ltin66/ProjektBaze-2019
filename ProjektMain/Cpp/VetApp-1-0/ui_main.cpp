@@ -115,7 +115,9 @@ void ui_postavke(){
 
 
 //funkcija za ispis tablica
-int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS = 5,const int PrintPauseLen = 10,const bool redni_broj = false){
+int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS = 5,int PrintPauseLen = 10,const bool redni_broj = false){
+
+    if(Table.RowCnt < PrintPauseLen) PrintPauseLen = Table.RowCnt;
 
     int l_scr_offset = 2;
 
@@ -167,11 +169,12 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
             //UNOS OPCIJE
             cout<<'\n';
             char odabir = 0;
-            cout<<endl<<i<<" "<<l_limit<<" "<<r_limit<<endl;
+            //cout<<endl<<i<<" "<<l_limit<<" "<<r_limit<<endl;
             ui_input();
             cin>>odabir;
 
-            //IZLAZ
+
+             //IZLAZ
             if(odabir == 'I' || odabir == 'i') return 0; //da
 
             //GORE
@@ -193,8 +196,8 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
                 }
                 else r_limit += MaxCollumnS;
 
-
-                if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1; //??
+                if(i <= PrintPauseLen) i = 0;
+                else if(i+1 == Table.RowCnt ) i -= Table.RowCnt%PrintPauseLen -1; //zadnja str ima manje od PrintPauseLen
                 else i -= PrintPauseLen ;
             }
 
@@ -207,15 +210,18 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
 
                 if(l_limit == 0) r_limit = MaxCollumnS ;
 
-                if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;
-                else i -= PrintPauseLen  ;
+                if(i <= PrintPauseLen) i = 0;
+                else if(i+1 == Table.RowCnt ) i -= Table.RowCnt%PrintPauseLen -1; //zadnja str ima manje od PrintPauseLen
+                else i -= PrintPauseLen ;
             }
 
             //VRATI
-            else if(i+1 == Table.RowCnt) i -= Table.RowCnt%PrintPauseLen - 1;  //vrati ako nemože dolje, dali treba -1? neznam
-            else i = i - PrintPauseLen ; //vrati
 
-            if(i == 0) i = -1;
+            else if(i <= PrintPauseLen) i = 0;
+            else if(i+1 == Table.RowCnt ) i -= Table.RowCnt%PrintPauseLen -1; //zadnja str ima manje od PrintPauseLen
+            else i -= PrintPauseLen ;
+
+            if(i <= 0) i = -1;
             ui_clear();
 
             //ISPIS IMENA STUPACA
@@ -224,7 +230,13 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
             ui_separator(MaxCollumnSize * (r_limit - l_limit + 1) + 4 * (r_limit - l_limit + 1) );
         }
 
+
     }
+
+    cout<<"(I)zlaz";
+    char c = 0;//IZLAZ
+    ui_input();
+    cin>>c;
 
     return 1;
 }
