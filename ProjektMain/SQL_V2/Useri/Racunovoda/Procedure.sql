@@ -1,6 +1,23 @@
 
 CREATE OR REPLACE PACKAGE RACUNOVODA_PACK AS
 
+    procedure add_raspored (
+p_zap_id zaposlenici_dolazak.zaposlenik_id%Type,
+p_dat zaposlenici_dolazak.datum%Type,
+p_sat_dol zaposlenici_dolazak.sati_dolaska%Type,
+p_sat_odl zaposlenici_dolazak.sati_odlaska%Type,
+p_odr_sat zaposlenici_dolazak.odradeni_sati%Type
+);
+
+    procedure add_zap (
+    p_zap_id zaposlenik.zaposlenik_id%Type,
+    p_ime zaposlenik.ime%Type,
+    p_sr_ime zaposlenik.srednje_ime%Type,
+    p_prez zaposlenik.prezime%Type,
+    p_sifra zaposlenik.sifra%Type,
+    p_dat_zap zaposlenik.datum_zap%Type,
+    p_jmbg zaposlenik.jmbg%Type);
+
 
      PROCEDURE updateZAPOSLENIK_sati_odlazak ( --OK
     p_id IN ZAPOSLENICI_DOLAZAK.ZAPOSLENIK_ID%TYPE,
@@ -14,6 +31,14 @@ CREATE OR REPLACE PACKAGE RACUNOVODA_PACK AS
     p_sati_dolazak IN ZAPOSLENICI_DOLAZAK.sati_dolaska%TYPE
 );
 
+procedure add_rad_stat (
+p_stat_id radni_status.STATUS_ID%Type,
+p_zap_id radni_status.ZAPOSLENIK_ID%Type,
+p_dat_poc radni_status.DATUM_POCETKA%Type,
+p_bilj radni_status.BILJESKE%Type,
+p_satnica radni_status.SATNICA%Type,
+p_tj_sati radni_status.TJEDNISATI%Type,
+p_rad_stat_tip_id radni_status.RADNI_STATUS_TIP_ID%Type);
 
 
 
@@ -76,8 +101,35 @@ BEGIN
 END;
 
 
+ procedure add_zap (
+    p_zap_id zaposlenik.zaposlenik_id%Type,
+    p_ime zaposlenik.ime%Type,
+    p_sr_ime zaposlenik.srednje_ime%Type,
+    p_prez zaposlenik.prezime%Type,
+    p_sifra zaposlenik.sifra%Type,
+    p_dat_zap zaposlenik.datum_zap%Type,
+    p_jmbg zaposlenik.jmbg%Type
+)
+is
+begin
+    insert into zaposlenik (zaposlenik_id, ime, srednje_ime, prezime, sifra, datum_zap, jmbg)
+    values (p_zap_id, p_ime, p_sr_ime, p_prez, p_sifra, p_dat_zap, p_jmbg);
+end;
 
 
+procedure add_rad_stat (
+p_stat_id radni_status.STATUS_ID%Type,
+p_zap_id radni_status.ZAPOSLENIK_ID%Type,
+p_dat_poc radni_status.DATUM_POCETKA%Type,
+p_bilj radni_status.BILJESKE%Type,
+p_satnica radni_status.SATNICA%Type,
+p_tj_sati radni_status.TJEDNISATI%Type,
+p_rad_stat_tip_id radni_status.RADNI_STATUS_TIP_ID%Type)
+is
+begin
+    insert into radni_status (status_id, zaposlenik_id, datum_pocetka, biljeske, satnica, tjednisati, radni_status_tip_id)
+        values (p_stat_id, p_zap_id, p_dat_poc, p_bilj, p_satnica, p_tj_sati, p_rad_stat_tip_id);
+end;
 ------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -96,7 +148,24 @@ BEGIN
 END;
 
 
-------------------------------------------------------------------------------------------------------------------------
+
+procedure add_raspored (
+p_zap_id zaposlenici_dolazak.zaposlenik_id%Type,
+p_dat zaposlenici_dolazak.datum%Type,
+p_sat_dol zaposlenici_dolazak.sati_dolaska%Type,
+p_sat_odl zaposlenici_dolazak.sati_odlaska%Type,
+p_odr_sat zaposlenici_dolazak.odradeni_sati%Type
+)
+is
+begin
+    insert into ZAPOSLENICI_DOLAZAK (ZAPOSLENIK_ID, DATUM, SATI_DOLASKA, SATI_ODLASKA, ODRADENI_SATI)
+    values (p_zap_id, p_dat, p_sat_dol, p_sat_odl, p_odr_sat);
+end;
+
+
+
+--------
+    -- ----------------------------------------------------------------------------------------------------------------
 
 END; --PACK BODY END
 ------------------------------------------------------------------------------------------------------------------------

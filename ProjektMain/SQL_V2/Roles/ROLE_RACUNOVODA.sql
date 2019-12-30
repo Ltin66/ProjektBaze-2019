@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------
 --fali :
-    --izracun place
-    -- unos rasporeda
-    -- raspored
-    -- unos zaposlenika
-    -- pogled statusa zaposlenika
-    -- unos novog statusa
+    -- izracun place
+    --
+    --
+    --
+    --
+    --
 
 create role racunovoda/
 

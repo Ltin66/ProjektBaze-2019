@@ -1,4 +1,18 @@
+--PREGLED RASP ZA SLJEDECIH 7dana
+create view rasporedi_7_dana
+    as select * from ZAPOSLENICI_DOLAZAK where datum > current_date - interval '2' day AND datum < current_date + interval '7' day;
+
+
+
+--VRSTE RADIH MJESTA:
+
+create view rac_radna_mjesta_tip as select * from RADNI_STATUS_TIP;
+--select * from rac_radna_mjesta_tip;
+
 -- INFO O ZAPOSLENICIMA OK RADI
+
+
+
 
 CREATE OR  REPLACE VIEW RAC_ZAP_INFO
     (ID,Ime,Srednje_Ime,Prezime,Sifra,JMBG,Datum_pocetka,Satnica,Biljeske,Radno_Mjesto)

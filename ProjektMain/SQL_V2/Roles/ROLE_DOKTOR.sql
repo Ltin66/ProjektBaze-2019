@@ -1,7 +1,7 @@
 
 ------------------------------------------------------------------
 -- fali :
-    -- svi pregledi pojedinog korisnika
+    --  svi pregledi pojedinog korisnika
     --  zakazani pregledi
 
  create role doktor/

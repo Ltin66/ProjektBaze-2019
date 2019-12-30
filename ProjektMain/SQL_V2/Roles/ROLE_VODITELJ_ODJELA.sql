@@ -1,13 +1,13 @@
 
 ------------------------------------------------------------------
 -- fali :
-    -- brisanje pregleda
-    --  brisanje doktora sa pregleda
-    -- brisanje zivotinje
-    -- dodaj inspekciju
-    -- zakazane inspekcije
+    --
+    --
+    --
+    --
+    --
 
-    --sve o intervencijama
+    --sve o intervencijama ,,,, TODO
 
 create role voditelj_odjela/
 grant CREATE SESSION to voditelj_odjela/  --da bi se mogao taj user spojiti na bazu
