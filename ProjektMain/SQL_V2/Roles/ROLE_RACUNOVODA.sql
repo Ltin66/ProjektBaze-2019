@@ -10,9 +10,12 @@
 create role racunovoda/
 
 grant CREATE SESSION to racunovoda/
+grant execute on AMB_CIJENA_PAR_VIEW_PACK to racunovoda;
 grant execute on RACUNOVODA_PACK to racunovoda;
 grant select on KORISNIK_VIEW to racunovoda;
 grant select on RAC_ZAP_INFO to racunovoda;
+grant select on rac_radna_mjesta_tip to racunovoda;
+grant select on rasporedi_7_dana to racunovoda;
 
 
 --RAC_ZAP_INFO
@@ -69,6 +72,17 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
 
         ex_stmt_a := 'create synonym '|| user_name || '.RACUNOVODA_PACK  for veterinar_sys.RACUNOVODA_PACK';
         EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.AMB_CIJENA_PAR_VIEW_PACK  for veterinar_sys.AMB_CIJENA_PAR_VIEW_PACK';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.rac_radna_mjesta_tip  for veterinar_sys.rac_radna_mjesta_tip';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.rasporedi_7_dana  for veterinar_sys.rasporedi_7_dana';
+        EXECUTE IMMEDIATE (ex_stmt_a);
     end;
 
---create synonym mirkomirkec2.RACUNOVODA_PACK for VETERINAR_SYS.RACUNOVODA_PACK;
+--create synonym mirkomirkec2.rasporedi_7_dana for VETERINAR_SYS.rasporedi_7_dana;
+
+--rac_radna_mjesta_tip
