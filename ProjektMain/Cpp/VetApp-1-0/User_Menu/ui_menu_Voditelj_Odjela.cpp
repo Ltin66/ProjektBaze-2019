@@ -19,7 +19,7 @@ using namespace std;
 
 
 
-int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
+int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
     int offset = 0;
     int offset_pl = 2;
 
@@ -27,7 +27,7 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
     cout << "Dobrodošli " << kor.username;
     ui_separator();
 
-    vector <string> stavke_izbornik;
+    vector<string> stavke_izbornik;
 
     //OK znaci da je napravljen, neznaci da radi kako treba
     //RADI znaci da radi
@@ -40,19 +40,21 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back("Prikaz Informacija Svih Doktora"); //VO_OD_DOK_INFO //OK
 
-    stavke_izbornik.push_back("Brisanje Pregleda"); //fali
     stavke_izbornik.push_back("Dodavanje Doktora na Pregled"); //insertDOKTOR_AMBULANTA //OK RADI
-    stavke_izbornik.push_back("Brisanje Doktora s Pregleda"); //fali
-    stavke_izbornik.push_back("Prikaz doktora za Ambulanta ID"); //select DOK_PREG_ID(1) from DUAL; //OK RADI
+    stavke_izbornik.push_back("Brisanje Doktora s Pregleda"); //OK
+    stavke_izbornik.push_back("Brisanje Pregleda"); //OK
+    stavke_izbornik.push_back("Dodavanje Pregleda"); //
 
+    stavke_izbornik.push_back("Prikaz doktora za Ambulanta ID"); //select DOK_PREG_ID(1) from DUAL; //OK RADI
     stavke_izbornik.push_back("Prikaz svih Korisnika"); //KORISNIK_VIEW //OK RADI
+
     stavke_izbornik.push_back("Brisanje korisnika");  //deleteKORISNIK //OK RADI
-    stavke_izbornik.push_back("Brisanje zivotinje"); //fali
+    stavke_izbornik.push_back("Brisanje zivotinje"); //OK
 
     stavke_izbornik.push_back("Prikaz Svih Inspekcija"); //INSP_VIEW //OK
-    stavke_izbornik.push_back("Dodaj inspekciju"); //fali
+    stavke_izbornik.push_back("Dodaj inspekciju"); //
     stavke_izbornik.push_back("Dodaj Doktora na Inspekciju"); //insertDOKTORInspekcija //OK
-    stavke_izbornik.push_back("Zakazane Inspekcije"); //fali
+    stavke_izbornik.push_back("Zakazane Inspekcije"); //OK
     stavke_izbornik.push_back("Izmjena opisa inspekcije"); //update_opis_insp //OK
 
     stavke_izbornik.push_back("Dodaj Intervenciju"); //ja
@@ -60,48 +62,150 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Brisanje Intervencije"); //ja
 
 
-    for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
+    for (int i = 0; i < stavke_izbornik.size(); i++) if (stavke_izbornik[i] == " ") offset++;
 
 
-    while(true) {
+    while (true) {
         int odabir = 0;
 
-        ui_print_menu(stavke_izbornik,"Voditelj Odjela Izbornik",8,3);
+        ui_print_menu(stavke_izbornik, "Voditelj Odjela Izbornik", 8, 3);
 
 
         ui_input();
-        cin>>odabir;
+        cin >> odabir;
 
-        cout<<stavke_izbornik[odabir+offset]<<endl;
-        cout<<"  offset : "<<offset;
-        cout<<" Uneseni : "<<odabir;
-        cout<<endl;
+        cout << stavke_izbornik[odabir + offset] << endl;
+        cout << "  offset : " << offset;
+        cout << " Uneseni : " << odabir;
+        cout << endl;
 
-        if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
-        else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
+        if (stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
+        else if (stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
 
-        else if(stavke_izbornik[odabir+offset] == "Prikaz Informacija Svih Doktora"){
+        else if (stavke_izbornik[odabir + offset] == "Prikaz Informacija Svih Doktora") {
             dbTable tipovi_ziv;
-            CommandToTable("Select * FROM VO_OD_DOK_INFO ",tipovi_ziv,con);
+            CommandToTable("Select * FROM VO_OD_DOK_INFO ", tipovi_ziv, con);
             ui_showTable(tipovi_ziv);
 
         }
-        else if(stavke_izbornik[odabir+offset] == "Prikaz svih Korisnika"){
-            dbTable tipovi_ziv;
-            CommandToTable("Select * FROM KORISNIK_VIEW ",tipovi_ziv,con);
-            ui_showTable(tipovi_ziv);
 
-        }
-        else if(stavke_izbornik[odabir+offset] == "Brisanje korisnika"){
-            ui_print("Unesite ID Korisnika");
+        else if (stavke_izbornik[odabir + offset] == "Dodavanje Doktora na Pregled") {
+            ui_print("Unesite ID doktora");
             ui_input();
-            int id;
-            cin>>id;
+            int zapId;
+            cin >> zapId;
+
+            ui_print("Unesite ID Ambulante");
+            ui_input();
+            int ambId;
+            cin >> ambId;
+
 
             SACommand cmd(&con);
 
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("VODITELJ_ODJELA_PACK.insertDOKTOR_AMBULANTA");
+
+                cmd.Param("p_amb_dok_id").setAsNumeric() = 0.0;
+                cmd.Param("p_amb_id").setAsNumeric() = ambId + 0.0;
+                cmd.Param("p_zap_id").setAsNumeric() = zapId + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
+        }
+        else if (stavke_izbornik[odabir + offset] == "Brisanje Doktora s Pregleda") {
+            ui_print("Unesite ID Pregleda");
+            ui_input();
+            int id;
+            cin >> id;
+
+            ui_print("Unesite ID Doktora");
+            ui_input();
+            int id_d;
+            cin >> id_d;
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("VODITELJ_ODJELA_PACK.del_doktor");
+
+                cmd.Param("p_amb_id").setAsNumeric() = id + 0.0;
+                cmd.Param("p_zap_id").setAsNumeric() = id_d + 0.0;
+
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+            }
+        } //
+        else if (stavke_izbornik[odabir + offset] == "Brisanje Pregleda") {
+            ui_print("Unesite ID Pregleda");
+            ui_input();
+            int id;
+            cin >> id;
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("VODITELJ_ODJELA_PACK.del_pregled");
+
+                cmd.Param("p_amb_id").setAsNumeric() = id + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
+        } //
+        else if (stavke_izbornik[odabir + offset] == "Dodavanje Pregleda") {
+
+        }
+
+        else if (stavke_izbornik[odabir + offset] == "Prikaz doktora za Ambulanta ID") {
+            ui_print("Unesite ID ambulante :");
+            ui_input();
+            int id;
+            cin >> id;
+
+            dbTable tipovi_ziv;
+            CommandToTable("select DOK_PREG_ID(" + to_string(id) + ") from DUAL ", tipovi_ziv, con);
+            ui_showTable(tipovi_ziv);
+        }
+        else if (stavke_izbornik[odabir + offset] == "Prikaz svih Korisnika") {
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM KORISNIK_VIEW ", tipovi_ziv, con);
+            ui_showTable(tipovi_ziv);
+
+        }
+
+        else if (stavke_izbornik[odabir + offset] == "Brisanje korisnika") {
+            ui_print("Unesite ID Korisnika");
+            ui_input();
+            int id;
+            cin >> id;
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
 
                 cmd.setCommandText("VODITELJ_ODJELA_PACK.DELETEKORISNIK");
 
@@ -111,31 +215,89 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
                 ui_separator();
                 ui_print("OK");
 
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
 
             }
         }
-        else if(stavke_izbornik[odabir+offset] == "Prikaz Svih Inspekcija"){
-            dbTable tipovi_ziv;
-            CommandToTable("Select * FROM INSP_VIEW ",tipovi_ziv,con);
-            ui_showTable(tipovi_ziv);
-        }
-        else if(stavke_izbornik[odabir+offset] == "Prikaz doktora za Ambulanta ID"){
-            ui_print("Unesite ID ambulante :");
+        else if (stavke_izbornik[odabir + offset] == "Brisanje zivotinje") {
+            ui_print("Unesite ID Zivotinje");
             ui_input();
             int id;
-            cin>>id;
+            cin >> id;
 
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("deleteZivotinja");
+
+                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
+        }  //
+
+        else if (stavke_izbornik[odabir + offset] == "Prikaz Svih Inspekcija") {
             dbTable tipovi_ziv;
-            CommandToTable("select DOK_PREG_ID(" + to_string(id) + ") from DUAL ",tipovi_ziv,con);
+            CommandToTable("Select * FROM INSP_VIEW ", tipovi_ziv, con);
             ui_showTable(tipovi_ziv);
         }
-        else if(stavke_izbornik[odabir+offset] == "Izmjena opisa inspekcije"){
+        else if (stavke_izbornik[odabir + offset] == "Dodaj inspekciju") {
+
+        } //
+        else if (stavke_izbornik[odabir + offset] == "Dodaj Doktora na Inspekciju") {
+
+            ui_print("Unesite ID doktora");
+            ui_input();
+            int zapId;
+            cin >> zapId;
+
+            ui_print("Unesite ID Inspekcije");
+            ui_input();
+            int ambId;
+            cin >> ambId;
+
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("VODITELJ_ODJELA_PACK.insertDOKTORInspekcija");
+
+                cmd.Param("p_dok_id").setAsNumeric() = 0.0;
+                cmd.Param("p_inspekcija_id").setAsNumeric() = ambId + 0.0;
+                cmd.Param("p_zaposlenik_id").setAsNumeric() = zapId + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
+
+
+        } //
+        else if (stavke_izbornik[odabir + offset] == "Zakazane Inspekcije") {
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM ZAK_INS ", tipovi_ziv, con);
+            ui_showTable(tipovi_ziv);
+        } //
+        else if (stavke_izbornik[odabir + offset] == "Izmjena opisa inspekcije") {
             ui_print("Unesite ID inspekcije : ");
             ui_input();
             int ID;
-            cin>>ID;
+            cin >> ID;
 
 
             ui_print("Unesite Novi Opis : ");
@@ -144,16 +306,16 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
                 ui_print("Opis : \n");
                 ui_input();
                 char tmp;
-                cin>>tmp;
-                getline(cin,opis);
+                cin >> tmp;
+                getline(cin, opis);
                 opis = tmp + opis;
             }
 
 
             SACommand cmd(&con);
 
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
 
                 cmd.setCommandText("VODITELJ_ODJELA_PACK.update_opis_insp");
 
@@ -164,130 +326,22 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor){
                 ui_separator();
                 ui_print("OK");
 
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
 
             }
 
 
+        } //
+
+
+        else if (stavke_izbornik[odabir + offset] == "Dodaj Intervenciju") {
 
         }
-        else if(stavke_izbornik[odabir+offset] == "Dodavanje Doktora na Pregled"){
-            ui_print("Unesite ID doktora");
-            ui_input();
-            int zapId;
-            cin>>zapId;
-
-            ui_print("Unesite ID Ambulante");
-            ui_input();
-            int ambId;
-            cin>>ambId;
-
-
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("VODITELJ_ODJELA_PACK.insertDOKTOR_AMBULANTA");
-
-                cmd.Param("p_amb_dok_id").setAsNumeric() =  0.0;
-                cmd.Param("p_amb_id").setAsNumeric() =  ambId + 0.0;
-                cmd.Param("p_zap_id").setAsNumeric() =  zapId +0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-        }
-        else if(stavke_izbornik[odabir+offset] == "Dodaj Doktora na Inspekciju"){
-
-            ui_print("Unesite ID doktora");
-            ui_input();
-            int zapId;
-            cin>>zapId;
-
-            ui_print("Unesite ID Inspekcije");
-            ui_input();
-            int ambId;
-            cin>>ambId;
-
-
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("VODITELJ_ODJELA_PACK.insertDOKTORInspekcija");
-
-                cmd.Param("p_dok_id").setAsNumeric() =  0.0;
-                cmd.Param("p_inspekcija_id").setAsNumeric() =  ambId + 0.0;
-                cmd.Param("p_zaposlenik_id").setAsNumeric() =  zapId +0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-
+        else if (stavke_izbornik[odabir + offset] == "Prikaz Intervencija") {
 
         }
-
-
-        else if(stavke_izbornik[odabir+offset] == "Brisanje Pregleda"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Brisanje Doktora s Pregleda"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Dodaj inspekciju"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Zakazane Inspekcije"){
-
-        }
-
-        else if(stavke_izbornik[odabir+offset] == "Brisanje zivotinje"){
-            ui_print("Unesite ID Zivotinje");
-            ui_input();
-            int id;
-            cin>>id;
-
-            SACommand cmd(&con);
-
-            cout<<"Jeste lis zadovoljni sa unosom ?";
-            if(ui_confirm()){
-
-                cmd.setCommandText("deleteZivotinja");
-
-                cmd.Param("p_korisnik_id").setAsNumeric() = id + 0.0;
-
-                ui_clear();
-                ui_separator();
-                ui_print("OK");
-
-                try {  cmd.Execute(); }
-                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
-
-            }
-        }
-
-
-
-        else if(stavke_izbornik[odabir+offset] == "Dodaj Intervenciju"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Prikaz Intervencija"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Brisanje Intervencije"){
+        else if (stavke_izbornik[odabir + offset] == "Brisanje Intervencije") {
 
         }
 

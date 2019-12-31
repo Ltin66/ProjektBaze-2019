@@ -1,3 +1,4 @@
+
 CREATE OR REPLACE PACKAGE VODITELJ_ODJELA_PACK AS
 
     procedure del_insp (p_insp_id number);

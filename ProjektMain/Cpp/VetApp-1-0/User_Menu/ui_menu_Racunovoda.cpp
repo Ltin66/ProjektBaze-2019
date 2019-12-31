@@ -41,11 +41,15 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI
     stavke_izbornik.push_back("Izracun Place");  // fali
     stavke_izbornik.push_back("Unos Zaposlenika"); // fali
-    stavke_izbornik.push_back("Unos Statusa Zaposlenika"); // fali
-    stavke_izbornik.push_back("Status Zaposlenika"); //fali
-    stavke_izbornik.push_back("Raspored"); // fali
+
+    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // fali
+    stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK
+    stavke_izbornik.push_back("Status Zaposlenika"); //fali ???
+
+     stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
     stavke_izbornik.push_back("Unos Rasporeda"); // fali
     stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK
+
     stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK
     stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI
 
@@ -76,6 +80,51 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             CommandToTable("Select * FROM RAC_ZAP_INFO ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
+        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
+
+        }
+
+        else if(stavke_izbornik[odabir+offset] == "Unos Radnog statusa zaposlenika"){
+            ui_print("Unesite ID Inspekcije : ");
+            int id;
+            ui_input();
+            cin>>id;
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+                string cijena = " ";
+
+                cmd.setCommandText("RACUNOVODA_PACK.selectINSPEKCIJA_CIJENA");
+
+                cmd.Param("p_id").setAsNumeric() = id + 0.0; ;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {
+                    cmd.Execute();
+                    cijena = cmd.Param("o_cijena").asString();
+
+                }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+                ui_print("Cijena "+to_string(id)+" Inspekcije : "+ cijena);
+                cout<<"(I)zlaz";
+                char c = 0;//IZLAZ
+                ui_input();
+                cin>>c;
+            }
+
+        }
+
+
+
         else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){ //updateZAPOSLENIK_dolazak
             ui_print("Unesite ID Zaposlenika : ");
             int id;
@@ -137,6 +186,30 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
 
         }
+        else if(stavke_izbornik[odabir+offset] == "Popis Radnih Mjesta"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM RAC_RADNA_MJESTA_TIP ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
+        else if(stavke_izbornik[odabir+offset] == "Status Zaposlenika"){
+
+        }
+
+
+
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Rasporeda"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM RASPOREDI_7_DANA ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
+
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){
+
+        }
+
+
         else if(stavke_izbornik[odabir+offset] == "Prikaz Cijene za Inspekciju ID"){
             ui_print("Unesite ID Inspekcije : ");
             int id;
@@ -206,29 +279,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 cin>>c;
             }
         }
-
-
-        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Statusa Zaposlenika"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Raspored"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
-
-        }
-        else if(stavke_izbornik[odabir+offset] == "Status Zaposlenika"){
-
-        }
-
-
-
+//
     }
 }
 
