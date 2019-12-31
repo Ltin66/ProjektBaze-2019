@@ -1,5 +1,5 @@
 
-
+--update odradeni sati nakon updatea of sati odlaska
 CREATE OR REPLACE TRIGGER RAC_UPD_RAD_VR_ODL
     BEFORE UPDATE OF sati_odlaska ON ZAPOSLENICI_DOLAZAK
     FOR EACH ROW

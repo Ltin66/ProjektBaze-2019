@@ -40,18 +40,20 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI
     stavke_izbornik.push_back("Izracun Place");  // fali
-    stavke_izbornik.push_back("Unos Zaposlenika"); // fali
+    stavke_izbornik.push_back("Unos Zaposlenika"); //
 
-    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // fali
+    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); //
     stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK
-    stavke_izbornik.push_back("Status Zaposlenika"); //fali ???
+    stavke_izbornik.push_back("Status Zaposlenika"); //OK
 
-     stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
-    stavke_izbornik.push_back("Unos Rasporeda"); // fali
+    stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
+    stavke_izbornik.push_back("Unos Rasporeda"); //
     stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK
+    stavke_izbornik.push_back("Unos Odlaska"); // updateZAPOSLENIK_odlazak //OK
 
     stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK
     stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI
+    stavke_izbornik.push_back("Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"); //
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
@@ -122,9 +124,26 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             }
 
         }
+        else if(stavke_izbornik[odabir+offset] == "Popis Radnih Mjesta"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM RAC_RADNA_MJESTA_TIP ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
+        else if(stavke_izbornik[odabir+offset] == "Status Zaposlenika"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM rac_zap_rad_stat ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
 
 
+        else if(stavke_izbornik[odabir+offset] == "Prikaz Rasporeda"){
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM RASPOREDI_7_DANA ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
 
+        }
         else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){ //updateZAPOSLENIK_dolazak
             ui_print("Unesite ID Zaposlenika : ");
             int id;
@@ -146,18 +165,9 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
             SADateTime datum(yr,mnth,dy);
 
-            ui_print("Unesite datum Dolaska");
+            ui_print("Unesite Sate Dolaska");
             ui_input();
-            ui_print("Dan : ");
             cin>>dy; //"1.1.2019"
-
-            ui_print("Mjesec : ");
-            cin>>mnth; //"1.1.2019"
-
-            ui_print("Godina : ");
-            cin>>yr; //"1.1.2019"
-
-            SADateTime datum_dolaska(yr,mnth,dy);
 
 
             SACommand cmd(&con);
@@ -166,11 +176,11 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             if(ui_confirm()){
                 string cijena = " ";
 
-                cmd.setCommandText("RACUNOVODA_PACK.updateZAPOSLENIK_dolazak");
+                cmd.setCommandText("RACUNOVODA_PACK.updateZAPOSLENIK_sati_dolazak");
 
                 cmd.Param("p_id").setAsNumeric() = id + 0.0;
                 cmd.Param("p_datum").setAsDateTime() = datum ;
-                cmd.Param("p_dat_dolaska").setAsDateTime() = datum_dolaska ;
+                cmd.Param("p_sati_dolazak").setAsDateTime() = dy ;
 
                 ui_clear();
                 ui_separator();
@@ -186,26 +196,56 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
 
         }
-        else if(stavke_izbornik[odabir+offset] == "Popis Radnih Mjesta"){
-            dbTable tipovi_ziv;
-            CommandToTable("Select * FROM RAC_RADNA_MJESTA_TIP ",tipovi_ziv,con);
-            ui_showTable(tipovi_ziv);
-        }
-        else if(stavke_izbornik[odabir+offset] == "Status Zaposlenika"){
-
-        }
+        else if(stavke_izbornik[odabir+offset] == "Unos Odlaska"){ //updateZAPOSLENIK_dolazak
+            ui_print("Unesite ID Zaposlenika : ");
+            int id;
+            ui_input();
+            cin>>id;
 
 
+            ui_print("Unesite datum Rasporeda");
+            ui_input();
+            int dy,mnth,yr;
+            ui_print("Dan : ");
+            cin>>dy; //"1.1.2019"
 
-        else if(stavke_izbornik[odabir+offset] == "Prikaz Rasporeda"){
-            dbTable tipovi_ziv;
-            CommandToTable("Select * FROM RASPOREDI_7_DANA ",tipovi_ziv,con);
-            ui_showTable(tipovi_ziv);
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
+            ui_print("Mjesec : ");
+            cin>>mnth; //"1.1.2019"
 
-        }
-        else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){
+            ui_print("Godina : ");
+            cin>>yr; //"1.1.2019"
+
+            SADateTime datum(yr,mnth,dy);
+
+            ui_print("Unesite Sate Odlaska");
+            ui_input();
+            cin>>dy; //"1.1.2019"
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+                string cijena = " ";
+
+                cmd.setCommandText("RACUNOVODA_PACK.updateZAPOSLENIK_sati_odlazak");
+
+                cmd.Param("p_id").setAsNumeric() = id + 0.0;
+                cmd.Param("p_datum").setAsDateTime() = datum ;
+                cmd.Param("p_sati_dolazak").setAsDateTime() = dy ;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {
+                    cmd.Execute();
+                }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+
+            }
+
 
         }
 
@@ -279,6 +319,8 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 cin>>c;
             }
         }
+        else if(stavke_izbornik[odabir+offset] == "Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"){
+
 //
     }
 }

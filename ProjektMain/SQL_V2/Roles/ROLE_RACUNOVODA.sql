@@ -16,7 +16,7 @@ grant select on KORISNIK_VIEW to racunovoda;
 grant select on RAC_ZAP_INFO to racunovoda;
 grant select on rac_radna_mjesta_tip to racunovoda;
 grant select on rasporedi_7_dana to racunovoda;
-
+grant select on rac_zap_rad_stat to racunovoda;
 
 --RAC_ZAP_INFO
 --grant select on ZAPOSLENIK to racunovoda/
@@ -81,8 +81,12 @@ CREATE OR REPLACE PROCEDURE create_user_racunovoda
 
         ex_stmt_a := 'create synonym '|| user_name || '.rasporedi_7_dana  for veterinar_sys.rasporedi_7_dana';
         EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.rac_zap_rad_stat  for veterinar_sys.rac_zap_rad_stat';
+        EXECUTE IMMEDIATE (ex_stmt_a);
     end;
 
---create synonym mirkomirkec2.rasporedi_7_dana for VETERINAR_SYS.rasporedi_7_dana;
+--create synonym mirkomirkec2.rac_zap_rad_stat for VETERINAR_SYS.rac_zap_rad_stat;
 
 --rac_radna_mjesta_tip
+--rac_zap_rad_stat

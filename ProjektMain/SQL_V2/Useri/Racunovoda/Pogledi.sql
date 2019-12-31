@@ -1,3 +1,12 @@
+
+----------------------------------------------------------------------------------------------------------------
+
+--2.2. view za radne statuse
+
+create view rac_zap_rad_stat as select * from radni_status where datum_kraja = To_Date('01.01.0001 00:00:00',' DD.MM.YYYY hh24:mi:ss');
+
+----------------------------------------------------------------------------------------------------------------
+
 --PREGLED RASP ZA SLJEDECIH 7dana
 create view rasporedi_7_dana
     as select * from ZAPOSLENICI_DOLAZAK where datum > current_date - interval '2' day AND datum < current_date + interval '7' day;

@@ -1,3 +1,8 @@
+--prikaz tipova inspekcija
+
+create or replace view vo_od_insp_tip as select * from INSPEKCIJA_TIP;
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------
 --1. prikaz zaposlenika (View) -- KORISTIMO MAT VIEW
 
