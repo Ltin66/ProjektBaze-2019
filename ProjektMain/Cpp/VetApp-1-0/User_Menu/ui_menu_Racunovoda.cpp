@@ -40,20 +40,20 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI
     stavke_izbornik.push_back("Izracun Place");  // fali
-    stavke_izbornik.push_back("Unos Zaposlenika"); //
+    stavke_izbornik.push_back("Unos Zaposlenika"); // OK
 
-    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); //
+    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK
     stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK
     stavke_izbornik.push_back("Status Zaposlenika"); //OK
 
     stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
-    stavke_izbornik.push_back("Unos Rasporeda"); //
+    stavke_izbornik.push_back("Unos Rasporeda"); //OK
     stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK
     stavke_izbornik.push_back("Unos Odlaska"); // updateZAPOSLENIK_odlazak //OK
 
     stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK
     stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI
-    stavke_izbornik.push_back("Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"); //
+    stavke_izbornik.push_back("Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"); //OK RADI
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
@@ -86,24 +86,59 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
         }
         else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
-
-        }
-
-        else if(stavke_izbornik[odabir+offset] == "Unos Radnog statusa zaposlenika"){
-            ui_print("Unesite ID Inspekcije : ");
-            int id;
+            ui_print("Unesite ime Zaposlenika :");
             ui_input();
-            cin>>id;
+            string ime;
+            cin>>ime;
+
+            ui_print("Unesite Srednje Ime ili '@' ako nema : ");
+            ui_input();
+            string sred_ime;
+            cin>>sred_ime;
+
+            ui_print("Unesite Prezime Zaposlenika : ");
+            ui_input();
+            string prez_ime;
+            cin>>prez_ime;
+
+            ui_print("Unesite Sifru Zaposlenika : ");
+            ui_input();
+            string sifra;
+            cin>>sifra;
+
+            ui_print("Unesite datum");
+            ui_input();
+            int dy,mnth,yr;
+            ui_print("Dan : ");
+            cin>>dy; //"1.1.2019"
+
+            ui_print("Mjesec : ");
+            cin>>mnth; //"1.1.2019"
+
+            ui_print("Godina : ");
+            cin>>yr; //"1.1.2019"
+
+            SADateTime datum(yr,mnth,dy);
+
+            ui_print("Unesite jmbg ");
+            ui_input();
+            string jmbg;
+            cin>>jmbg;
 
             SACommand cmd(&con);
 
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
-                string cijena = " ";
 
-                cmd.setCommandText("RACUNOVODA_PACK.selectINSPEKCIJA_CIJENA");
+                cmd.setCommandText("RACUNOVODA_PACK.add_zap");
 
-                cmd.Param("p_id").setAsNumeric() = id + 0.0; ;
+                cmd.Param("p_zap_id").setAsNumeric() =  0.0;
+                cmd.Param("p_ime").setAsString() = ime.c_str() ;
+                cmd.Param("p_sr_ime").setAsString() = sred_ime.c_str() ;
+                cmd.Param("p_prez").setAsString() = prez_ime.c_str() ;
+                cmd.Param("p_sifra").setAsString() = sifra.c_str() ;
+                cmd.Param("p_dat_zap").setAsDateTime() = datum ;
+                cmd.Param("p_jmbg").setAsString() = jmbg.c_str() ;
 
                 ui_clear();
                 ui_separator();
@@ -111,16 +146,72 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
                 try {
                     cmd.Execute();
-                    cijena = cmd.Param("o_cijena").asString();
-
                 }
                 catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
 
-                ui_print("Cijena "+to_string(id)+" Inspekcije : "+ cijena);
-                cout<<"(I)zlaz";
-                char c = 0;//IZLAZ
-                ui_input();
-                cin>>c;
+
+            }
+        }
+
+        else if(stavke_izbornik[odabir+offset] == "Unos Radnog statusa zaposlenika"){
+
+            ui_print("Unesite ID Zaposlenika : ");
+            int id;
+            ui_input();
+            cin>>id;
+
+            ui_print("Unesite Satnicu Zaposlenika : ");
+            double satnc;
+            ui_input();
+            cin>>satnc;
+
+            ui_print("Unesite ID Radnog Mjesta : ");
+            ui_input();
+            int rad_mj;
+            cin>>rad_mj;
+
+
+
+            ui_print("Unesite datum pocetka : ");
+            ui_input();
+            int dy,mnth,yr;
+            ui_print("Dan : ");
+            cin>>dy; //"1.1.2019"
+
+            ui_print("Mjesec : ");
+            cin>>mnth; //"1.1.2019"
+
+            ui_print("Godina : ");
+            cin>>yr; //"1.1.2019"
+
+            SADateTime datum(yr,mnth,dy);
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("RACUNOVODA_PACK.add_rad_stat");
+
+                cmd.Param("p_stat_id").setAsNumeric() =  0.0;
+                cmd.Param("p_zap_id").setAsNumeric() =  id + 0.0;
+                cmd.Param("p_dat_poc").setAsDateTime() =  datum;
+                cmd.Param("p_bilj").setAsString() =  " ";
+                cmd.Param("p_satnica").setAsNumeric() =  satnc;
+                cmd.Param("p_tj_sati").setAsNumeric() =  48 + 0.0;
+                cmd.Param("p_rad_stat_tip_id").setAsNumeric() =  rad_mj + 0.0;
+
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {
+                    cmd.Execute();
+                }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
             }
 
         }
@@ -142,7 +233,50 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             ui_showTable(tipovi_ziv);
         }
         else if(stavke_izbornik[odabir+offset] == "Unos Rasporeda"){
+            ui_print("Unesite ID Zaposlenika : ");
+            int id;
+            ui_input();
+            cin>>id;
 
+            ui_print("Unesite datum : ");
+            ui_input();
+            int dy,mnth,yr;
+            ui_print("Dan : ");
+            cin>>dy; //"1.1.2019"
+
+            ui_print("Mjesec : ");
+            cin>>mnth; //"1.1.2019"
+
+            ui_print("Godina : ");
+            cin>>yr; //"1.1.2019"
+
+            SADateTime datum(yr,mnth,dy);
+
+
+            SACommand cmd(&con);
+
+            cout<<"Jeste lis zadovoljni sa unosom ?";
+            if(ui_confirm()){
+
+                cmd.setCommandText("RACUNOVODA_PACK.add_raspored");
+
+                cmd.Param("p_zap_id").setAsNumeric() = id +  0.0;
+                cmd.Param("p_dat").setAsDateTime() =  datum;
+                cmd.Param("p_sat_dol").setAsNumeric() =   0.0;
+                cmd.Param("p_sat_odl").setAsNumeric() =  0.0;
+                cmd.Param("p_odr_sat").setAsNumeric() =  0.0;
+
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {
+                    cmd.Execute();
+                }
+                catch(SAException & x) {printf("%s\n", (const char*)x.ErrText()); }
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Unos Dolaska"){ //updateZAPOSLENIK_dolazak
             ui_print("Unesite ID Zaposlenika : ");
@@ -320,8 +454,45 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             }
         }
         else if(stavke_izbornik[odabir+offset] == "Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"){
+            ui_print("Unesite datum pocetka : ");
+            ui_input();
+            string dy,mnth,yr;
+            ui_print("Dan : ");
+            cin>>dy; //"1.1.2019"
+            if(dy.length() == 1) dy = "0" + dy;
 
-//
+
+            ui_print("Mjesec : ");
+            cin>>mnth; //"1.1.2019"
+            if(mnth.length() == 1) mnth = "0" + mnth;
+
+
+            ui_print("Godina : ");
+            cin>>yr; //"1.1.2019"
+
+
+            ui_print("Unesite datum kraja : ");
+            ui_input();
+            string dyd,mnthd,yrd;
+            ui_print("Dan : ");
+            cin>>dyd; //"1.1.2019"
+            if(dy.length() == 1) dyd = "0" + dyd;
+
+
+            ui_print("Mjesec : ");
+            cin>>mnthd; //"1.1.2019"
+            if(mnthd.length() == 1) mnthd = "0" + mnthd;
+
+            ui_print("Godina : ");
+            cin>>yrd; //"1.1.2019"
+
+            dbTable tipovi_ziv;
+            CommandToTable("\r\nselect * from table(amb_cijena_par_view_pack.vrati_tablicu(   "
+                           "to_date(\'" + dyd + "." +mnthd +"."+ yrd + " 00:00:00\',\'dd.mm.yyyy  hh24:mi:ss\'),   "
+                           "to_date(\'" + dy + "." +mnth +"."+ yr + " 00:00:00\',\'dd.mm.yyyy  hh24:mi:ss\')))"
+                           ,tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
+
     }
 }
-
+}
