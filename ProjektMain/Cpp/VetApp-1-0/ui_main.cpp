@@ -160,7 +160,7 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
 
             //ISPIS OPCIJA
             cout<<"(I)zlaz";
-            if(1 < i-PrintPauseLen) cout<<" || (G)ore";
+            if(1 <= i-PrintPauseLen) cout<<" || (G)ore";
             if(i+1 != Table.RowCnt) cout<<" || (D)olje  ";
 
             if(r_limit != TableRowS_limit) cout<<" || d(E)sno  ";
@@ -178,7 +178,7 @@ int ui_showTable(dbTable &Table,const int MaxCollumnSize = 20,  int MaxCollumnS 
             if(odabir == 'I' || odabir == 'i') return 0; //da
 
             //GORE
-            else if((1 < i-PrintPauseLen) && (odabir == 'G' || odabir == 'g')) {
+            else if((1 <= i-PrintPauseLen) && (odabir == 'G' || odabir == 'g')) {
                 if(i+1 == Table.RowCnt) i = i -   PrintPauseLen - (i%10) ; //ako ih je manje od PrintPauseLen
                 //else i == 1 ? i = i - PrintPauseLen*2 - 1 : i = i - PrintPauseLen*2 ; //Vrati natrag ()-1 jer +1 na kraju iter
                 else i = i - PrintPauseLen - PrintPauseLen  ; //-2 = err

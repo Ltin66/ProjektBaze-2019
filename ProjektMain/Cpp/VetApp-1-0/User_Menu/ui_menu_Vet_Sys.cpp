@@ -51,7 +51,7 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
     while(true) {
         int odabir = 0;
 
-        ui_print_menu(stavke_izbornik,"Doktor Izbornik",8,3);
+        ui_print_menu(stavke_izbornik,"Administrator",8,3);
 
 
         ui_input();

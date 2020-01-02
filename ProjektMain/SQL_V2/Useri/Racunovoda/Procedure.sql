@@ -114,6 +114,8 @@ is
 begin
     insert into zaposlenik (zaposlenik_id, ime, srednje_ime, prezime, sifra, datum_zap, jmbg)
     values (p_zap_id, p_ime, p_sr_ime, p_prez, p_sifra, p_dat_zap, p_jmbg);
+      COMMIT;
+
 end;
 
 
@@ -129,6 +131,8 @@ is
 begin
     insert into radni_status (status_id, zaposlenik_id, datum_pocetka, biljeske, satnica, tjednisati, radni_status_tip_id)
         values (p_stat_id, p_zap_id, p_dat_poc, p_bilj, p_satnica, p_tj_sati, p_rad_stat_tip_id);
+      COMMIT;
+
 end;
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -160,6 +164,8 @@ is
 begin
     insert into ZAPOSLENICI_DOLAZAK (ZAPOSLENIK_ID, DATUM, SATI_DOLASKA, SATI_ODLASKA, ODRADENI_SATI)
     values (p_zap_id, p_dat, p_sat_dol, p_sat_odl, p_odr_sat);
+      COMMIT;
+
 end;
 
 

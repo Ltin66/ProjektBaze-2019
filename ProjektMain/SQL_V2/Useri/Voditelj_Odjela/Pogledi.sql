@@ -1,3 +1,9 @@
+--prikaz zivotinja
+
+create or replace view vo_od_ziv as select ZIVOTINJA.ZIVOTINJA_ID ID,ZIVOTINJA.IME IME, ZIVOTINJA.OPIS OPIS, ZT.NAZIV TIP from ZIVOTINJA join ZIVOTINJA_TIP ZT on ZIVOTINJA.ZIVOTINJA_TIP_ID = ZT.ZIVOTINJA_TIP_ID;
+
+select * from vo_od_ziv;
+
 --prikaz tipova inspekcija
 
 create or replace view vo_od_insp_tip as select * from INSPEKCIJA_TIP;
@@ -18,7 +24,7 @@ create view insp_view as select INSPEKCIJA_ID,DATUM,OPIS,CIJENA from
 --------------------------------------------------------------------------------------------------------------------------------------------------
 --ZAKAZANE INSPEKCIJE
 
-create view zak_insp as
+create view vo_od_zak_insp as
     select OPIS,DATUM,INSPEKCIJA_ID from INSPEKCIJA where datum > current_date;
 
 --------------------------------------------------------------------------------------------------------------------------------------------------

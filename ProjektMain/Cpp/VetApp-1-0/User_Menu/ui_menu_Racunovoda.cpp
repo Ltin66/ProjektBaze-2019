@@ -40,20 +40,20 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI +
     stavke_izbornik.push_back("Izracun Place");  // fali
-    stavke_izbornik.push_back("Unos Zaposlenika"); // OK  -
+    stavke_izbornik.push_back("Unos Zaposlenika"); // OK  +
 
-    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK -
-    stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK 
-    stavke_izbornik.push_back("Status Zaposlenika"); //OK
+    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK +
+    stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK +
+    stavke_izbornik.push_back("Status Zaposlenika"); //OK +
 
-    stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
-    stavke_izbornik.push_back("Unos Rasporeda"); //OK
-    stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK
-    stavke_izbornik.push_back("Unos Odlaska"); // updateZAPOSLENIK_odlazak //OK
+    stavke_izbornik.push_back("Prikaz Rasporeda"); //OK +
+    stavke_izbornik.push_back("Unos Rasporeda"); //OK +
+    stavke_izbornik.push_back("Unos Dolaska"); // updateZAPOSLENIK_dolazak //OK +
+    stavke_izbornik.push_back("Unos Odlaska"); // updateZAPOSLENIK_odlazak //OK +
 
-    stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK
-    stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI
-    stavke_izbornik.push_back("Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"); //OK RADI
+    stavke_izbornik.push_back("Prikaz Cijene za Inspekciju ID"); // selectINSPEKCIJA_CIJENA //OK  +
+    stavke_izbornik.push_back("Prikaz Cijene za Ambulantu"); // selectAMBULANTA_USLUGA_CIJENA //OK  RADI +
+    stavke_izbornik.push_back("Prikaz ukupne cijene Posjeta Ambulanti za razdoblje"); //OK RADI +
 
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
@@ -301,8 +301,14 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
             ui_print("Unesite Sate Dolaska");
             ui_input();
-            cin>>dy; //"1.1.2019"
+            int hh;
+            cin>>hh; //"1.1.2019"
 
+            ui_print("Unesite Minute Dolaska");
+            int mm;
+            ui_input();
+
+            cin>>mm; //"1.1.2019"
 
             SACommand cmd(&con);
 
@@ -314,7 +320,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
                 cmd.Param("p_id").setAsNumeric() = id + 0.0;
                 cmd.Param("p_datum").setAsDateTime() = datum ;
-                cmd.Param("p_sati_dolazak").setAsDateTime() = dy ;
+                cmd.Param("p_sati_dolazak").setAsNumeric() = float(float(hh) + float(float(mm)/100)) ;
 
                 ui_clear();
                 ui_separator();
@@ -353,8 +359,14 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
             ui_print("Unesite Sate Odlaska");
             ui_input();
-            cin>>dy; //"1.1.2019"
+            int hh;
+            cin>>hh; //"1.1.2019"
 
+            ui_print("Unesite Minute Odlaska");
+            int mm;
+            ui_input();
+
+            cin>>mm; //"1.1.2019"
 
             SACommand cmd(&con);
 
@@ -366,7 +378,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
                 cmd.Param("p_id").setAsNumeric() = id + 0.0;
                 cmd.Param("p_datum").setAsDateTime() = datum ;
-                cmd.Param("p_sati_dolazak").setAsDateTime() = dy ;
+                cmd.Param("p_sati_odlazak").setAsNumeric() = float(float(hh) + float(float(mm)/100))  ;
 
                 ui_clear();
                 ui_separator();
@@ -494,5 +506,5 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             ui_showTable(tipovi_ziv);
 
     }
-}
+    }
 }

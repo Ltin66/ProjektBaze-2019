@@ -41,6 +41,8 @@ procedure del_insp (p_insp_id number)
 is
 begin
     delete from INSPEKCIJA where INSPEKCIJA_ID=p_insp_id;
+      COMMIT;
+
 end;
 
     --------------------------------------------------------------------------
@@ -49,6 +51,8 @@ procedure del_doktor (p_amb_id number, p_zap_id number)
 is
 begin
     delete from AMBULANTA_ZAPOSLENIK where AMBULANTA_ID=p_amb_id AND ZAPOSLENIK_ID=p_zap_id;
+      COMMIT;
+
 end del_doktor;
 
 
@@ -63,6 +67,8 @@ begin
     delete from AMBULANTA_ZAPOSLENIK where AMBULANTA_ID=p_amb_id;
 
     delete from AMBULANTA where AMBULANTA_ID=p_amb_id;
+      COMMIT;
+
 end del_pregled;
 
    --     9. promijeni opis inspekcije procedura
@@ -73,6 +79,8 @@ begin
     update inspekcija
         set opis = p_opis
     where inspekcija_id = p_insp_id;
+      COMMIT;
+
 end update_opis_insp;
 
 
@@ -102,6 +110,8 @@ is
 begin
     insert into AMBULANTA_ZAPOSLENIK (AMBULANTA_ZAPOSLENIK_ID, AMBULANTA_ID, ZAPOSLENIK_ID)
     values (p_amb_zap_id, p_amb_id, p_dok_id);
+      COMMIT;
+
 end add_doktor;
 
 
