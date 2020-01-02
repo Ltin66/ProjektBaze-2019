@@ -42,8 +42,8 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back("Izracun Place");  // fali
     stavke_izbornik.push_back("Unos Zaposlenika"); // OK  -
 
-    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK
-    stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK
+    stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK -
+    stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK 
     stavke_izbornik.push_back("Status Zaposlenika"); //OK
 
     stavke_izbornik.push_back("Prikaz Rasporeda"); //OK
@@ -130,7 +130,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("RACUNOVODA_PACK.add_zap");
+                cmd.setCommandText("RACUNOVODA_PACK.ADD_ZAP");
 
                 cmd.Param("p_zap_id").setAsNumeric() =  0.0;
                 cmd.Param("p_ime").setAsString() = ime.c_str() ;
