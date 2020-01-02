@@ -84,13 +84,13 @@ CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
         ex_stmt_a := 'create synonym '|| user_name || '.VODITELJ_ODJELA_PACK  for veterinar_sys.VODITELJ_ODJELA_PACK';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
-
         ex_stmt_a := 'create synonym '|| user_name || '.zak_insp  for veterinar_sys.zak_insp';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
         ex_stmt_a := 'create synonym '|| user_name || '.vo_od_insp_tip  for veterinar_sys.vo_od_insp_tip';
         EXECUTE IMMEDIATE (ex_stmt_a);
+
         end;
 
---create  synonym MIRKOMIRKEC1.vo_od_insp_tip FOR VETERINAR_SYS.vo_od_insp_tip;
+create  synonym MIRKOMIRKEC1.ZAK_INSP FOR VETERINAR_SYS.ZAK_INSP;
 --vo_od_insp_tip

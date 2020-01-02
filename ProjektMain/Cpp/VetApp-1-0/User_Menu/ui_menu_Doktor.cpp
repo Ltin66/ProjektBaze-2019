@@ -40,20 +40,20 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK RADI
+    stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK RADI +
     stavke_izbornik.push_back("Zakazani pregledi");         //fali
-    stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI
-    stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK
-    stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK RADI
-    stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK RADI
-    stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK RADI
+    stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI +
+    stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK  +
+    stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK RADI  +
+    stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK RADI +
+    stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK RADI  +
     stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //fali
-    stavke_izbornik.push_back("Prikaz Zaposlenika");           //zap_info //OK
-    stavke_izbornik.push_back("Prikaz Tipova Zivotinja");// doktor_tipovi_zivotinja   //view OK RADI
-    stavke_izbornik.push_back("Prikaz Usluga Ambulante");  //doktor_tipovi_usluga       //view OK RADI
-    stavke_izbornik.push_back("Dodavanje Doktora na Pregled");//InsertDoktor_Ambulanta  //OK RADI
-    stavke_izbornik.push_back("Prikaz svih ID-a Korisnika i njihovih Zivotinja");//KorisnikView //OK RADI
-    stavke_izbornik.push_back("Prikaz svih Posjeta Ambulanti"); //AMBULANTA_INFO //OK
+    stavke_izbornik.push_back("Prikaz Zaposlenika");           //zap_info //OK +
+    stavke_izbornik.push_back("Prikaz Tipova Zivotinja");// doktor_tipovi_zivotinja   //view OK RADI +
+    stavke_izbornik.push_back("Prikaz Usluga Ambulante");  //doktor_tipovi_usluga       //view OK RADI +
+    stavke_izbornik.push_back("Dodavanje Doktora na Pregled");//InsertDoktor_Ambulanta  //OK RADI +
+    stavke_izbornik.push_back("Prikaz svih ID-a Korisnika i njihovih Zivotinja");//KorisnikView //OK RADI +
+    stavke_izbornik.push_back("Prikaz svih Posjeta Ambulanti"); //AMBULANTA_INFO //OK +
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 

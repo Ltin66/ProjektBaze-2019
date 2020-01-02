@@ -38,9 +38,9 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI
+    stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI +
     stavke_izbornik.push_back("Izracun Place");  // fali
-    stavke_izbornik.push_back("Unos Zaposlenika"); // OK
+    stavke_izbornik.push_back("Unos Zaposlenika"); // OK  -
 
     stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK
     stavke_izbornik.push_back("Popis Radnih Mjesta"); // OK
@@ -122,7 +122,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
 
             ui_print("Unesite jmbg ");
             ui_input();
-            string jmbg;
+            int jmbg;
             cin>>jmbg;
 
             SACommand cmd(&con);
@@ -138,7 +138,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
                 cmd.Param("p_prez").setAsString() = prez_ime.c_str() ;
                 cmd.Param("p_sifra").setAsString() = sifra.c_str() ;
                 cmd.Param("p_dat_zap").setAsDateTime() = datum ;
-                cmd.Param("p_jmbg").setAsString() = jmbg.c_str() ;
+                cmd.Param("p_jmbg").setAsNumeric() = jmbg + 0.0 ;
 
                 ui_clear();
                 ui_separator();

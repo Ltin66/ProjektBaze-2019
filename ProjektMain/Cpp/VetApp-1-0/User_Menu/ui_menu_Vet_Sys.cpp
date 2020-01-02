@@ -39,11 +39,11 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
     stavke_izbornik.push_back(" ");
 
-    stavke_izbornik.push_back("Dodaj Doktora"); //OK RADI
-    stavke_izbornik.push_back("Dodaj Racunovodu"); //OK
-    stavke_izbornik.push_back("Dodaj Voditelja Odjela"); //OK
-    stavke_izbornik.push_back("Log prijave i odjave"); //OK RADI
-    stavke_izbornik.push_back("Log zadnje prijave korisnika"); //OK RADI
+    stavke_izbornik.push_back("Dodaj Doktora"); //OK RADI +
+    stavke_izbornik.push_back("Dodaj Racunovodu"); //OK RADI +
+    stavke_izbornik.push_back("Dodaj Voditelja Odjela"); //OK RADI +
+    stavke_izbornik.push_back("Log prijave i odjave"); //OK RADI +
+    stavke_izbornik.push_back("Log zadnje prijave korisnika"); //OK RADI +
 
     for(int i= 0;i<stavke_izbornik.size();i++) if(stavke_izbornik[i] == " ") offset++;
 
@@ -144,7 +144,7 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
             cout<<"Jeste lis zadovoljni sa unosom ?";
             if(ui_confirm()){
 
-                cmd.setCommandText("create_voditelj_odjela");
+                cmd.setCommandText("CREATE_USER_VODITELJ_ODJELA");
 
                 cmd.Param("user_name").setAsString() = ime.c_str();
                 cmd.Param("passwd").setAsString() = sifra.c_str();

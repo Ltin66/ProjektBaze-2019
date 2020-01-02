@@ -26,7 +26,7 @@ CREATE OR REPLACE VIEW korisnik_view (ID,Ime,Prezime,ZivotinjaID,Ime_zivotinje,Z
                                                KORISNIK_ZIVOTINJA.KORISNIK_ZIVOTINJA_ID
   FROM KORISNIK
   LEFT JOIN KORISNIK_ZIVOTINJA ON KORISNIK.korisnik_id=KORISNIK_ZIVOTINJA.korisnik_id
-  JOIN ZIVOTINJA ON KORISNIK_ZIVOTINJA.ZIVOTINJA_ID = ZIVOTINJA.ZIVOTINJA_ID
+   LEFT JOIN ZIVOTINJA ON KORISNIK_ZIVOTINJA.ZIVOTINJA_ID = ZIVOTINJA.ZIVOTINJA_ID
   ORDER BY KORISNIK.korisnik_id
  /
 ------------------------------------------------------------------------------------------------------------------------
