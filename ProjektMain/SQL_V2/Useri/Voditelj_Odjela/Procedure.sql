@@ -1,6 +1,12 @@
 
 CREATE OR REPLACE PACKAGE VODITELJ_ODJELA_PACK AS
 
+    PROCEDURE insertKorisnikInspekcija (
+       p_ins_kor_id IN INSPEKCIJA_KORISNIK.INSPEKCIJA_KORISNIK_ID%TYPE,
+       p_inspekcija_id IN INSPEKCIJA_KORISNIK.INSPEKCIJA_ID%TYPE,
+       p_kor_id IN INSPEKCIJA_KORISNIK.KORISNIK_ID%TYPE,
+       p_cijena IN INSPEKCIJA_KORISNIK.CIJENA_TOTAL%TYPE);
+
     procedure del_insp (p_insp_id number);
 
     procedure add_doktor (p_amb_zap_id number, p_amb_id number, p_dok_id number);
@@ -153,6 +159,24 @@ BEGIN
   DELETE ZIVOTINJA WHERE ZIVOTINJA_ID = p_zivotinja_id;
 
   COMMIT;
+
+END;
+
+
+PROCEDURE insertKorisnikInspekcija (
+       p_ins_kor_id IN INSPEKCIJA_KORISNIK.INSPEKCIJA_KORISNIK_ID%TYPE,
+       p_inspekcija_id IN INSPEKCIJA_KORISNIK.INSPEKCIJA_ID%TYPE,
+       p_kor_id IN INSPEKCIJA_KORISNIK.KORISNIK_ID%TYPE,
+       p_cijena IN INSPEKCIJA_KORISNIK.CIJENA_TOTAL%TYPE)
+
+IS
+BEGIN
+
+  INSERT INTO INSPEKCIJA_KORISNIK (INSPEKCIJA_KORISNIK_ID, INSPEKCIJA_ID, KORISNIK_ID,CIJENA_TOTAL)
+  values (p_ins_kor_id, p_inspekcija_id, p_kor_id,p_cijena);
+
+  COMMIT;
+
 
 END;
 ------------------------------------------------------------------------------------------------------------------------

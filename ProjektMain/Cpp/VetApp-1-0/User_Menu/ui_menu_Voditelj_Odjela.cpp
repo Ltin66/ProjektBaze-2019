@@ -57,12 +57,12 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
     stavke_izbornik.push_back("Prikaz Tipova Inspekcije"); // OK +
     stavke_izbornik.push_back("Dodaj inspekciju"); //OK +
     stavke_izbornik.push_back("Dodaj Doktora na Inspekciju"); //insertDOKTORInspekcija //OK  +
-    stavke_izbornik.push_back("Dodaj Korisnika na Inspekciju"); //ja
+    stavke_izbornik.push_back("Dodaj Korisnika na Inspekciju"); //OK +
     stavke_izbornik.push_back("Zakazane Inspekcije"); //OK +
     stavke_izbornik.push_back("Izmjena opisa inspekcije"); //update_opis_insp //OK +
 
-    stavke_izbornik.push_back("Prikaz Doktora Za Inspekciju ID"); //ja
-    stavke_izbornik.push_back("Prikaz Korinsika Za Inspekciju ID"); //ja
+    stavke_izbornik.push_back("Prikaz Doktora Za Inspekciju ID"); //OK +
+    stavke_izbornik.push_back("Prikaz Korisnika Za Inspekciju ID"); //OK +
 
 
     for (int i = 0; i < stavke_izbornik.size(); i++) if (stavke_izbornik[i] == " ") offset++;
@@ -188,7 +188,7 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
 
             dbTable tipovi_ziv;
             CommandToTable("select DOK_PREG_ID(" + to_string(id) + ") from DUAL ", tipovi_ziv, con);
-            ui_showTable(tipovi_ziv);
+            ui_showTable(tipovi_ziv,40);
         }
         else if (stavke_izbornik[odabir + offset] == "Prikaz svih Korisnika") {
             dbTable tipovi_ziv;
@@ -368,6 +368,47 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
 
 
         } //
+        else if (stavke_izbornik[odabir + offset] == "Dodaj Korisnika na Inspekciju") {
+
+            ui_print("Unesite ID Korisnika");
+            ui_input();
+            int zapId;
+            cin >> zapId;
+
+            ui_print("Unesite ID Inspekcije");
+            ui_input();
+            int ambId;
+            cin >> ambId;
+
+            ui_print("Unesite cijenu Inspekcije");
+            ui_input();
+            double ci;
+            cin >> ci;
+
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("VODITELJ_ODJELA_PACK.INSERTKORISNIKINSPEKCIJA");
+
+                cmd.Param("p_ins_kor_id").setAsNumeric() = 0.0;
+                cmd.Param("p_inspekcija_id").setAsNumeric() = ambId + 0.0;
+                cmd.Param("p_kor_id").setAsNumeric() = zapId + 0.0;
+                cmd.Param("p_cijena").setAsNumeric() = ci;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try { cmd.Execute(); }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
+
+
+        } //
         else if (stavke_izbornik[odabir + offset] == "Zakazane Inspekcije") {
             dbTable tipovi_ziv;
             CommandToTable("Select * FROM VO_OD_ZAK_INSP", tipovi_ziv, con);
@@ -415,10 +456,24 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
         } //
 
         else if (stavke_izbornik[odabir + offset] == "Prikaz Doktora Za Inspekciju ID") {
+            ui_print("Unesite ID Inspekcije :");
+            ui_input();
+            int id;
+            cin >> id;
 
+            dbTable tipovi_ziv;
+            CommandToTable("select dok_insp_id(" + to_string(id) + ") from DUAL ", tipovi_ziv, con);
+            ui_showTable(tipovi_ziv,40);
         }
         else if (stavke_izbornik[odabir + offset] == "Prikaz Korisnika Za Inspekciju ID") {
+            ui_print("Unesite ID Inspekcije :");
+            ui_input();
+            int id;
+            cin >> id;
 
+            dbTable tipovi_ziv;
+            CommandToTable("select kor_insp_id(" + to_string(id) + ") from DUAL ", tipovi_ziv, con);
+            ui_showTable(tipovi_ziv,40);
         }
 
     }

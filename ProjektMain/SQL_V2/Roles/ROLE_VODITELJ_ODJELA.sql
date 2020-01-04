@@ -20,6 +20,10 @@ grant select on KORISNIK_VIEW to voditelj_odjela;
 grant select on vo_od_zak_insp to voditelj_odjela;
 grant select on vo_od_insp_tip to voditelj_odjela;
 grant select on vo_od_ziv to voditelj_odjela;
+grant execute on kor_insp_id to voditelj_odjela;
+grant execute on dok_insp_id to voditelj_odjela;
+
+--kor_insp_id
 
 /*
 Informacije o Doktorima
@@ -92,8 +96,14 @@ CREATE OR REPLACE PROCEDURE create_user_voditelj_odjela
 
         ex_stmt_a := 'create synonym '|| user_name || '.vo_od_ziv  for veterinar_sys.vo_od_ziv';
         EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.kor_insp_id  for veterinar_sys.kor_insp_id';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.dok_insp_id  for veterinar_sys.dok_insp_id';
+        EXECUTE IMMEDIATE (ex_stmt_a);
         end;
 
-create or replace  synonym MIRKOMIRKEC1.vo_od_ziv FOR VETERINAR_SYS.vo_od_ziv;
+create or replace  synonym MIRKOMIRKEC1.kor_insp_id FOR VETERINAR_SYS.kor_insp_id;
 drop synonym MIRKOMIRKEC1.ZAK_INSP;
 --vo_od_insp_tip
