@@ -1,4 +1,4 @@
---placa za zaposlenika ID za n-ti mjesec u m-toj godini  OK
+--placa za zaposlenika ID za n-ti mjesec u m-toj godini  OK (zaokružuje plaču ali neznam kako da ju ne zaokruži)
 
 CREATE OR REPLACE PROCEDURE zap_placa (
     p_zap_id IN ZAPOSLENIK.ZAPOSLENIK_ID%TYPE,
@@ -7,8 +7,8 @@ CREATE OR REPLACE PROCEDURE zap_placa (
     o_placa OUT NUMERIC
     )
 IS
-    var_satnica NUMERIC;
-    var_sum_sat NUMERIC;
+    var_satnica NUMERIC(8,2);
+    var_sum_sat NUMERIC(8,2);
     BEGIN
 
         SELECT SATNICA INTO var_satnica  FROM RADNI_STATUS
@@ -25,7 +25,7 @@ IS
 
 --TEST
 DECLARE
-   o_placa NUMERIC(16,2);
+   o_placa NUMERIC(8,2);
 BEGIN
 
     zap_placa(5,2,2008,o_placa);
@@ -34,16 +34,17 @@ BEGIN
 
 END;
 
+-- = 479
 
---TEST
+--TEST 26.6
 SELECT SATNICA FROM RADNI_STATUS
-WHERE ZAPOSLENIK_ID = 1 AND DATUM_POCETKA = (SELECT MAX(DATUM_POCETKA) FROM RADNI_STATUS GROUP BY ZAPOSLENIK_ID HAVING ZAPOSLENIK_ID = 1);
+WHERE ZAPOSLENIK_ID = 5 AND DATUM_POCETKA = (SELECT MAX(DATUM_POCETKA) FROM RADNI_STATUS GROUP BY ZAPOSLENIK_ID HAVING ZAPOSLENIK_ID = 5);
 
---TEST
+--TEST 18
 SELECT SUM(ODRADENI_SATI) FROM ZAPOSLENICI_DOLAZAK WHERE EXTRACT(month FROM DATUM) = 2 AND EXTRACT(year FROM DATUM) = 2008 GROUP BY ZAPOSLENIK_ID HAVING ZAPOSLENIK_ID = 5;
 
 
---svi pregledi za korisnik ID OK, U DOKTOR/FUNKCIJE JE GOTOV
+--svi pregledi za korisnik ID OK, U DOKTOR/FUNKCIJE SE NALAZI ,, preko funkcije vratiti tablicu, kao neki parametarski view ili sl.
 
 select A.AMBULANTA_ID AMBULANTA_ID, KZ.ZIVOTINJA_ID ZIVOTINJA_ID, A.AMBULANTA_USLUGA_ID AMBULANTA_USLUGA_ID,A.DATUM DATUM, A.OPIS OPIS  from AMBULANTA_KORISNIK_ZIVOTINJA AKZ join KORISNIK_ZIVOTINJA KZ ON AKZ.KORISNIK_ZIVOTINJA_ID = KZ.KORISNIK_ZIVOTINJA_ID
         JOIN AMBULANTA A ON AKZ.AMBULANTA_ID = A.AMBULANTA_ID WHERE KZ.KORISNIK_ID = 5;
@@ -56,8 +57,8 @@ select A.AMBULANTA_ID AMBULANTA_ID, KZ.ZIVOTINJA_ID ZIVOTINJA_ID, A.AMBULANTA_US
 
 create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > CURRENT_DATE;
 
---TEST
---create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > to_date('01.01.1000','DD.MM.YYYY');
+--TEST jer je datum amb od 2008, na laptopu cu promijeniti datum da radi onaj gore
+create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > to_date('01.01.1000','DD.MM.YYYY');
 select * from zak_pregl;
 
 
