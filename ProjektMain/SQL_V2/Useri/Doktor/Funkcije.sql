@@ -28,5 +28,6 @@ as
 end;
 /
 
+--SELECT * FROM KORISNIK_ZIVOTINJA;
 --TesT
 SELECT *  FROM table(svi_preg_kor_id.vrati_tablicu(5));
