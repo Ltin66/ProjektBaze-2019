@@ -45,7 +45,7 @@ SELECT SUM(ODRADENI_SATI) FROM ZAPOSLENICI_DOLAZAK WHERE EXTRACT(month FROM DATU
 
 
 --svi pregledi za korisnik ID OK, U DOKTOR/FUNKCIJE SE NALAZI ,, preko funkcije vratiti tablicu, kao neki parametarski view ili sl.
---TEST ako nema 
+--TEST ako nema
 INSERT INTO AMBULANTA_KORISNIK_ZIVOTINJA(AMBULANTA_KORISNIK_ZIVOTINJA.AMBULANTA_KORZIV_ID, AMBULANTA_KORISNIK_ZIVOTINJA.AMBULANTA_ID, AMBULANTA_KORISNIK_ZIVOTINJA.KORISNIK_ZIVOTINJA_ID)
 VALUES (0,6,5);
 
@@ -58,10 +58,10 @@ select A.AMBULANTA_ID AMBULANTA_ID, KZ.ZIVOTINJA_ID ZIVOTINJA_ID, A.AMBULANTA_US
 
 --zakazani pregledi OK
 
-create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > CURRENT_DATE;
+create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > CURRENT_DATE ORDER BY DATUM ASC;
 
 --TEST jer je datum amb od 2008, na laptopu cu promijeniti datum da radi onaj gore
-create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > to_date('01.01.1000','DD.MM.YYYY');
+create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > to_date('01.01.1000','DD.MM.YYYY') ORDER BY DATUM ASC ;
 select * from zak_pregl;
 
 
