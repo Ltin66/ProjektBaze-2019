@@ -1,5 +1,7 @@
 --placa za zaposlenika ID za n-ti mjesec u m-toj godini  OK (zaokružuje plaču ali neznam kako da ju ne zaokruži)
 
+drop procedure zap_placa;
+
 CREATE OR REPLACE PROCEDURE zap_placa (
     p_zap_id IN ZAPOSLENIK.ZAPOSLENIK_ID%TYPE,
     p_DD IN NUMERIC,
@@ -28,7 +30,7 @@ DECLARE
    o_placa NUMERIC(8,2);
 BEGIN
 
-    zap_placa(5,2,2008,o_placa);
+    RACUNOVODA_PACK.zap_placa(5,2,2008,o_placa);
 
    DBMS_OUTPUT.PUT_LINE('Opis :  ' || o_placa);
 

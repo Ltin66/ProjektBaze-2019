@@ -13,7 +13,8 @@ grant select on DOKTOR_TIPOVI_USLUGA to doktor;
 grant select on KORISNIK_VIEW to doktor;
 grant select on AMBULANTA_INFO to doktor;
 grant select on ZAP_INFO to doktor;
-
+grant execute on svi_preg_kor_id to doktor;
+grant select on zak_pregl to doktor;
 --AMBULANTA_INFO  ZAP_INFO
 
 --grant select on KORISNIK_VIEW to doktor;
@@ -89,4 +90,15 @@ CREATE OR REPLACE PROCEDURE create_user_doktor
         ex_stmt_a := 'create synonym '|| user_name || '.ZAP_INFO  for veterinar_sys.ZAP_INFO';
         EXECUTE IMMEDIATE (ex_stmt_a);
 
+        ex_stmt_a := 'create synonym '|| user_name || '.svi_preg_kor_id  for veterinar_sys.svi_preg_kor_id';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
+        ex_stmt_a := 'create synonym '|| user_name || '.zak_pregl  for veterinar_sys.zak_pregl';
+        EXECUTE IMMEDIATE (ex_stmt_a);
+
     end;
+
+
+--create synonym mirkomirkec3.zak_pregl for veterinar_sys.zak_pregl;
+
+    --svi_preg_kor_id    zak_pregl

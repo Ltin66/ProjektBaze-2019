@@ -39,7 +39,7 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back(" ");
 
     stavke_izbornik.push_back("Popis Zaposlenika"); //RAC_ZAP_INFO //OK RADI +
-    stavke_izbornik.push_back("Izracun Place");  // fali
+    stavke_izbornik.push_back("Izracun Place");  // OK +
     stavke_izbornik.push_back("Unos Zaposlenika"); // OK  +
 
     stavke_izbornik.push_back("Unos Radnog statusa zaposlenika"); // OK +
@@ -82,8 +82,47 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
             CommandToTable("Select * FROM RAC_ZAP_INFO ",tipovi_ziv,con);
             ui_showTable(tipovi_ziv);
         }
-        else if(stavke_izbornik[odabir+offset] == "Izracun Place"){
+        else if(stavke_izbornik[odabir+offset] == "Izracun Place") {
+            ui_print("Unesite ID Zaposlenika :");
+            ui_input();
+            int id;
+            cin >> id;
 
+            ui_print("Unesite Mjesec : ");
+            ui_input();
+            int mj;
+            cin >> mj;
+
+            ui_print("Unesite Godinu : ");
+            ui_input();
+            int god;
+            cin >> god;
+
+            SACommand cmd(&con);
+
+            cout << "Jeste lis zadovoljni sa unosom ?";
+            if (ui_confirm()) {
+
+                cmd.setCommandText("RACUNOVODA_PACK.zap_placa");
+
+                cmd.Param("p_zap_id").setAsNumeric() = id + 0.0;
+                cmd.Param("p_DD").setAsNumeric() = mj + 0.0;
+                cmd.Param("p_YYYY").setAsNumeric() = god + 0.0;
+
+                ui_clear();
+                ui_separator();
+                ui_print("OK");
+
+                try {
+                    cmd.Execute();
+                    string plc = string(cmd.Param("o_placa").asString());
+                    ui_print("Ukupna placa : " + plc);
+                    ui_print("(I)zlaz");
+                    cin >> plc;
+                }
+                catch (SAException &x) { printf("%s\n", (const char *) x.ErrText()); }
+
+            }
         }
         else if(stavke_izbornik[odabir+offset] == "Unos Zaposlenika"){
             ui_print("Unesite ime Zaposlenika :");
