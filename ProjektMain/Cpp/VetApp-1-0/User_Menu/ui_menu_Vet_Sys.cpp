@@ -56,7 +56,7 @@ int uiUserVeterinarSysMainMenu(SAConnection &con,korisnik &kor){
 
         ui_input();
         cin>>odabir;
-
+        ui_clear();
         //cout<<stavke_izbornik[odabir+offset]<<endl;
         //cout<<"  offset : "<<offset;
         //cout<<" Uneseni : "<<odabir;
