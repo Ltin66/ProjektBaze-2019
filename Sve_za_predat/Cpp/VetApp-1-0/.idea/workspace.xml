@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e8e7d992-7a16-4c33-8f7d-56f25244797f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/User_Menu/ui_menu_Doktor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/User_Menu/ui_menu_Doktor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User_Menu/ui_menu_Racunovoda.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/User_Menu/ui_menu_Racunovoda.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User_Menu/ui_menu_Vet_Sys.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/User_Menu/ui_menu_Vet_Sys.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User_Menu/ui_menu_Voditelj_Odjela.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/User_Menu/ui_menu_Voditelj_Odjela.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/VetApp_1_0" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/VetApp_1_0" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1W4Dn4KJVl7Irl1FxqK9VUJs27c" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VetApp_1_0" TARGET_NAME="VetApp_1_0" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VetApp_1_0" RUN_TARGET_NAME="VetApp_1_0">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8e7d992-7a16-4c33-8f7d-56f25244797f" name="Default Changelist" comment="" />
+      <created>1578400166833</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578400166833</updated>
+      <workItem from="1578400219693" duration="1884000" />
+      <workItem from="1578425580509" duration="72000" />
+      <workItem from="1578511464493" duration="1672000" />
+      <workItem from="1578515632213" duration="624000" />
+      <workItem from="1578566470068" duration="591000" />
+      <workItem from="1578567700178" duration="1496000" />
+      <workItem from="1578594007511" duration="1504000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="141" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578515676539">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="141" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1578515676539" />
+    <state width="1318" height="550" key="GridCell.Tab.0.bottom" timestamp="1578569196624">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1318" height="550" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1578569196624" />
+    <state width="1318" height="550" key="GridCell.Tab.0.center" timestamp="1578569196622">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1318" height="550" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1578569196622" />
+    <state width="1318" height="550" key="GridCell.Tab.0.left" timestamp="1578569196621">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1318" height="550" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1578569196621" />
+    <state width="1318" height="550" key="GridCell.Tab.0.right" timestamp="1578569196623">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1318" height="550" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1578569196623" />
+  </component>
+</project>
