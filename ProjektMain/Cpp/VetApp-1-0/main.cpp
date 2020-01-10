@@ -33,6 +33,8 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     while(true) {
+
+
         korisnik kor;
         SAConnection con;
 
@@ -53,12 +55,21 @@ int main(int argc, char* argv[])
         if (odabir == 0) return 0;
         //else if (odabir == 2) ui_postavke();
         else if (odabir == 1) {
-
+            ui_clear(100);
             int tmp = ui_prijava(kor);
-            dbConnect(kor, con);
-            if(tmp == 501) kor.UserRole = dbUserType(con);
 
-            ui_clear();
+            try {
+                dbConnect(kor, con);
+            }
+            catch(SAException & x)
+            {
+                printf("%s\n", (const char*)x.ErrText());
+            }
+
+            if(tmp == 501) kor.UserRole = dbUserType(con);
+            ui_clear(100);
+
+
             cout << "Dobrodošli " << kor.username;
             cout<<kor.UserRole<<endl;
             ui_separator();
@@ -89,6 +100,7 @@ int main(int argc, char* argv[])
 
             else if( tmp == 501) ui_error("USER ROLE NOT DEFINED");
 
+            ui_clear();
         }
     }
 

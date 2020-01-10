@@ -1,3 +1,8 @@
+--Zakazani Pregledi
+
+create or replace view zak_pregl as select * from AMBULANTA WHERE DATUM > CURRENT_DATE ORDER BY DATUM ASC;
+
+
 --Prikaz svih posjeta ambulanti
 
 CREATE OR REPLACE VIEW AMBULANTA_INFO (ID,Zaposlenik_ID,KorisnikZivotinja_ID, Naziv_usluge,Datum) as

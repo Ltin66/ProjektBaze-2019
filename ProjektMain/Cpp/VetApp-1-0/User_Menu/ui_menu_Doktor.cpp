@@ -25,7 +25,7 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
     int offset = 0;
     int offset_pl = 2;
 
-    ui_clear();
+
     cout << "Dobrodošli " << kor.username;
     ui_separator();
 
@@ -41,13 +41,13 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
     stavke_izbornik.push_back(" ");
 
     stavke_izbornik.push_back("Informacije o Ambulanti");   //SelectAmbulanta   //OK RADI +
-    stavke_izbornik.push_back("Zakazani pregledi");         //fali
+    stavke_izbornik.push_back("Zakazani pregledi");         //OK +
     stavke_izbornik.push_back("Dodavanje pregleda");        //InsertAmbulanta    //OK  RADI +
     stavke_izbornik.push_back("Izmjena opisa pregleda");    //UpdateAmbulanta_opis    //OK  +
     stavke_izbornik.push_back("Dodavanje Korisnika");       //InsertKorisnik     //OK RADI  +
     stavke_izbornik.push_back("Dodavanje Zivotinje");       //InsertZivotinja      //OK RADI +
     stavke_izbornik.push_back("Spajanje Zivotinje i Korisnika");    //InsertKorisnikZivotinja   //OK RADI  +
-    stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //fali
+    stavke_izbornik.push_back("Svi Pregledi Podjedinog Korisnika"); //OK +
     stavke_izbornik.push_back("Prikaz Zaposlenika");           //zap_info //OK +
     stavke_izbornik.push_back("Prikaz Tipova Zivotinja");// doktor_tipovi_zivotinja   //view OK RADI +
     stavke_izbornik.push_back("Prikaz Usluga Ambulante");  //doktor_tipovi_usluga       //view OK RADI +
@@ -66,11 +66,11 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_input();
         cin>>odabir;
-
-        cout<<stavke_izbornik[odabir+offset]<<endl;
-        cout<<"  offset : "<<offset;
-        cout<<" Uneseni : "<<odabir;
-        cout<<endl;
+        ui_clear();
+        //cout<<stavke_izbornik[odabir+offset]<<endl;
+        //cout<<"  offset : "<<offset;
+        //cout<<" Uneseni : "<<odabir;
+        //cout<<endl;
 
         if(stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
         else if(stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;
@@ -126,7 +126,9 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             }
         }
         else if(stavke_izbornik[odabir+offset] == "Zakazani pregledi"){
-
+            dbTable tipovi_ziv;
+            CommandToTable("Select * FROM zak_pregl ",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
         }
         else if(stavke_izbornik[odabir+offset] == "Dodavanje pregleda"){
             ui_print("Unesite ID usluge ");
@@ -135,9 +137,10 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cin>>ID;
 
             ui_print("Unesite datum");
-            ui_input();
+
             int dy,mnth,yr,sati,minute;
             ui_print("Dan : ");
+            ui_input();
             cin>>dy; //"1.1.2019"
 
             ui_print("Mjesec : ");
@@ -401,6 +404,14 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         }
         else if(stavke_izbornik[odabir+offset] == "Svi Pregledi Podjedinog Korisnika"){
+            ui_print("Unesite ID Korinika : ");
+            string id;
+            ui_input();
+            cin>>id;
+
+            dbTable tipovi_ziv;
+            CommandToTable("SELECT * FROM table(svi_preg_kor_id.vrati_tablicu("+ id +"))",tipovi_ziv,con);
+            ui_showTable(tipovi_ziv);
 
         }
         else if(stavke_izbornik[odabir+offset] == "Prikaz Zaposlenika"){

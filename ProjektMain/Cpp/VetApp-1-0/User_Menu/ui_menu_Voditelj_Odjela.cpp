@@ -77,10 +77,11 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
         ui_input();
         cin >> odabir;
 
-        cout << stavke_izbornik[odabir + offset] << endl;
-        cout << "  offset : " << offset;
-        cout << " Uneseni : " << odabir;
-        cout << endl;
+        ui_clear();
+        //cout << stavke_izbornik[odabir + offset] << endl;
+        //cout << "  offset : " << offset;
+        //cout << " Uneseni : " << odabir;
+        //cout << endl;
 
         if (stavke_izbornik[odabir] == "Izlaz U Glavni Meni") return -1;
         else if (stavke_izbornik[odabir] == "Izlaz Iz Programa") return 0;

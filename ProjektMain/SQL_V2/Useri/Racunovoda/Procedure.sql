@@ -51,6 +51,13 @@ p_rad_stat_tip_id radni_status.RADNI_STATUS_TIP_ID%Type);
 	   p_id IN INSPEKCIJA_TIP.INSPEKCIJA_TIP_ID%TYPE,
 	   o_cijena OUT INSPEKCIJA_TIP.CIJENA%TYPE);
 
+        PROCEDURE zap_placa (
+    p_zap_id IN ZAPOSLENIK.ZAPOSLENIK_ID%TYPE,
+    p_DD IN NUMERIC,
+    p_YYYY IN NUMERIC,
+    o_placa OUT NUMERIC
+    );
+
 END;
 
 
@@ -59,6 +66,30 @@ END;
 --------------------------------------------------------------------------
 
 CREATE OR REPLACE PACKAGE BODY RACUNOVODA_PACK AS
+
+    --placa za zaposlenika ID za n-ti mjesec u m-toj godini  OK (zaokružuje plaču ali neznam kako da ju ne zaokruži)
+
+PROCEDURE zap_placa (
+    p_zap_id IN ZAPOSLENIK.ZAPOSLENIK_ID%TYPE,
+    p_DD IN NUMERIC,
+    p_YYYY IN NUMERIC,
+    o_placa OUT NUMERIC
+    )
+IS
+    var_satnica NUMERIC(8,2);
+    var_sum_sat NUMERIC(8,2);
+    BEGIN
+
+        SELECT SATNICA INTO var_satnica  FROM RADNI_STATUS
+        WHERE ZAPOSLENIK_ID = p_zap_id AND DATUM_POCETKA = (SELECT MAX(DATUM_POCETKA) FROM RADNI_STATUS GROUP BY ZAPOSLENIK_ID HAVING ZAPOSLENIK_ID = p_zap_id);
+
+
+        SELECT SUM(ODRADENI_SATI) INTO var_sum_sat  FROM ZAPOSLENICI_DOLAZAK
+        WHERE EXTRACT(month FROM DATUM) = p_DD AND EXTRACT(year FROM DATUM) = p_YYYY GROUP BY ZAPOSLENIK_ID HAVING ZAPOSLENIK_ID = p_zap_id;
+
+        o_placa := var_satnica * var_sum_sat;
+
+    end;
 
 --5. Update vrijeme dolaska - procedura   p_sati_dolazak
 
