@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="VetApp_1_0"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="VetApp_1_0">
+				<Option output="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/VetApp_1_0" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tin/CppDbLibs/SQLAPI/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 VetApp_1_0"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="VetApp_1_0/fast">
+				<Option output="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/VetApp_1_0" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tin/CppDbLibs/SQLAPI/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 VetApp_1_0/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Doktor.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Vet_Sys.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbConnection.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbTablice.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/dbUpiti.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/main.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.cpp">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.h">
+			<Option target="VetApp_1_0"/>
+		</Unit>
+		<Unit filename="/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
