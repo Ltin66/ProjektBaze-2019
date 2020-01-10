@@ -63,12 +63,20 @@ int uiUserRacunovodaMainMenu(SAConnection &con,korisnik &kor){
         int odabir = 0;
 
 
+<<<<<<< HEAD
         ui_print_menu(stavke_izbornik,"Racunovoda",8,3);
+=======
+        ui_print_menu(stavke_izbornik,"Doktor Izbornik",8,3);
+>>>>>>> master
 
 
         ui_input();
         cin>>odabir;
+<<<<<<< HEAD
         ui_clear();
+=======
+
+>>>>>>> master
         //cout<<stavke_izbornik[odabir+offset]<<endl;
         //cout<<"  offset : "<<offset;
         //cout<<" Uneseni : "<<odabir;

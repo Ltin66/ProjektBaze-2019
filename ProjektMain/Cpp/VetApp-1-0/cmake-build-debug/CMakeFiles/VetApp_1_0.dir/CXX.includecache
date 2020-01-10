@@ -32,9 +32,9 @@ limits.h
 string
 -
 
-/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.cpp
-ui_menu_Voditelj_Odjela.h
-/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.cpp
+ui_menu_Racunovoda.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.h
 ../ui_user.h
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_user.h
 ../ui_main.h
@@ -52,7 +52,7 @@ vector
 algorithm
 -
 
-/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Voditelj_Odjela.h
+/home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/User_Menu/ui_menu_Racunovoda.h
 ../ui_main.h
 /home/tin/Documents/ProjektBaze-2019/ProjektMain/Cpp/VetApp-1-0/ui_main.h
 ../dbUpiti.h

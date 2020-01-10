@@ -77,7 +77,10 @@ int uiUserVoditeljOdjelaMainMenu(SAConnection &con,korisnik &kor) {
         ui_input();
         cin >> odabir;
 
+<<<<<<< HEAD
         ui_clear();
+=======
+>>>>>>> master
         //cout << stavke_izbornik[odabir + offset] << endl;
         //cout << "  offset : " << offset;
         //cout << " Uneseni : " << odabir;

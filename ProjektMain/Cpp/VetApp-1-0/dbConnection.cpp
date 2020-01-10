@@ -21,13 +21,6 @@ string dbConnect(korisnik kor,SAConnection &con){
 
     catch(SAException & x)
     {
-        try
-        {
-            con.Rollback ();
-        }
-        catch(SAException &)
-        {
-        }
         printf("%s\n", (const char*)x.ErrText());
     }
 

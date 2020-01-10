@@ -6,4 +6,8 @@ https://trello.com/invite/projektnibaze/1ede7c2bb170e05568e481c3ddced911
 
 https://discord.gg/qwANBy
 
+<<<<<<< HEAD
 https://youtu.be/-GzwbHatOfU
+=======
+fali link za yt
+>>>>>>> master

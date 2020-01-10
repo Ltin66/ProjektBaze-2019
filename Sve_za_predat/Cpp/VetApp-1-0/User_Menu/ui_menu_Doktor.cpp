@@ -66,7 +66,11 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
 
         ui_input();
         cin>>odabir;
+<<<<<<< HEAD
         ui_clear();
+=======
+
+>>>>>>> master
         //cout<<stavke_izbornik[odabir+offset]<<endl;
         //cout<<"  offset : "<<offset;
         //cout<<" Uneseni : "<<odabir;
@@ -137,10 +141,16 @@ int uiUserDoktorMainMenu(SAConnection &con,korisnik &kor){
             cin>>ID;
 
             ui_print("Unesite datum");
+<<<<<<< HEAD
 
             int dy,mnth,yr,sati,minute;
             ui_print("Dan : ");
             ui_input();
+=======
+            ui_input();
+            int dy,mnth,yr,sati,minute;
+            ui_print("Dan : ");
+>>>>>>> master
             cin>>dy; //"1.1.2019"
 
             ui_print("Mjesec : ");
